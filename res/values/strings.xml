@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Passbase</string>
+    <string name="select_entry">Select Entry</string>
+    <string name="no_selection"></string>
+</resources>
