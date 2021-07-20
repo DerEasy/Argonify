@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Passbase</string>
     <string name="select_entry">Select Entry</string>
-    <string name="no_selection"></string>
+    <string name="no_selection">N/A</string>
+    <string name="unavailable_info">N/A</string>
+    <string name="copy_password">Copy password to clipboard</string>
+    <string name="copy_email">Copy email to clipboard</string>
+    <string name="copy_username">Copy username to clipboard</string>
 </resources>

@@ -21,27 +21,92 @@
         android:id="@+id/txt_selectedName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="16dp"
         android:text="@string/no_selection"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_selectEntry"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/ibt_copyPassword"
+        app:layout_constraintStart_toEndOf="@+id/ibt_copyPassword" />
 
     <TextView
         android:id="@+id/txt_selectedPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
         android:text="@string/no_selection"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ibt_copyPassword"
+        app:layout_constraintStart_toEndOf="@+id/ibt_copyPassword"
+        app:layout_constraintTop_toTopOf="@+id/ibt_copyPassword" />
+
+    <TextView
+        android:id="@+id/txt_selectedEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/no_selection"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ibt_copyEmail"
+        app:layout_constraintStart_toEndOf="@+id/ibt_copyEmail"
+        app:layout_constraintTop_toTopOf="@+id/ibt_copyEmail" />
+
+    <TextView
+        android:id="@+id/txt_selectedUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/no_selection"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ibt_copyUsername"
+        app:layout_constraintStart_toEndOf="@+id/ibt_copyUsername"
+        app:layout_constraintTop_toTopOf="@+id/ibt_copyUsername" />
+
+    <TextView
+        android:id="@+id/txt_selectedNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/ibt_copyUsername"
+        app:layout_constraintTop_toBottomOf="@+id/ibt_copyUsername" />
+
+    <ImageButton
+        android:id="@+id/ibt_copyPassword"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@null"
+        android:src="@drawable/ic_baseline_content_copy_24"
         app:layout_constraintBottom_toTopOf="@+id/bt_selectEntry"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txt_selectedName"
-        app:layout_constraintTop_toBottomOf="@+id/txt_selectedName"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/copy_password" />
+
+    <ImageButton
+        android:id="@+id/ibt_copyEmail"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:src="@drawable/ic_baseline_content_copy_24"
+        app:layout_constraintStart_toStartOf="@+id/ibt_copyPassword"
+        app:layout_constraintTop_toBottomOf="@+id/ibt_copyPassword"
+        android:contentDescription="@string/copy_email" />
+
+    <ImageButton
+        android:id="@+id/ibt_copyUsername"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:src="@drawable/ic_baseline_content_copy_24"
+        app:layout_constraintStart_toStartOf="@+id/ibt_copyEmail"
+        app:layout_constraintTop_toBottomOf="@+id/ibt_copyEmail"
+        android:contentDescription="@string/copy_username" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
