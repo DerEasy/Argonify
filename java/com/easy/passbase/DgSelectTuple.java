@@ -51,12 +51,12 @@ public class DgSelectTuple extends AppCompatDialogFragment {
         cursor.moveToFirst();
 
         int[] idTuples = new int[cursor.getCount()];
-        for (int i = 0; i < cursor.getCount(); i++) {
+        for (int i = 0; i < cursor.getCount(); ++i) {
             idTuples[i] = cursor.getInt(cursor.getColumnIndex(_ID));
             cursor.moveToNext();
         }
 
-        mainActivity.updateSelectedTuple(idTuples[adapterPosition]);
+        mainActivity.updateDisplayedTuple(idTuples[adapterPosition]);
         dismiss();
     }
 }

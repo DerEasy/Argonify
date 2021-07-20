@@ -1,5 +1,8 @@
 package com.easy.passbase;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -11,13 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import static com.easy.passbase.PasswordDB.getPassword;
 import static com.easy.passbase.PasswordDB.passwordDB;
-import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_SELECTABLE_COLUMNS;
+import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_COLUMNS;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_EMAIL;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_NAME;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_NOTES;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_PASSWORD;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_USERNAME;
-import static com.easy.passbase.PasswordDBHelper.selectableColumns;
+import static com.easy.passbase.PasswordDBHelper.mainColumns;
 
 public class MainActivity extends AppCompatActivity {
     private Cursor currentCursor;
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         ibtCopyEmail = findViewById(R.id.ibt_copyEmail);
         ibtCopyUsername = findViewById(R.id.ibt_copyUsername);
 
-        checkVisibility();
+        setCopyButtonVisibility();
     }
 
     public void selectTuple(View v) {
@@ -56,17 +59,32 @@ public class MainActivity extends AppCompatActivity {
         dgSelectTuple.show(getSupportFragmentManager(), "Select Tuple Dialog");
     }
 
-    public void updateSelectedTuple(int id) {
+    public void updateDisplayedTuple(int id) {
         Cursor cursor = getPassword(id);
         cursor.moveToFirst();
         currentCursor = cursor;
 
-        String[] tuple = new String[AMOUNT_OF_SELECTABLE_COLUMNS];
-        for (int i = 0; i < AMOUNT_OF_SELECTABLE_COLUMNS; ++i) {
-            tuple[i] = getAttribute(cursor, selectableColumns[i]);
-            setTextViewCheckNull(selectableColumns[i], tuple[i]);
+        String[] tuple = new String[AMOUNT_OF_MAIN_COLUMNS];
+        for (int i = 0; i < AMOUNT_OF_MAIN_COLUMNS; ++i) {
+            tuple[i] = getAttribute(cursor, mainColumns[i]);
+            setTextViewCheckNull(mainColumns[i], tuple[i]);
         }
-        checkVisibility();
+        setCopyButtonVisibility();
+    }
+
+    public void copyAttribute(View v) {
+        //If this fails, check if the strings of the tags match with the table attributes in the db
+        String attribute = (String) getTextViewByColumn((String) v.getTag()).getText();
+
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("Clipped " + (String) v.getTag(), attribute);
+        clipboard.setPrimaryClip(clip);
+
+        Toast.makeText(
+                this,
+                String.format("Copied %s to clipboard", (String) v.getTag()),
+                Toast.LENGTH_SHORT
+        ).show();
     }
 
     private String getAttribute(Cursor cursor, String column) {
@@ -103,18 +121,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressWarnings("ConstantConditions")
-    private void checkVisibility() {
-        //Index 1 to 3 meaning only Password, Email and Username are being checked
-        //as these are the only ones with copy buttons
-        for (int i = 1; i < AMOUNT_OF_SELECTABLE_COLUMNS - 1; ++i) {
-            if (getTextViewByColumn(selectableColumns[i]).getText().equals(getString(R.string.unavailable_info)))
-                getImageButtonByColumn(selectableColumns[i]).setVisibility(View.INVISIBLE);
-            else
-                getImageButtonByColumn(selectableColumns[i]).setVisibility(View.VISIBLE);
-        }
-    }
-
     private void setTextViewCheckNull(String column, String text) {
         TextView textView = getTextViewByColumn(column);
         if (textView == null)
@@ -126,8 +132,15 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(text);
     }
 
-    public void copyText(View v) {
-        String test = (String) getTextViewByColumn((String) v.getTag()).getText();
-        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
+    @SuppressWarnings("ConstantConditions")
+    private void setCopyButtonVisibility() {
+        //Index 1 to 3 meaning only Password, Email and Username are being checked
+        //as these are the only ones with copy buttons
+        for (int i = 1; i < AMOUNT_OF_MAIN_COLUMNS - 1; ++i) {
+            if (getTextViewByColumn(mainColumns[i]).getText().equals(getString(R.string.unavailable_info)))
+                getImageButtonByColumn(mainColumns[i]).setVisibility(View.INVISIBLE);
+            else
+                getImageButtonByColumn(mainColumns[i]).setVisibility(View.VISIBLE);
+        }
     }
 }

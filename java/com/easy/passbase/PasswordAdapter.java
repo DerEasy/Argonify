@@ -46,13 +46,13 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
 
     @Override
     public void onBindViewHolder(@NonNull PasswordAdapter.PasswordViewHolder holder, int position) {
-        if (!cursor.moveToPosition(position)) return;
+        if (!cursor.moveToPosition(position))
+            return;
 
         String passwordName = cursor.getString(cursor.getColumnIndex(PasswordDBHelper.COLUMN_NAME));
         holder.passName.setText(passwordName);
-        holder.selector.setOnClickListener((isChecked) -> {
-            dgSelectTuple.setSelectedTuple(holder.getAdapterPosition(), cursor);
-        });
+        holder.selector.setOnClickListener((isChecked) ->
+                dgSelectTuple.setSelectedTuple(holder.getAdapterPosition(), cursor));
     }
 
     @Override

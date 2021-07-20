@@ -5,9 +5,15 @@
     <string name="copy_password">Copy password to clipboard</string>
     <string name="copy_email">Copy email to clipboard</string>
     <string name="copy_username">Copy username to clipboard</string>
+
+    <!--These are partially also used as tags for their corresponding ImageButtons etc.
+    They MUST have the exact same names as the attributes of the Passbase table-->
     <string name="name">Name</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
     <string name="username">Username</string>
     <string name="notes">Notes</string>
+    <!--Comment end-->
+
+
 </resources>
