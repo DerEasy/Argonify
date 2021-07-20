@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,25 +51,25 @@ public class MainActivity extends AppCompatActivity {
         checkVisibility();
     }
 
-    public void openSelectEntry(View v) {
-        DgSelectEntry dgSelectEntry = new DgSelectEntry(this);
-        dgSelectEntry.show(getSupportFragmentManager(), "Select Entry Dialog");
+    public void selectTuple(View v) {
+        DgSelectTuple dgSelectTuple = new DgSelectTuple(this);
+        dgSelectTuple.show(getSupportFragmentManager(), "Select Tuple Dialog");
     }
 
-    public void updateSelectedEntry(int id) {
+    public void updateSelectedTuple(int id) {
         Cursor cursor = getPassword(id);
         cursor.moveToFirst();
         currentCursor = cursor;
 
-        String[] entry = new String[AMOUNT_OF_SELECTABLE_COLUMNS];
+        String[] tuple = new String[AMOUNT_OF_SELECTABLE_COLUMNS];
         for (int i = 0; i < AMOUNT_OF_SELECTABLE_COLUMNS; ++i) {
-            entry[i] = getEntry(cursor, selectableColumns[i]);
-            setTextViewCheckNull(selectableColumns[i], entry[i]);
+            tuple[i] = getAttribute(cursor, selectableColumns[i]);
+            setTextViewCheckNull(selectableColumns[i], tuple[i]);
         }
         checkVisibility();
     }
 
-    private String getEntry(Cursor cursor, String column) {
+    private String getAttribute(Cursor cursor, String column) {
         return cursor.getString(cursor.getColumnIndex(column));
     }
 
@@ -123,5 +124,10 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(R.string.unavailable_info);
         else
             textView.setText(text);
+    }
+
+    public void copyText(View v) {
+        String test = (String) getTextViewByColumn((String) v.getTag()).getText();
+        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
     }
 }

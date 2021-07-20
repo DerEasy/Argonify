@@ -7,15 +7,16 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/bt_selectEntry"
+        android:id="@+id/bt_selectTuple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="openSelectEntry"
-        android:text="@string/select_entry"
+        android:onClick="selectTuple"
+        android:text="@string/select_tuple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
 
     <TextView
         android:id="@+id/txt_selectedName"
@@ -122,14 +123,15 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:background="@null"
+        android:tag="@string/password"
+        android:onClick="copyText"
         android:contentDescription="@string/copy_password"
         android:src="@drawable/ic_baseline_content_copy_24"
-        app:layout_constraintBottom_toTopOf="@+id/bt_selectEntry"
+        app:layout_constraintBottom_toTopOf="@+id/bt_selectTuple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/ibt_copyEmail"
@@ -137,6 +139,8 @@
         android:layout_height="36dp"
         android:layout_marginTop="12dp"
         android:background="@null"
+        android:tag="@string/email"
+        android:onClick="copyText"
         android:contentDescription="@string/copy_email"
         android:src="@drawable/ic_baseline_content_copy_24"
         app:layout_constraintStart_toStartOf="@+id/ibt_copyPassword"
@@ -148,6 +152,8 @@
         android:layout_height="36dp"
         android:layout_marginTop="12dp"
         android:background="@null"
+        android:tag="@string/username"
+        android:onClick="copyText"
         android:contentDescription="@string/copy_username"
         android:src="@drawable/ic_baseline_content_copy_24"
         app:layout_constraintStart_toStartOf="@+id/ibt_copyEmail"

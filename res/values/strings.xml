@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Passbase</string>
-    <string name="select_entry">Select Entry</string>
+    <string name="select_tuple">Select Entry</string>
     <string name="unavailable_info">-</string>
     <string name="copy_password">Copy password to clipboard</string>
     <string name="copy_email">Copy email to clipboard</string>
     <string name="copy_username">Copy username to clipboard</string>
     <string name="name">Name</string>
     <string name="password">Password</string>
-    <string name="username">Username</string>
     <string name="email">Email</string>
+    <string name="username">Username</string>
     <string name="notes">Notes</string>
 </resources>

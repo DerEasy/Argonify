@@ -12,12 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.PasswordViewHolder> {
-    private final DgSelectEntry dgSelectEntry;
+    private final DgSelectTuple dgSelectTuple;
     private final Context context;
     private Cursor cursor;
 
-    public PasswordAdapter(DgSelectEntry dialog, Context pContext, Cursor pCursor) {
-        dgSelectEntry = dialog;
+    public PasswordAdapter(DgSelectTuple dialog, Context pContext, Cursor pCursor) {
+        dgSelectTuple = dialog;
         context = pContext;
         cursor = pCursor;
     }
@@ -51,7 +51,7 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
         String passwordName = cursor.getString(cursor.getColumnIndex(PasswordDBHelper.COLUMN_NAME));
         holder.passName.setText(passwordName);
         holder.selector.setOnClickListener((isChecked) -> {
-            dgSelectEntry.setSelectedEntry(holder.getAdapterPosition(), cursor);
+            dgSelectTuple.setSelectedEntry(holder.getAdapterPosition(), cursor);
         });
     }
 
