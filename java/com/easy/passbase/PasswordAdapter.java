@@ -31,7 +31,7 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
             super(itemView);
 
             passName = itemView.findViewById(R.id.passwordItemName);
-            selector = itemView.findViewById(R.id.bt_entryClickListener);
+            selector = itemView.findViewById(R.id.bt_tupleClickListener);
         }
     }
 
@@ -51,7 +51,7 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
         String passwordName = cursor.getString(cursor.getColumnIndex(PasswordDBHelper.COLUMN_NAME));
         holder.passName.setText(passwordName);
         holder.selector.setOnClickListener((isChecked) -> {
-            dgSelectTuple.setSelectedEntry(holder.getAdapterPosition(), cursor);
+            dgSelectTuple.setSelectedTuple(holder.getAdapterPosition(), cursor);
         });
     }
 

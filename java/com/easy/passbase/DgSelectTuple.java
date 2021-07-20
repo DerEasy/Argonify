@@ -47,7 +47,7 @@ public class DgSelectTuple extends AppCompatDialogFragment {
         return builder.create();
     }
 
-    public void setSelectedEntry(int adapterPosition, Cursor cursor) {
+    public void setSelectedTuple(int adapterPosition, Cursor cursor) {
         cursor.moveToFirst();
 
         int[] idTuples = new int[cursor.getCount()];
