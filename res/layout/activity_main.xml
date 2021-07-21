@@ -6,6 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="end|bottom"
+        android:onClick="options"
+        android:src="@drawable/ic_round_expand_more_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_optionAddEntry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="end|bottom"
+        android:visibility="invisible"
+        app:fabSize="mini"
+        android:alpha="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <Button
         android:id="@+id/bt_selectTuple"
         android:layout_width="wrap_content"
@@ -14,6 +39,7 @@
         android:text="@string/select_tuple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.8" />
@@ -22,51 +48,51 @@
         android:id="@+id/txt_selectedName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="16dp"
         android:text="@string/unavailable_info"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/txt_titlePassword"
-        app:layout_constraintStart_toEndOf="@+id/ibt_copyPassword" />
+        app:layout_constraintStart_toStartOf="@+id/txt_titlePassword" />
 
     <TextView
         android:id="@+id/txt_selectedPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/unavailable_info"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ibt_copyPassword"
-        app:layout_constraintStart_toEndOf="@+id/ibt_copyPassword" />
+        app:layout_constraintBottom_toTopOf="@+id/txt_titleEmail"
+        app:layout_constraintStart_toStartOf="@+id/txt_titlePassword" />
 
     <TextView
         android:id="@+id/txt_selectedEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/unavailable_info"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ibt_copyEmail"
-        app:layout_constraintStart_toEndOf="@+id/ibt_copyEmail" />
+        app:layout_constraintBottom_toTopOf="@+id/txt_titleUsername"
+        app:layout_constraintStart_toStartOf="@+id/txt_titleEmail" />
 
     <TextView
         android:id="@+id/txt_selectedUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/unavailable_info"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ibt_copyUsername"
-        app:layout_constraintStart_toEndOf="@+id/ibt_copyUsername" />
+        app:layout_constraintBottom_toTopOf="@+id/txt_titleNotes"
+        app:layout_constraintStart_toStartOf="@+id/txt_titleUsername" />
 
     <TextView
         android:id="@+id/txt_selectedNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="@string/unavailable_info"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/txt_titleNotes"
-        app:layout_constraintTop_toBottomOf="@+id/txt_titleNotes" />
+        app:layout_constraintBottom_toTopOf="@+id/bt_selectTuple"
+        app:layout_constraintStart_toStartOf="@+id/txt_titleNotes" />
 
     <TextView
         android:id="@+id/txt_titleName"
@@ -81,82 +107,82 @@
         android:id="@+id/txt_titlePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="@string/password"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/txt_selectedPassword"
-        app:layout_constraintStart_toStartOf="@+id/txt_selectedPassword" />
+        app:layout_constraintStart_toEndOf="@+id/ibt_copyPassword" />
 
     <TextView
         android:id="@+id/txt_titleEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="@string/email"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/txt_selectedEmail"
-        app:layout_constraintStart_toStartOf="@+id/txt_selectedEmail" />
+        app:layout_constraintStart_toEndOf="@+id/ibt_copyEmail" />
 
     <TextView
         android:id="@+id/txt_titleUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="@string/username"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/txt_selectedUsername"
-        app:layout_constraintStart_toStartOf="@+id/txt_selectedUsername" />
+        app:layout_constraintStart_toEndOf="@+id/ibt_copyUsername" />
 
     <TextView
         android:id="@+id/txt_titleNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:text="@string/notes"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/ibt_copyUsername"
-        app:layout_constraintTop_toBottomOf="@+id/txt_selectedUsername" />
+        app:layout_constraintBottom_toTopOf="@+id/txt_selectedNotes"
+        app:layout_constraintStart_toStartOf="@+id/txt_selectedUsername" />
 
     <ImageButton
         android:id="@+id/ibt_copyPassword"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@null"
-        android:tag="@string/password"
-        android:onClick="copyAttribute"
+        android:layout_marginStart="16dp"
+        android:background="?android:selectableItemBackgroundBorderless"
         android:contentDescription="@string/copy_password"
-        android:src="@drawable/ic_baseline_content_copy_24"
-        app:layout_constraintBottom_toTopOf="@+id/bt_selectTuple"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:onClick="copyAttribute"
+        android:src="@drawable/ic_round_content_copy_24"
+        android:tag="@string/password"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_selectedPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/txt_titlePassword" />
 
     <ImageButton
         android:id="@+id/ibt_copyEmail"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:layout_marginTop="12dp"
-        android:background="@null"
-        android:tag="@string/email"
-        android:onClick="copyAttribute"
+        android:background="?android:selectableItemBackgroundBorderless"
         android:contentDescription="@string/copy_email"
-        android:src="@drawable/ic_baseline_content_copy_24"
+        android:onClick="copyAttribute"
+        android:src="@drawable/ic_round_content_copy_24"
+        android:tag="@string/email"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_selectedEmail"
         app:layout_constraintStart_toStartOf="@+id/ibt_copyPassword"
-        app:layout_constraintTop_toBottomOf="@+id/ibt_copyPassword" />
+        app:layout_constraintTop_toTopOf="@+id/txt_titleEmail" />
 
     <ImageButton
         android:id="@+id/ibt_copyUsername"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:layout_marginTop="12dp"
-        android:background="@null"
-        android:tag="@string/username"
-        android:onClick="copyAttribute"
+        android:background="?android:selectableItemBackgroundBorderless"
         android:contentDescription="@string/copy_username"
-        android:src="@drawable/ic_baseline_content_copy_24"
+        android:onClick="copyAttribute"
+        android:src="@drawable/ic_round_content_copy_24"
+        android:tag="@string/username"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_selectedUsername"
         app:layout_constraintStart_toStartOf="@+id/ibt_copyEmail"
-        app:layout_constraintTop_toBottomOf="@+id/ibt_copyEmail" />
+        app:layout_constraintTop_toTopOf="@+id/txt_titleUsername" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,7 @@
 package com.easy.passbase;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -11,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import static com.easy.passbase.PasswordDB.getPassword;
 import static com.easy.passbase.PasswordDB.passwordDB;
@@ -23,7 +28,6 @@ import static com.easy.passbase.PasswordDBHelper.COLUMN_USERNAME;
 import static com.easy.passbase.PasswordDBHelper.mainColumns;
 
 public class MainActivity extends AppCompatActivity {
-    private Cursor currentCursor;
     private TextView txtSelectedName;
     private TextView txtSelectedPassword;
     private TextView txtSelectedEmail;
@@ -32,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton ibtCopyPassword;
     private ImageButton ibtCopyEmail;
     private ImageButton ibtCopyUsername;
+
+    private OptionsAnimator animOptions;
+    private FloatingActionButton fabOptions;
+    private FloatingActionButton fabOptionAddEntry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +59,16 @@ public class MainActivity extends AppCompatActivity {
         ibtCopyEmail = findViewById(R.id.ibt_copyEmail);
         ibtCopyUsername = findViewById(R.id.ibt_copyUsername);
 
-        setCopyButtonVisibility();
+        fabOptions = findViewById(R.id.fab_options);
+        fabOptionAddEntry = findViewById(R.id.fab_optionAddEntry);
+
+        fabOptionAddEntry.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            animOptions = new OptionsAnimator(this, fabOptionAddEntry.getY());
+        });
+    }
+
+    public void options(View v) {
+        animOptions.options();
     }
 
     public void selectTuple(View v) {
@@ -62,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
     public void updateDisplayedTuple(int id) {
         Cursor cursor = getPassword(id);
         cursor.moveToFirst();
-        currentCursor = cursor;
 
         String[] tuple = new String[AMOUNT_OF_MAIN_COLUMNS];
         for (int i = 0; i < AMOUNT_OF_MAIN_COLUMNS; ++i) {
