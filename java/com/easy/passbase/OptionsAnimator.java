@@ -9,100 +9,86 @@ import androidx.appcompat.content.res.AppCompatResources;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class OptionsAnimator {
-    private final MainActivity mainActivity;
-    private FloatingActionButton fabOptions;
-    private static final int AMOUNT_OF_OPTIONS = 1;
-    private static final float ANIM_OFFSET = 150;
-    private static final FloatingActionButton[] OPTIONS = new FloatingActionButton[AMOUNT_OF_OPTIONS];
-    private final float posY;
+    private final int AMOUNT_OF_OPTIONS = 4;
+    private final float POS_Y;
+    private final FloatingActionButton FAB_OPTIONS;
+    private final FloatingActionButton[] OPTION = new FloatingActionButton[AMOUNT_OF_OPTIONS];
     private boolean optionsOpen = false;
 
-    private FloatingActionButton fabOptionAddEntry;
-
-
-
     public OptionsAnimator(MainActivity mainActivity, float posY) {
-        this.mainActivity = mainActivity;
-        fabOptions = mainActivity.findViewById(R.id.fab_options);
+        FAB_OPTIONS = mainActivity.findViewById(R.id.fab_options);
+        POS_Y = posY;
 
-        fabOptionAddEntry = mainActivity.findViewById(R.id.fab_optionAddEntry);
-        this.posY = posY;
-
-        OPTIONS[0] = fabOptionAddEntry;
+        OPTION[0] = mainActivity.findViewById(R.id.fab_optionAddTuple);
+        OPTION[1] = mainActivity.findViewById(R.id.fab_optionRemoveTuple);
+        OPTION[2] = mainActivity.findViewById(R.id.fab_optionEditTuple);
+        OPTION[3] = mainActivity.findViewById(R.id.fab_optionPasswordGenerator);
     }
 
-
-
-    protected void options() {
+    /**
+     * Switches the state of the options panel to open or closed
+     */
+    public void switchState() {
         if (!optionsOpen)
             openOptionsPanel();
         else
             closeOptionsPanel();
     }
 
-    private void openOptionsPanel() {
-        for (int i = 0; i < AMOUNT_OF_OPTIONS; ++i)
-            animateOptionFABOpen(OPTIONS[i], i);
+    /**
+     * Sets the state of the options panel to open
+     */
+    public void open() {
+        if (!optionsOpen)
+            openOptionsPanel();
     }
 
-    private void animateOptionFABOpen(FloatingActionButton fab, int optionsIndex) {
-        int finalOptionsIndex = ++optionsIndex;
+    /**
+     * Sets the state of the options panel to closed
+     */
+    public void close() {
+        if (optionsOpen)
+            closeOptionsPanel();
+    }
 
-        fab.animate().y(posY - ANIM_OFFSET * optionsIndex).setListener(new AnimatorListenerAdapter() {
+    private void openOptionsPanel() {
+        for (int i = 0; i < AMOUNT_OF_OPTIONS; ++i)
+            animateOptionFABOpen(OPTION[i], i);
+    }
+
+    private void animateOptionFABOpen(FloatingActionButton fab, int optionIndex) {
+        final float ANIM_OFFSET = 140;
+
+        fab.animate().y(POS_Y - ANIM_OFFSET * ++optionIndex).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationStart(Animator animation) {
                 optionsOpen = true;
                 fab.setVisibility(View.VISIBLE);
-                fabOptions.setImageDrawable(AppCompatResources.getDrawable(fabOptions.getContext(), R.drawable.ic_round_expand_less_24));
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                if (optionsOpen) {
-                    fab.setVisibility(View.VISIBLE);
-                    fab.setY(posY - ANIM_OFFSET * finalOptionsIndex);
-                }
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-                optionsOpen = false;
-                fab.setVisibility(View.INVISIBLE);
-                fab.setY(posY);
-                fabOptions.setImageDrawable(AppCompatResources.getDrawable(fabOptions.getContext(), R.drawable.ic_round_expand_more_24));
+                FAB_OPTIONS.setImageDrawable(AppCompatResources.getDrawable(FAB_OPTIONS.getContext(), R.drawable.ic_round_expand_less_24));
             }
         }).start();
     }
 
     private void closeOptionsPanel() {
         for (int i = 0; i < AMOUNT_OF_OPTIONS; ++i)
-            animateOptionFABClose(OPTIONS[i], i);
+            animateOptionFABClose(OPTION[i]);
     }
 
-    private void animateOptionFABClose(FloatingActionButton fab, int optionsIndex) {
-        int finalOptionsIndex = ++optionsIndex;
-
-        fab.animate().y(posY).setListener(new AnimatorListenerAdapter() {
+    private void animateOptionFABClose(FloatingActionButton fab) {
+        fab.animate().y(POS_Y).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationStart(Animator animation) {
                 optionsOpen = false;
                 fab.setVisibility(View.VISIBLE);
-                fabOptions.setImageDrawable(AppCompatResources.getDrawable(fabOptions.getContext(), R.drawable.ic_round_expand_more_24));
+                FAB_OPTIONS.setImageDrawable(AppCompatResources.getDrawable(FAB_OPTIONS.getContext(), R.drawable.ic_round_expand_more_24));
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
                 if (!optionsOpen) {
                     fab.setVisibility(View.INVISIBLE);
-                    fab.setY(posY);
+                    fab.setY(POS_Y);
                 }
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-                optionsOpen = true;
-                fab.setVisibility(View.VISIBLE);
-                fab.setY(posY - ANIM_OFFSET * finalOptionsIndex);
             }
         }).start();
     }

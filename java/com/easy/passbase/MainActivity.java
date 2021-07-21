@@ -1,7 +1,5 @@
 package com.easy.passbase;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -13,19 +11,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.content.res.AppCompatResources;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import static com.easy.passbase.PasswordDB.getPassword;
 import static com.easy.passbase.PasswordDB.passwordDB;
-import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_COLUMNS;
+import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_EMAIL;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_NAME;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_NOTES;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_PASSWORD;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_USERNAME;
-import static com.easy.passbase.PasswordDBHelper.mainColumns;
+import static com.easy.passbase.PasswordDBHelper.MAIN_ATTRIBUTES;
 
 public class MainActivity extends AppCompatActivity {
     private TextView txtSelectedName;
@@ -38,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton ibtCopyUsername;
 
     private OptionsAnimator animOptions;
-    private FloatingActionButton fabOptions;
-    private FloatingActionButton fabOptionAddEntry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,19 +52,23 @@ public class MainActivity extends AppCompatActivity {
         ibtCopyEmail = findViewById(R.id.ibt_copyEmail);
         ibtCopyUsername = findViewById(R.id.ibt_copyUsername);
 
-        fabOptions = findViewById(R.id.fab_options);
-        fabOptionAddEntry = findViewById(R.id.fab_optionAddEntry);
-
-        fabOptionAddEntry.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-            animOptions = new OptionsAnimator(this, fabOptionAddEntry.getY());
-        });
+        View animSetup = findViewById(R.id.fab_optionAddTuple);
+        animSetup.getViewTreeObserver().addOnGlobalLayoutListener(() ->
+                animOptions = new OptionsAnimator(this, animSetup.getY()));
     }
 
     public void options(View v) {
-        animOptions.options();
+        animOptions.switchState();
+    }
+
+    public void addTuple(View v) {
+        animOptions.close();
+        DgAddTuple dgAddTuple = new DgAddTuple();
+        dgAddTuple.show(getSupportFragmentManager(), "Add Tuple Dialog");
     }
 
     public void selectTuple(View v) {
+        animOptions.close();
         DgSelectTuple dgSelectTuple = new DgSelectTuple(this);
         dgSelectTuple.show(getSupportFragmentManager(), "Select Tuple Dialog");
     }
@@ -80,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = getPassword(id);
         cursor.moveToFirst();
 
-        String[] tuple = new String[AMOUNT_OF_MAIN_COLUMNS];
-        for (int i = 0; i < AMOUNT_OF_MAIN_COLUMNS; ++i) {
-            tuple[i] = getAttribute(cursor, mainColumns[i]);
-            setTextViewCheckNull(mainColumns[i], tuple[i]);
+        String[] tuple = new String[AMOUNT_OF_MAIN_ATTRIBUTES];
+        for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i) {
+            tuple[i] = getAttribute(cursor, MAIN_ATTRIBUTES[i]);
+            setTextViewCheckNull(MAIN_ATTRIBUTES[i], tuple[i]);
         }
         setCopyButtonVisibility();
     }
@@ -152,11 +149,11 @@ public class MainActivity extends AppCompatActivity {
     private void setCopyButtonVisibility() {
         //Index 1 to 3 meaning only Password, Email and Username are being checked
         //as these are the only ones with copy buttons
-        for (int i = 1; i < AMOUNT_OF_MAIN_COLUMNS - 1; ++i) {
-            if (getTextViewByColumn(mainColumns[i]).getText().equals(getString(R.string.unavailable_info)))
-                getImageButtonByColumn(mainColumns[i]).setVisibility(View.INVISIBLE);
+        for (int i = 1; i < AMOUNT_OF_MAIN_ATTRIBUTES - 1; ++i) {
+            if (getTextViewByColumn(MAIN_ATTRIBUTES[i]).getText().equals(getString(R.string.unavailable_info)))
+                getImageButtonByColumn(MAIN_ATTRIBUTES[i]).setVisibility(View.INVISIBLE);
             else
-                getImageButtonByColumn(mainColumns[i]).setVisibility(View.VISIBLE);
+                getImageButtonByColumn(MAIN_ATTRIBUTES[i]).setVisibility(View.VISIBLE);
         }
     }
 }

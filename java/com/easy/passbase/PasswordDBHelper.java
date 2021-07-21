@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class PasswordDBHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
-    public static final int AMOUNT_OF_MAIN_COLUMNS = 5;
+    public static final int AMOUNT_OF_MAIN_ATTRIBUTES = 5;
     public static final String DATABASE_NAME = "pw.db";
 
     public static final String TABLE_NAME       = "PASSBASE";
@@ -19,18 +19,18 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_USERNAME  = "Username";
     public static final String COLUMN_NOTES     = "Notes";
 
-    public static final String[] mainColumns = new String[AMOUNT_OF_MAIN_COLUMNS];
+    public static final String[] MAIN_ATTRIBUTES = new String[AMOUNT_OF_MAIN_ATTRIBUTES];
 
     public PasswordDBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
         //Puts the most used columns in an array for making iterations and loops easier
         //The order of the columns must ALWAYS be Name, Password, Email, Username, Notes
-        mainColumns[0] = COLUMN_NAME;
-        mainColumns[1] = COLUMN_PASSWORD;
-        mainColumns[2] = COLUMN_EMAIL;
-        mainColumns[3] = COLUMN_USERNAME;
-        mainColumns[4] = COLUMN_NOTES;
+        MAIN_ATTRIBUTES[0] = COLUMN_NAME;
+        MAIN_ATTRIBUTES[1] = COLUMN_PASSWORD;
+        MAIN_ATTRIBUTES[2] = COLUMN_EMAIL;
+        MAIN_ATTRIBUTES[3] = COLUMN_USERNAME;
+        MAIN_ATTRIBUTES[4] = COLUMN_NOTES;
     }
 
     @Override

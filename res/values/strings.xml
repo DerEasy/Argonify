@@ -13,8 +13,11 @@
     <string name="email">Email</string>
     <string name="username">Username</string>
     <string name="notes">Notes</string>
-    <string name="options">Options</string>
     <!--Comment end-->
 
-
+    <string name="options">Options</string>
+    <string name="add_entry">Add a new entry</string>
+    <string name="remove_entry">Remove an entry</string>
+    <string name="edit_entry">Edit an entry</string>
+    <string name="password_generator">Password Generator</string>
 </resources>

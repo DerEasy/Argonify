@@ -16,20 +16,65 @@
         android:onClick="options"
         android:src="@drawable/ic_round_expand_more_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/options" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_optionAddEntry"
+        android:id="@+id/fab_optionAddTuple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/add_entry"
         android:gravity="end|bottom"
+        android:src="@drawable/ic_round_add_24"
         android:visibility="invisible"
         app:fabSize="mini"
-        android:alpha="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:onClick="addTuple"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_options"
+        app:layout_constraintEnd_toEndOf="@+id/fab_options"
+        app:layout_constraintStart_toStartOf="@+id/fab_options"
+        app:layout_constraintTop_toTopOf="@+id/fab_options" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_optionRemoveTuple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/remove_entry"
+        android:gravity="end|bottom"
+        android:src="@drawable/ic_round_remove_24"
+        android:visibility="invisible"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_options"
+        app:layout_constraintEnd_toEndOf="@+id/fab_options"
+        app:layout_constraintStart_toStartOf="@+id/fab_options"
+        app:layout_constraintTop_toTopOf="@+id/fab_options" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_optionEditTuple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/edit_entry"
+        android:gravity="end|bottom"
+        android:src="@drawable/ic_round_edit_24"
+        android:visibility="invisible"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_options"
+        app:layout_constraintEnd_toEndOf="@+id/fab_options"
+        app:layout_constraintStart_toStartOf="@+id/fab_options"
+        app:layout_constraintTop_toTopOf="@+id/fab_options" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_optionPasswordGenerator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/password_generator"
+        android:gravity="end|bottom"
+        android:src="@drawable/ic_round_password_24"
+        android:visibility="invisible"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_options"
+        app:layout_constraintEnd_toEndOf="@+id/fab_options"
+        app:layout_constraintStart_toStartOf="@+id/fab_options"
+        app:layout_constraintTop_toTopOf="@+id/fab_options" />
 
     <Button
         android:id="@+id/bt_selectTuple"
@@ -39,59 +84,74 @@
         android:text="@string/select_tuple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="0.85" />
 
     <TextView
         android:id="@+id/txt_selectedName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/unavailable_info"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/txt_titlePassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txt_titlePassword" />
 
     <TextView
         android:id="@+id/txt_selectedPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/unavailable_info"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/txt_titleEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txt_titlePassword" />
 
     <TextView
         android:id="@+id/txt_selectedEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/unavailable_info"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/txt_titleUsername"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txt_titleEmail" />
 
     <TextView
         android:id="@+id/txt_selectedUsername"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/unavailable_info"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/txt_titleNotes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txt_titleUsername" />
 
     <TextView
         android:id="@+id/txt_selectedNotes"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/unavailable_info"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/bt_selectTuple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txt_titleNotes" />
 
     <TextView
