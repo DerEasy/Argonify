@@ -6,7 +6,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,27 +32,14 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton ibtCopyEmail;
     private ImageButton ibtCopyUsername;
 
-    private OptionsAnimator animOptions;
+    private OptionsAnimator optionsAnimator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        {
-            //This listener is a piece of shit, don't touch it
-            View animSetup = findViewById(R.id.fab_optionAddTuple);
-            animSetup.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                boolean done = false;
-                @Override
-                public void onGlobalLayout() {
-                    if (!done) {
-                        animOptions = new OptionsAnimator(MainActivity.this, animSetup.getY());
-                        done = true;
-                    }
-                }
-            });
-        }
+        new GlobalLayoutListenerAdapter(this);
 
         PasswordDBHelper dbHelper = new PasswordDBHelper(this);
         passwordDB = dbHelper.getWritableDatabase();
@@ -69,20 +55,26 @@ public class MainActivity extends AppCompatActivity {
         ibtCopyUsername = findViewById(R.id.ibt_copyUsername);
     }
 
+    public void setOptionsAnimator(OptionsAnimator anim) {
+        optionsAnimator = anim;
+    }
+
     public void options(View v) {
-        animOptions.switchState();
+        optionsAnimator.switchState();
     }
 
     public void addTuple(View v) {
-        animOptions.close();
+        optionsAnimator.close();
         DgAddTuple dgAddTuple = new DgAddTuple();
         dgAddTuple.show(getSupportFragmentManager(), "Add Tuple Dialog");
     }
 
     public void selectTuple(View v) {
-        animOptions.close();
-        DgSelectTuple dgSelectTuple = new DgSelectTuple(this);
-        dgSelectTuple.show(getSupportFragmentManager(), "Select Tuple Dialog");
+        //Prevents opening multiple windows
+        if (!DgSelectTuple.isOpen) {
+            DgSelectTuple dgSelectTuple = new DgSelectTuple(this);
+            dgSelectTuple.show(getSupportFragmentManager(), "Select Tuple Dialog");
+        }
     }
 
     public void updateDisplayedTuple(int id) {

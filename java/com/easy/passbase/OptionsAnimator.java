@@ -15,10 +15,11 @@ public class OptionsAnimator {
     private final Animation ANIM_ROTATE_REVERSE;
     private final FloatingActionButton FAB_OPTIONS;
     private final FloatingActionButton[] OPTION = new FloatingActionButton[AMOUNT_OF_OPTIONS];
-    private boolean optionsOpen = false;
+    private boolean optionsOpen;
 
     public OptionsAnimator(MainActivity mainActivity, float posY) {
         FAB_OPTIONS = mainActivity.findViewById(R.id.fab_options);
+        FAB_OPTIONS.bringToFront();
         POS_Y = posY;
 
         ANIM_ROTATE = AnimationUtils.loadAnimation(FAB_OPTIONS.getContext(), R.anim.fab_rotate_icon);
@@ -77,7 +78,6 @@ public class OptionsAnimator {
     }
 
     private void closeOptionsPanel() {
-        FAB_OPTIONS.bringToFront();
         for (int i = 0; i < AMOUNT_OF_OPTIONS; ++i)
             animateOptionFABClose(OPTION[i]);
     }
