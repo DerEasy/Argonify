@@ -16,9 +16,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import static com.easy.passbase.PasswordDB.getAllPasswordEntries;
+import static com.easy.passbase.PasswordDB.getPassword;
+import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
+import static com.easy.passbase.PasswordDBHelper.MAIN_ATTRIBUTES;
+import static com.easy.passbase.PasswordDBHelper._ID;
 
 public class TupleSelection extends AppCompatDialogFragment {
     public static boolean isOpen = false;
+    public String[] attributes = new String[AMOUNT_OF_MAIN_ATTRIBUTES];
 
     @SuppressWarnings("ConstantConditions")
     @NonNull
@@ -49,5 +54,31 @@ public class TupleSelection extends AppCompatDialogFragment {
         isOpen = false;
     }
 
-    public void setSelectedTuple(int adapterPosition, Cursor cursor) {}
+    private String getAttribute(Cursor cursor, String column) {
+        return cursor.getString(cursor.getColumnIndex(column));
+    }
+
+    private void setAttributes(int adapterPosition, Cursor idCursor) {
+        int[] idTuples = new int[idCursor.getCount()];
+        for (int i = 0; i < idCursor.getCount(); ++i) {
+            idTuples[i] = idCursor.getInt(idCursor.getColumnIndex(_ID));
+            idCursor.moveToNext();
+        }
+
+        Cursor tuple = getPassword(idTuples[adapterPosition]);
+        tuple.moveToFirst();
+
+        for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i)
+            attributes[i] = getAttribute(tuple, MAIN_ATTRIBUTES[i]);
+    }
+
+    /**
+     * Virtual method; does nothing, must be overwritten with custom behaviour.
+     * @param adapterPosition The position of the selected tuple in the PasswordAdapter
+     * @param idCursor The idCursor with the selected tuple
+     */
+    public void onTupleSelection(int adapterPosition, Cursor idCursor) {
+        setAttributes(adapterPosition, idCursor);
+
+    }
 }

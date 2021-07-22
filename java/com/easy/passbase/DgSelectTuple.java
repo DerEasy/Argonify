@@ -11,13 +11,14 @@ public class DgSelectTuple extends TupleSelection {
         mainActivity = parentActivity;
     }
 
-    public void setSelectedTuple(int adapterPosition, Cursor cursor) {
-        cursor.moveToFirst();
+    @Override
+    public void onTupleSelection(int adapterPosition, Cursor idCursor) {
+        idCursor.moveToFirst();
 
-        int[] idTuples = new int[cursor.getCount()];
-        for (int i = 0; i < cursor.getCount(); ++i) {
-            idTuples[i] = cursor.getInt(cursor.getColumnIndex(_ID));
-            cursor.moveToNext();
+        int[] idTuples = new int[idCursor.getCount()];
+        for (int i = 0; i < idCursor.getCount(); ++i) {
+            idTuples[i] = idCursor.getInt(idCursor.getColumnIndex(_ID));
+            idCursor.moveToNext();
         }
 
         mainActivity.updateDisplayedTuple(idTuples[adapterPosition]);

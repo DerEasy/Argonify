@@ -34,7 +34,7 @@ public class PasswordDB {
     }
 
     public static Cursor getPassword(int id) {
-        return passwordDB.query(
+        Cursor cursor = passwordDB.query(
                 TABLE_NAME,
                 null,
                 String.format("%s = %s", _ID, id),
@@ -43,5 +43,7 @@ public class PasswordDB {
                 null,
                 null
         );
+        cursor.moveToFirst();
+        return cursor;
     }
 }

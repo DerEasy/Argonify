@@ -51,8 +51,11 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
 
         String passwordName = cursor.getString(cursor.getColumnIndex(PasswordDBHelper.COLUMN_NAME));
         holder.passName.setText(passwordName);
-        holder.selector.setOnClickListener((isChecked) ->
-                dgSelection.setSelectedTuple(holder.getAdapterPosition(), cursor));
+        holder.selector.setOnClickListener((isChecked) -> {
+            cursor.moveToFirst();
+            dgSelection.onTupleSelection(holder.getAdapterPosition(), cursor);
+        });
+
     }
 
     @Override

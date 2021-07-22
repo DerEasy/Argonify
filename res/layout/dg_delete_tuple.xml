@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/txt_deleteName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/unavailable_info"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_deleteTitleName"
+        app:layout_constraintTop_toBottomOf="@+id/txt_deleteTitleName" />
+
+    <TextView
+        android:id="@+id/txt_deletePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/unavailable_info"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_deleteTitlePassword"
+        app:layout_constraintTop_toBottomOf="@+id/txt_deleteTitlePassword" />
+
+    <TextView
+        android:id="@+id/txt_deleteEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/unavailable_info"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_deleteTitleEmail"
+        app:layout_constraintTop_toBottomOf="@+id/txt_deleteTitleEmail" />
+
+    <TextView
+        android:id="@+id/txt_deleteUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/unavailable_info"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_deleteTitleUsername"
+        app:layout_constraintTop_toBottomOf="@+id/txt_deleteTitleUsername" />
+
+    <TextView
+        android:id="@+id/txt_deleteNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/unavailable_info"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_deleteTitleNotes"
+        app:layout_constraintTop_toBottomOf="@+id/txt_deleteTitleNotes" />
+
+    <TextView
+        android:id="@+id/txt_deleteTitleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/name"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_deleteTitlePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/password"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_deleteName"
+        app:layout_constraintTop_toBottomOf="@+id/txt_deleteName" />
+
+    <TextView
+        android:id="@+id/txt_deleteTitleEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/email"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_deletePassword"
+        app:layout_constraintTop_toBottomOf="@+id/txt_deletePassword" />
+
+    <TextView
+        android:id="@+id/txt_deleteTitleUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/username"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_deleteEmail"
+        app:layout_constraintTop_toBottomOf="@+id/txt_deleteEmail" />
+
+    <TextView
+        android:id="@+id/txt_deleteTitleNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/notes"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_deleteUsername"
+        app:layout_constraintTop_toBottomOf="@+id/txt_deleteUsername" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
