@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        {
+            //This listener is a piece of shit, don't touch it
+            View animSetup = findViewById(R.id.fab_optionAddTuple);
+            animSetup.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                boolean done = false;
+                @Override
+                public void onGlobalLayout() {
+                    if (!done) {
+                        animOptions = new OptionsAnimator(MainActivity.this, animSetup.getY());
+                        done = true;
+                    }
+                }
+            });
+        }
+
         PasswordDBHelper dbHelper = new PasswordDBHelper(this);
         passwordDB = dbHelper.getWritableDatabase();
 
@@ -51,10 +67,6 @@ public class MainActivity extends AppCompatActivity {
         ibtCopyPassword = findViewById(R.id.ibt_copyPassword);
         ibtCopyEmail = findViewById(R.id.ibt_copyEmail);
         ibtCopyUsername = findViewById(R.id.ibt_copyUsername);
-
-        View animSetup = findViewById(R.id.fab_optionAddTuple);
-        animSetup.getViewTreeObserver().addOnGlobalLayoutListener(() ->
-                animOptions = new OptionsAnimator(this, animSetup.getY()));
     }
 
     public void options(View v) {
@@ -90,12 +102,12 @@ public class MainActivity extends AppCompatActivity {
         String attribute = (String) getTextViewByColumn((String) v.getTag()).getText();
 
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("Clipped " + (String) v.getTag(), attribute);
+        ClipData clip = ClipData.newPlainText("Clipped " + v.getTag(), attribute);
         clipboard.setPrimaryClip(clip);
 
         Toast.makeText(
                 this,
-                String.format("Copied %s to clipboard", (String) v.getTag()),
+                String.format("Copied %s to clipboard", v.getTag()),
                 Toast.LENGTH_SHORT
         ).show();
     }

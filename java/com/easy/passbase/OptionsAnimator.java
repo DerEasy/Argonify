@@ -3,14 +3,16 @@ package com.easy.passbase;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-
-import androidx.appcompat.content.res.AppCompatResources;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class OptionsAnimator {
     private final int AMOUNT_OF_OPTIONS = 4;
     private final float POS_Y;
+    private final Animation ANIM_ROTATE;
+    private final Animation ANIM_ROTATE_REVERSE;
     private final FloatingActionButton FAB_OPTIONS;
     private final FloatingActionButton[] OPTION = new FloatingActionButton[AMOUNT_OF_OPTIONS];
     private boolean optionsOpen = false;
@@ -18,6 +20,11 @@ public class OptionsAnimator {
     public OptionsAnimator(MainActivity mainActivity, float posY) {
         FAB_OPTIONS = mainActivity.findViewById(R.id.fab_options);
         POS_Y = posY;
+
+        ANIM_ROTATE = AnimationUtils.loadAnimation(FAB_OPTIONS.getContext(), R.anim.fab_rotate_icon);
+        ANIM_ROTATE_REVERSE = AnimationUtils.loadAnimation(FAB_OPTIONS.getContext(), R.anim.fab_rotate_icon_reverse);
+        ANIM_ROTATE.setFillAfter(true);
+        ANIM_ROTATE_REVERSE.setFillAfter(true);
 
         OPTION[0] = mainActivity.findViewById(R.id.fab_optionAddTuple);
         OPTION[1] = mainActivity.findViewById(R.id.fab_optionRemoveTuple);
@@ -57,19 +64,20 @@ public class OptionsAnimator {
     }
 
     private void animateOptionFABOpen(FloatingActionButton fab, int optionIndex) {
-        final float ANIM_OFFSET = 140;
+        float ANIM_OFFSET = 140;
 
         fab.animate().y(POS_Y - ANIM_OFFSET * ++optionIndex).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationStart(Animator animation) {
                 optionsOpen = true;
                 fab.setVisibility(View.VISIBLE);
-                FAB_OPTIONS.setImageDrawable(AppCompatResources.getDrawable(FAB_OPTIONS.getContext(), R.drawable.ic_round_expand_less_24));
+                FAB_OPTIONS.startAnimation(ANIM_ROTATE);
             }
         }).start();
     }
 
     private void closeOptionsPanel() {
+        FAB_OPTIONS.bringToFront();
         for (int i = 0; i < AMOUNT_OF_OPTIONS; ++i)
             animateOptionFABClose(OPTION[i]);
     }
@@ -80,7 +88,7 @@ public class OptionsAnimator {
             public void onAnimationStart(Animator animation) {
                 optionsOpen = false;
                 fab.setVisibility(View.VISIBLE);
-                FAB_OPTIONS.setImageDrawable(AppCompatResources.getDrawable(FAB_OPTIONS.getContext(), R.drawable.ic_round_expand_more_24));
+                FAB_OPTIONS.startAnimation(ANIM_ROTATE_REVERSE);
             }
 
             @Override

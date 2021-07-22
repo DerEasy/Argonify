@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_options"
         android:layout_width="wrap_content"
@@ -25,10 +26,10 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/add_entry"
         android:gravity="end|bottom"
+        android:onClick="addTuple"
         android:src="@drawable/ic_round_add_24"
         android:visibility="invisible"
         app:fabSize="mini"
-        android:onClick="addTuple"
         app:layout_constraintBottom_toBottomOf="@+id/fab_options"
         app:layout_constraintEnd_toEndOf="@+id/fab_options"
         app:layout_constraintStart_toStartOf="@+id/fab_options"
@@ -215,7 +216,8 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/txt_selectedPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txt_titlePassword" />
+        app:layout_constraintTop_toTopOf="@+id/txt_titlePassword"
+        tools:visibility="visible" />
 
     <ImageButton
         android:id="@+id/ibt_copyEmail"
@@ -229,7 +231,8 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/txt_selectedEmail"
         app:layout_constraintStart_toStartOf="@+id/ibt_copyPassword"
-        app:layout_constraintTop_toTopOf="@+id/txt_titleEmail" />
+        app:layout_constraintTop_toTopOf="@+id/txt_titleEmail"
+        tools:visibility="visible" />
 
     <ImageButton
         android:id="@+id/ibt_copyUsername"
@@ -243,6 +246,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/txt_selectedUsername"
         app:layout_constraintStart_toStartOf="@+id/ibt_copyEmail"
-        app:layout_constraintTop_toTopOf="@+id/txt_titleUsername" />
+        app:layout_constraintTop_toTopOf="@+id/txt_titleUsername"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
