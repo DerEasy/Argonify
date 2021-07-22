@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.easy.passbase.PasswordDB.getPassword;
 import static com.easy.passbase.PasswordDB.passwordDB;
 import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_EMAIL;
@@ -64,28 +63,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addTuple(View v) {
-        optionsAnimator.close();
-        DgAddTuple dgAddTuple = new DgAddTuple();
-        dgAddTuple.show(getSupportFragmentManager(), "Add Tuple Dialog");
+        if (!DgAddTuple.isOpen) {
+            optionsAnimator.close();
+            DgAddTuple dgAddTuple = new DgAddTuple();
+            dgAddTuple.show(getSupportFragmentManager(), "Add Tuple Dialog");
+        }
+    }
+
+    public void deleteTuple(View v) {
+        if (!DgDeleteTuple.isOpen) {
+            optionsAnimator.close();
+            DgDeleteTuple dgDeleteTuple = new DgDeleteTuple();
+            dgDeleteTuple.show(getSupportFragmentManager(), "Delete Tuple Dialog");
+        }
     }
 
     public void selectTuple(View v) {
-        //Prevents opening multiple windows
         if (!DgSelectTuple.isOpen) {
             DgSelectTuple dgSelectTuple = new DgSelectTuple(this);
             dgSelectTuple.show(getSupportFragmentManager(), "Select Tuple Dialog");
         }
     }
 
-    public void updateDisplayedTuple(int id) {
-        Cursor cursor = getPassword(id);
-        cursor.moveToFirst();
-
-        String[] tuple = new String[AMOUNT_OF_MAIN_ATTRIBUTES];
-        for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i) {
-            tuple[i] = getAttribute(cursor, MAIN_ATTRIBUTES[i]);
-            setTextViewCheckNull(MAIN_ATTRIBUTES[i], tuple[i]);
-        }
+    public void updateDisplayedTuple(String[] attributes) {
+        for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i)
+            setTextView(MAIN_ATTRIBUTES[i], attributes[i]);
         setCopyButtonVisibility();
     }
 
@@ -102,10 +104,6 @@ public class MainActivity extends AppCompatActivity {
                 String.format("Copied %s to clipboard", v.getTag()),
                 Toast.LENGTH_SHORT
         ).show();
-    }
-
-    private String getAttribute(Cursor cursor, String column) {
-        return cursor.getString(cursor.getColumnIndex(column));
     }
 
     private TextView getTextViewByColumn(String column) {
@@ -138,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setTextViewCheckNull(String column, String text) {
+    private void setTextView(String column, String text) {
         TextView textView = getTextViewByColumn(column);
         if (textView == null)
             return;

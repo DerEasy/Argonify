@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.easy.passbase.PasswordDB.getAllPasswordEntries;
-import static com.easy.passbase.PasswordDB.getPassword;
+import static com.easy.passbase.PasswordDB.getIDsAndNames;
+import static com.easy.passbase.PasswordDB.getTupleByID;
 import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
 import static com.easy.passbase.PasswordDBHelper.MAIN_ATTRIBUTES;
 import static com.easy.passbase.PasswordDBHelper._ID;
@@ -24,11 +24,13 @@ import static com.easy.passbase.PasswordDBHelper._ID;
 public class TupleSelection extends AppCompatDialogFragment {
     public static boolean isOpen = false;
     public String[] attributes = new String[AMOUNT_OF_MAIN_ATTRIBUTES];
+    public Cursor tuple;
 
     @SuppressWarnings("ConstantConditions")
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        isOpen = true;
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View relationView = inflater.inflate(R.layout.dg_select_tuple, null);
@@ -37,13 +39,12 @@ public class TupleSelection extends AppCompatDialogFragment {
         relationRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         relationRecycler.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
 
-        PasswordAdapter passwordAdapter = new PasswordAdapter(this, getActivity(), getAllPasswordEntries());
+        PasswordAdapter passwordAdapter = new PasswordAdapter(this, getActivity(), getIDsAndNames());
         relationRecycler.setAdapter(passwordAdapter);
 
         builder.setView(relationView)
                 .setTitle("Pick desired entry")
-                .setNegativeButton("Cancel", ((dialog, which) -> {})
-                );
+                .setNegativeButton("Cancel", ((dialog, which) -> {}));
 
         return builder.create();
     }
@@ -65,7 +66,7 @@ public class TupleSelection extends AppCompatDialogFragment {
             idCursor.moveToNext();
         }
 
-        Cursor tuple = getPassword(idTuples[adapterPosition]);
+        tuple = getTupleByID(idTuples[adapterPosition]);
         tuple.moveToFirst();
 
         for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i)
@@ -73,12 +74,11 @@ public class TupleSelection extends AppCompatDialogFragment {
     }
 
     /**
-     * Virtual method; does nothing, must be overwritten with custom behaviour.
+     * This method will be invoked when the user has selected a tuple.
      * @param adapterPosition The position of the selected tuple in the PasswordAdapter
-     * @param idCursor The idCursor with the selected tuple
+     * @param idCursor The cursor that contains the IDs of every password in the database
      */
     public void onTupleSelection(int adapterPosition, Cursor idCursor) {
         setAttributes(adapterPosition, idCursor);
-
     }
 }

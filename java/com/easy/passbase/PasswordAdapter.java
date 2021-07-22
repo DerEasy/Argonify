@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static com.easy.passbase.PasswordDBHelper.COLUMN_NAME;
+
 public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.PasswordViewHolder> {
     private final TupleSelection dgSelection;
     private final Context context;
@@ -49,13 +51,12 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
         if (!cursor.moveToPosition(position))
             return;
 
-        String passwordName = cursor.getString(cursor.getColumnIndex(PasswordDBHelper.COLUMN_NAME));
+        String passwordName = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
         holder.passName.setText(passwordName);
         holder.selector.setOnClickListener((isChecked) -> {
             cursor.moveToFirst();
             dgSelection.onTupleSelection(holder.getAdapterPosition(), cursor);
         });
-
     }
 
     @Override

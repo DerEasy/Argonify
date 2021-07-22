@@ -3,6 +3,7 @@ package com.easy.passbase;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.core.content.ContextCompat;
 
+import static com.easy.passbase.PasswordDB.insertTuple;
 import static com.easy.passbase.PasswordDB.passwordDB;
 import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_NAME;
@@ -26,11 +28,13 @@ import static com.easy.passbase.PasswordDBHelper.TABLE_NAME;
 public class DgAddTuple extends AppCompatDialogFragment {
     private final EditText[] attributes = new EditText[AMOUNT_OF_MAIN_ATTRIBUTES];
     private boolean isPasswordRevealed = false;
+    public static boolean isOpen = false;
 
     @SuppressWarnings("ConstantConditions")
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        isOpen = true;
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View addTupleView = inflater.inflate(R.layout.dg_add_tuple, null);
@@ -52,6 +56,12 @@ public class DgAddTuple extends AppCompatDialogFragment {
                 });
 
         return builder.create();
+    }
+
+    @Override
+    public void onDismiss(@NonNull DialogInterface dialog) {
+        super.onDismiss(dialog);
+        isOpen = false;
     }
 
     @SuppressWarnings("ConstantConditions")
@@ -96,11 +106,7 @@ public class DgAddTuple extends AppCompatDialogFragment {
         if (!successful)
             return false;
 
-        passwordDB.insert(
-                TABLE_NAME,
-                null,
-                cv
-        );
+        insertTuple(cv);
         return true;
     }
 }
