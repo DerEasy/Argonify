@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Passbase</string>
+
+    <!--These are mostly used for the SelectionDisplay-->
     <string name="select_tuple">Select Entry</string>
     <string name="unavailable_info">-</string>
     <string name="copy_password">Copy password to clipboard</string>
     <string name="copy_email">Copy email to clipboard</string>
     <string name="copy_username">Copy username to clipboard</string>
+    <!--Comment end-->
 
     <!--These are partially also used as tags for their corresponding ImageButtons etc.
     They MUST have the exact same names as the attributes of the Passbase table-->
@@ -15,10 +18,13 @@
     <string name="notes">Notes</string>
     <!--Comment end-->
 
+    <!--These are for the options menu-->
     <string name="options">Options</string>
     <string name="add_entry">Add a new entry</string>
-    <string name="remove_entry">Remove an entry</string>
+    <string name="delete_entry">Delete an entry</string>
     <string name="edit_entry">Edit an entry</string>
     <string name="password_generator">Password Generator</string>
+    <!--And this one is specifically for toggling password revelation whilst adding an entry-->
     <string name="toggle_password_revelation">Toggle password revelation</string>
+    <!--Comment end-->
 </resources>

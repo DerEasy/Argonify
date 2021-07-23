@@ -4,9 +4,9 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 
 public class GlobalLayoutListenerAdapter {
-    MainActivity mainActivity;
-    ViewTreeObserver.OnGlobalLayoutListener listener;
-    View animSetup;
+    private final MainActivity mainActivity;
+    private final View animSetup;
+    private ViewTreeObserver.OnGlobalLayoutListener listener;
 
     /**
      * Attaches a GlobalLayoutListener to receive the y-position of the closed-state
@@ -16,11 +16,12 @@ public class GlobalLayoutListenerAdapter {
      */
     public GlobalLayoutListenerAdapter(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
+        animSetup = mainActivity.findViewById(R.id.fab_optionAddTuple);
         attach();
     }
 
     private void attach() {
-        animSetup = mainActivity.findViewById(R.id.fab_optionAddTuple);
+
         animSetup.getViewTreeObserver().addOnGlobalLayoutListener(listener = () -> {
             mainActivity.setOptionsAnimator(new OptionsAnimator(mainActivity, animSetup.getY()));
             detach();

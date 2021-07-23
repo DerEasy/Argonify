@@ -28,7 +28,7 @@ public class OptionsAnimator {
         ANIM_ROTATE_REVERSE.setFillAfter(true);
 
         OPTION[0] = mainActivity.findViewById(R.id.fab_optionAddTuple);
-        OPTION[1] = mainActivity.findViewById(R.id.fab_optionRemoveTuple);
+        OPTION[1] = mainActivity.findViewById(R.id.fab_optionDeleteTuple);
         OPTION[2] = mainActivity.findViewById(R.id.fab_optionEditTuple);
         OPTION[3] = mainActivity.findViewById(R.id.fab_optionPasswordGenerator);
     }

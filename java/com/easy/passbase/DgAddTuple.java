@@ -18,12 +18,15 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.core.content.ContextCompat;
 
 import static com.easy.passbase.PasswordDB.insertTuple;
-import static com.easy.passbase.PasswordDB.passwordDB;
 import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_NAME;
 import static com.easy.passbase.PasswordDBHelper.COLUMN_PASSWORD;
+import static com.easy.passbase.PasswordDBHelper.INDEX_EMAIL;
+import static com.easy.passbase.PasswordDBHelper.INDEX_NAME;
+import static com.easy.passbase.PasswordDBHelper.INDEX_NOTES;
+import static com.easy.passbase.PasswordDBHelper.INDEX_PASSWORD;
+import static com.easy.passbase.PasswordDBHelper.INDEX_USERNAME;
 import static com.easy.passbase.PasswordDBHelper.MAIN_ATTRIBUTES;
-import static com.easy.passbase.PasswordDBHelper.TABLE_NAME;
 
 public class DgAddTuple extends AppCompatDialogFragment {
     private final EditText[] attributes = new EditText[AMOUNT_OF_MAIN_ATTRIBUTES];
@@ -39,13 +42,13 @@ public class DgAddTuple extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View addTupleView = inflater.inflate(R.layout.dg_add_tuple, null);
 
-        attributes[0] = addTupleView.findViewById(R.id.etxt_addName);
-        attributes[1] = addTupleView.findViewById(R.id.etxt_addPassword);
-        attributes[2] = addTupleView.findViewById(R.id.etxt_addEmail);
-        attributes[3] = addTupleView.findViewById(R.id.etxt_addUsername);
-        attributes[4] = addTupleView.findViewById(R.id.etxt_addNotes);
+        attributes[INDEX_NAME] = addTupleView.findViewById(R.id.etxt_addName);
+        attributes[INDEX_PASSWORD] = addTupleView.findViewById(R.id.etxt_addPassword);
+        attributes[INDEX_EMAIL] = addTupleView.findViewById(R.id.etxt_addEmail);
+        attributes[INDEX_USERNAME] = addTupleView.findViewById(R.id.etxt_addUsername);
+        attributes[INDEX_NOTES] = addTupleView.findViewById(R.id.etxt_addNotes);
 
-        passwordReveal(addTupleView.findViewById(R.id.ibt_addPasswordReveal));
+        attachPasswordRevealListener(addTupleView.findViewById(R.id.ibt_addPasswordReveal));
 
         builder.setView(addTupleView)
                 .setTitle("Add a new entry")
@@ -65,15 +68,15 @@ public class DgAddTuple extends AppCompatDialogFragment {
     }
 
     @SuppressWarnings("ConstantConditions")
-    public void passwordReveal(ImageButton passwordReveal) {
+    public void attachPasswordRevealListener(ImageButton passwordReveal) {
         passwordReveal.setOnClickListener(v -> {
             isPasswordRevealed = !isPasswordRevealed;
             if (isPasswordRevealed) {
                 passwordReveal.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_round_visibility_off_24));
-                attributes[1].setTransformationMethod(null);
+                attributes[INDEX_PASSWORD].setTransformationMethod(null);
             } else {
                 passwordReveal.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_round_visibility_24));
-                attributes[1].setTransformationMethod(new PasswordTransformationMethod());
+                attributes[INDEX_PASSWORD].setTransformationMethod(new PasswordTransformationMethod());
             }
         });
     }

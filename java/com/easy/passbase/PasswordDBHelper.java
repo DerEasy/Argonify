@@ -19,6 +19,12 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_USERNAME  = "Username";
     public static final String COLUMN_NOTES     = "Notes";
 
+    public static final int INDEX_NAME      = 0;
+    public static final int INDEX_PASSWORD  = 1;
+    public static final int INDEX_EMAIL     = 2;
+    public static final int INDEX_USERNAME  = 3;
+    public static final int INDEX_NOTES     = 4;
+
     public static final String[] MAIN_ATTRIBUTES = new String[AMOUNT_OF_MAIN_ATTRIBUTES];
 
     public PasswordDBHelper(@Nullable Context context) {
@@ -26,24 +32,25 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
 
         //Puts the most used columns in an array for making iterations and loops easier
         //The order of the columns must ALWAYS be Name, Password, Email, Username, Notes
-        MAIN_ATTRIBUTES[0] = COLUMN_NAME;
-        MAIN_ATTRIBUTES[1] = COLUMN_PASSWORD;
-        MAIN_ATTRIBUTES[2] = COLUMN_EMAIL;
-        MAIN_ATTRIBUTES[3] = COLUMN_USERNAME;
-        MAIN_ATTRIBUTES[4] = COLUMN_NOTES;
+        MAIN_ATTRIBUTES[INDEX_NAME]     = COLUMN_NAME;
+        MAIN_ATTRIBUTES[INDEX_PASSWORD] = COLUMN_PASSWORD;
+        MAIN_ATTRIBUTES[INDEX_EMAIL]    = COLUMN_EMAIL;
+        MAIN_ATTRIBUTES[INDEX_USERNAME] = COLUMN_USERNAME;
+        MAIN_ATTRIBUTES[INDEX_NOTES]    = COLUMN_NOTES;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        final String SQL_CREATE_PASSWORD_TABLE = "CREATE TABLE " +
-                TABLE_NAME +        " (" +
-                _ID +               " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_NAME +       " TEXT, " +
-                COLUMN_PASSWORD +   " TEXT, " +
-                COLUMN_EMAIL +      " TEXT, " +
-                COLUMN_USERNAME +   " TEXT, " +
-                COLUMN_NOTES +      " TEXT  " +
-                                    ");";
+        final String SQL_CREATE_PASSWORD_TABLE =
+                                "CREATE TABLE " +
+                TABLE_NAME      + " (" +
+                _ID             + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_NAME     + " TEXT, " +
+                COLUMN_PASSWORD + " TEXT, " +
+                COLUMN_EMAIL    + " TEXT, " +
+                COLUMN_USERNAME + " TEXT, " +
+                COLUMN_NOTES    + " TEXT  " +
+                                  " );";
         db.execSQL(SQL_CREATE_PASSWORD_TABLE);
     }
 
