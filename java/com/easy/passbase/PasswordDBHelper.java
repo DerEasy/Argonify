@@ -42,7 +42,7 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         final String SQL_CREATE_PASSWORD_TABLE =
-                                "CREATE TABLE " +
+                                  "CREATE TABLE " +
                 TABLE_NAME      + " (" +
                 _ID             + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME     + " TEXT, " +

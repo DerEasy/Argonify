@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void updateDisplayedTuple(String[] attributes) {
-        selectionDisplay.updateDisplayedTuple(attributes);
+    public void onDisplayUpdate(String[] attributes) {
+        selectionDisplay.onDisplayUpdate(attributes);
     }
 
     public void copyAttributeToClipboard(View v) {
@@ -57,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
             optionsAnimator.close();
             DgDeleteTuple dgDeleteTuple = new DgDeleteTuple();
             dgDeleteTuple.show(getSupportFragmentManager(), "Delete Tuple Dialog");
+        }
+    }
+
+    public void editTuple(View v) {
+        if (!DgEditTuple.isOpen) {
+            optionsAnimator.close();
+            DgEditTuple dgEditTuple = new DgEditTuple(this);
+            dgEditTuple.show(getSupportFragmentManager(), "Edit Tuple Dialog");
         }
     }
 }

@@ -16,17 +16,11 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import static com.easy.passbase.PasswordDB.deleteTuple;
 import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
-import static com.easy.passbase.PasswordDBHelper.COLUMN_EMAIL;
-import static com.easy.passbase.PasswordDBHelper.COLUMN_NAME;
-import static com.easy.passbase.PasswordDBHelper.COLUMN_NOTES;
-import static com.easy.passbase.PasswordDBHelper.COLUMN_PASSWORD;
-import static com.easy.passbase.PasswordDBHelper.COLUMN_USERNAME;
 import static com.easy.passbase.PasswordDBHelper.INDEX_EMAIL;
 import static com.easy.passbase.PasswordDBHelper.INDEX_NAME;
 import static com.easy.passbase.PasswordDBHelper.INDEX_NOTES;
 import static com.easy.passbase.PasswordDBHelper.INDEX_PASSWORD;
 import static com.easy.passbase.PasswordDBHelper.INDEX_USERNAME;
-import static com.easy.passbase.PasswordDBHelper.MAIN_ATTRIBUTES;
 import static com.easy.passbase.PasswordDBHelper._ID;
 
 public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
@@ -52,7 +46,7 @@ public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
         initialiseTextViews(confirmationView);
 
         for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i)
-            setTextView(MAIN_ATTRIBUTES[i], attributes[i]);
+            setTextView(txtAttribute[i], txtTitle[i],attributes[i]);
 
         builder.setView(confirmationView)
                 .setTitle("Are you sure to delete this entry?")
@@ -71,9 +65,7 @@ public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
         isOpen = false;
     }
 
-    private void setTextView(String column, String text) {
-        TextView title = getTitleTextViewByColumn(column);
-        TextView attribute = getTextViewByColumn(column);
+    private void setTextView(TextView attribute, TextView title, String text) {
         if (attribute == null || title == null)
             return;
 
@@ -85,57 +77,23 @@ public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
     }
 
     private void initialiseTextViews(View confirmationView) {
-        setTxtAttribute(confirmationView);
-        setTxtTitle(confirmationView);
+        initTxtAttribute(confirmationView);
+        initTxtTitle(confirmationView);
     }
 
-    private void setTxtTitle(View confirmationView) {
-        txtTitle[INDEX_NAME] = confirmationView.findViewById(R.id.txt_deleteTitleName);
+    private void initTxtTitle(View confirmationView) {
+        txtTitle[INDEX_NAME]     = confirmationView.findViewById(R.id.txt_deleteTitleName);
         txtTitle[INDEX_PASSWORD] = confirmationView.findViewById(R.id.txt_deleteTitlePassword);
-        txtTitle[INDEX_EMAIL] = confirmationView.findViewById(R.id.txt_deleteTitleEmail);
+        txtTitle[INDEX_EMAIL]    = confirmationView.findViewById(R.id.txt_deleteTitleEmail);
         txtTitle[INDEX_USERNAME] = confirmationView.findViewById(R.id.txt_deleteTitleUsername);
-        txtTitle[INDEX_NOTES] = confirmationView.findViewById(R.id.txt_deleteTitleNotes);
+        txtTitle[INDEX_NOTES]    = confirmationView.findViewById(R.id.txt_deleteTitleNotes);
     }
 
-    private void setTxtAttribute(View confirmationView) {
-        txtAttribute[INDEX_NAME] = confirmationView.findViewById(R.id.txt_deleteName);
+    private void initTxtAttribute(View confirmationView) {
+        txtAttribute[INDEX_NAME]     = confirmationView.findViewById(R.id.txt_deleteName);
         txtAttribute[INDEX_PASSWORD] = confirmationView.findViewById(R.id.txt_deletePassword);
-        txtAttribute[INDEX_EMAIL] = confirmationView.findViewById(R.id.txt_deleteEmail);
+        txtAttribute[INDEX_EMAIL]    = confirmationView.findViewById(R.id.txt_deleteEmail);
         txtAttribute[INDEX_USERNAME] = confirmationView.findViewById(R.id.txt_deleteUsername);
-        txtAttribute[INDEX_NOTES] = confirmationView.findViewById(R.id.txt_deleteNotes);
-    }
-
-    private TextView getTextViewByColumn(String column) {
-        switch (column) {
-            case COLUMN_NAME:
-                return txtAttribute[INDEX_NAME];
-            case COLUMN_PASSWORD:
-                return txtAttribute[INDEX_PASSWORD];
-            case COLUMN_EMAIL:
-                return txtAttribute[INDEX_EMAIL];
-            case COLUMN_USERNAME:
-                return txtAttribute[INDEX_USERNAME];
-            case COLUMN_NOTES:
-                return txtAttribute[INDEX_NOTES];
-            default:
-                return null;
-        }
-    }
-
-    private TextView getTitleTextViewByColumn(String column) {
-        switch (column) {
-            case COLUMN_NAME:
-                return txtTitle[INDEX_NAME];
-            case COLUMN_PASSWORD:
-                return txtTitle[INDEX_PASSWORD];
-            case COLUMN_EMAIL:
-                return txtTitle[INDEX_EMAIL];
-            case COLUMN_USERNAME:
-                return txtTitle[INDEX_USERNAME];
-            case COLUMN_NOTES:
-                return txtTitle[INDEX_NOTES];
-            default:
-                return null;
-        }
+        txtAttribute[INDEX_NOTES]    = confirmationView.findViewById(R.id.txt_deleteNotes);
     }
 }

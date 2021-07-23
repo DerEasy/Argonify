@@ -19,11 +19,11 @@ import static com.easy.passbase.PasswordDBHelper.INDEX_USERNAME;
 import static com.easy.passbase.PasswordDBHelper.MAIN_ATTRIBUTES;
 
 public class SelectionDisplay {
-    public static final int AMOUNT_OF_COPY_BUTTONS = 3;
-    private final MainActivity mainActivity;
-
+    private final static int AMOUNT_OF_COPY_BUTTONS = 3;
     private final static int ACTUAL_PASSWORD = 0;
     private final static int HIDDEN_PASSWORD = 1;
+    private final MainActivity mainActivity;
+
     /**Index 0 is the actual password, index 1 is the password in 'hidden' symbols*/
     private final String[] currentPassword = new String[2];
     private final TextView[] txtAttribute = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
@@ -35,17 +35,17 @@ public class SelectionDisplay {
     SelectionDisplay(MainActivity parentActivity) {
         mainActivity = parentActivity;
 
-        txtAttribute[INDEX_NAME] = mainActivity.findViewById(R.id.txt_selectedName);
+        txtAttribute[INDEX_NAME]     = mainActivity.findViewById(R.id.txt_selectedName);
         txtAttribute[INDEX_PASSWORD] = mainActivity.findViewById(R.id.txt_selectedPassword);
-        txtAttribute[INDEX_EMAIL] = mainActivity.findViewById(R.id.txt_selectedEmail);
+        txtAttribute[INDEX_EMAIL]    = mainActivity.findViewById(R.id.txt_selectedEmail);
         txtAttribute[INDEX_USERNAME] = mainActivity.findViewById(R.id.txt_selectedUsername);
-        txtAttribute[INDEX_NOTES] = mainActivity.findViewById(R.id.txt_selectedNotes);
+        txtAttribute[INDEX_NOTES]    = mainActivity.findViewById(R.id.txt_selectedNotes);
 
-        txtTitle[INDEX_NAME] = mainActivity.findViewById(R.id.txt_titleName);
+        txtTitle[INDEX_NAME]     = mainActivity.findViewById(R.id.txt_titleName);
         txtTitle[INDEX_PASSWORD] = mainActivity.findViewById(R.id.txt_titlePassword);
-        txtTitle[INDEX_EMAIL] = mainActivity.findViewById(R.id.txt_titleEmail);
+        txtTitle[INDEX_EMAIL]    = mainActivity.findViewById(R.id.txt_titleEmail);
         txtTitle[INDEX_USERNAME] = mainActivity.findViewById(R.id.txt_titleUsername);
-        txtTitle[INDEX_NOTES] = mainActivity.findViewById(R.id.txt_titleNotes);
+        txtTitle[INDEX_NOTES]    = mainActivity.findViewById(R.id.txt_titleNotes);
 
         ibtCopy[0] = mainActivity.findViewById(R.id.ibt_copyPassword);
         ibtCopy[1] = mainActivity.findViewById(R.id.ibt_copyEmail);
@@ -82,7 +82,7 @@ public class SelectionDisplay {
         txtAttribute[INDEX_PASSWORD].setText(currentPassword[HIDDEN_PASSWORD]);
     }
 
-    public void updateDisplayedTuple(String[] attributes) {
+    public void onDisplayUpdate(String[] attributes) {
         for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i)
             setTextView(i, attributes[i]);
 

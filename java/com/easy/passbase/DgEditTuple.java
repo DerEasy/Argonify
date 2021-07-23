@@ -2,17 +2,18 @@ package com.easy.passbase;
 
 import android.database.Cursor;
 
-public class DgSelectTuple extends TupleSelection {
+public class DgEditTuple extends TupleSelection {
     private final MainActivity mainActivity;
 
-    public DgSelectTuple(MainActivity parentActivity) {
+    DgEditTuple(MainActivity parentActivity) {
         mainActivity = parentActivity;
     }
 
     @Override
     public void onTupleSelection(int adapterPosition, Cursor idCursor) {
         super.onTupleSelection(adapterPosition, idCursor);
-        mainActivity.onDisplayUpdate(attributes);
+        DgEditTupleConfirmation confirmation = new DgEditTupleConfirmation(mainActivity, tuple);
+        confirmation.show(getParentFragmentManager(), "Edit Tuple Dialog");
         dismiss();
     }
 }

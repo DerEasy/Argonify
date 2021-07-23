@@ -61,6 +61,15 @@ public class PasswordDB {
         );
     }
 
+    public static void editTuple(ContentValues cv, int id) {
+        passwordDB.update(
+                TABLE_NAME,
+                cv,
+                String.format("%s = %s", _ID, id),
+                null
+        );
+    }
+
     public static void deleteTuple(int id) {
         passwordDB.delete(
                 TABLE_NAME,

@@ -60,6 +60,7 @@
         android:src="@drawable/ic_round_edit_24"
         android:visibility="invisible"
         app:fabSize="mini"
+        android:onClick="editTuple"
         app:layout_constraintBottom_toBottomOf="@+id/fab_options"
         app:layout_constraintEnd_toEndOf="@+id/fab_options"
         app:layout_constraintStart_toStartOf="@+id/fab_options" />
