@@ -1,7 +1,9 @@
-package com.easy.passbase;
+package com.easy.passbase.Main;
 
 import android.view.View;
 import android.view.ViewTreeObserver;
+
+import com.easy.passbase.R;
 
 public class GlobalLayoutListenerAdapter {
     private final MainActivity mainActivity;

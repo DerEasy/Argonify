@@ -1,4 +1,4 @@
-package com.easy.passbase;
+package com.easy.passbase.Main;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -15,11 +15,13 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.easy.passbase.PasswordDB.getIDsAndNames;
-import static com.easy.passbase.PasswordDB.getTupleByID;
-import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
-import static com.easy.passbase.PasswordDBHelper.MAIN_ATTRIBUTES;
-import static com.easy.passbase.PasswordDBHelper._ID;
+import com.easy.passbase.R;
+
+import static com.easy.passbase.Main.PasswordDB.getIDsAndNames;
+import static com.easy.passbase.Main.PasswordDB.getTupleByID;
+import static com.easy.passbase.Main.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
+import static com.easy.passbase.Main.PasswordDBHelper.MAIN_ATTRIBUTES;
+import static com.easy.passbase.Main.PasswordDBHelper._ID;
 
 public class TupleSelection extends AppCompatDialogFragment {
     public static boolean isOpen = false;

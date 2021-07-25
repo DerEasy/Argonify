@@ -1,4 +1,4 @@
-package com.easy.passbase;
+package com.easy.passbase.Main;
 
 import android.database.Cursor;
 

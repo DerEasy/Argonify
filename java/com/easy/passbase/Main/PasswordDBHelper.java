@@ -1,4 +1,4 @@
-package com.easy.passbase;
+package com.easy.passbase.Main;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

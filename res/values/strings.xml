@@ -10,7 +10,7 @@
     <!--Comment end-->
 
     <!--These are partially also used as tags for their corresponding ImageButtons etc.
-    They MUST have the exact same names as the attributes of the Passbase table-->
+    They MUST have the exact same names as the columns of the Passbase table-->
     <string name="name">Name</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
@@ -27,4 +27,14 @@
     <!--And this one is specifically for toggling password revelation whilst adding an entry-->
     <string name="toggle_password_revelation">Toggle password revelation</string>
     <!--Comment end-->
+
+    <!--These are for the Password Generator activity-->
+    <string name="numbers">Numbers</string>
+    <string name="symbols">Symbols</string>
+    <string name="uppercase">Uppercase characters</string>
+    <string name="lowercase">Lowercase characters</string>
+    <string name="generate">Generate</string>
+    <string name="excluded_characters">Excluded characters</string>
+    <!--Comment end-->
+
 </resources>

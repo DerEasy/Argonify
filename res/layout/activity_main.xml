@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Main.MainActivity">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -75,6 +75,7 @@
         android:src="@drawable/ic_round_password_24"
         android:visibility="invisible"
         app:fabSize="mini"
+        android:onClick="passwordGenerator"
         app:layout_constraintBottom_toBottomOf="@+id/fab_options"
         app:layout_constraintEnd_toEndOf="@+id/fab_options"
         app:layout_constraintStart_toStartOf="@+id/fab_options" />

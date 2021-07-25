@@ -1,15 +1,19 @@
-package com.easy.passbase;
+package com.easy.passbase.Main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.easy.passbase.PasswordDB.passwordDB;
+import com.easy.passbase.PassGen.PassGenActivity;
+import com.easy.passbase.R;
+
+import static com.easy.passbase.Main.PasswordDB.passwordDB;
 
 public class MainActivity extends AppCompatActivity {
-    private OptionsAnimator optionsAnimator;
     private SelectionDisplay selectionDisplay;
+    private OptionsAnimator optionsAnimator;
 
     public void setOptionsAnimator(OptionsAnimator anim) { optionsAnimator = anim; }
 
@@ -25,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
         selectionDisplay = new SelectionDisplay(this);
     }
 
+    public void onDisplayUpdate(String[] attributes) {
+        selectionDisplay.onDisplayUpdate(attributes);
+    }
+
     public void selectTuple(View v) {
         if (!DgSelectTuple.isOpen) {
             DgSelectTuple dgSelectTuple = new DgSelectTuple(this);
             dgSelectTuple.show(getSupportFragmentManager(), "Select Tuple Dialog");
         }
-    }
-
-    public void onDisplayUpdate(String[] attributes) {
-        selectionDisplay.onDisplayUpdate(attributes);
     }
 
     public void copyAttributeToClipboard(View v) {
@@ -66,5 +70,10 @@ public class MainActivity extends AppCompatActivity {
             DgEditTuple dgEditTuple = new DgEditTuple(this);
             dgEditTuple.show(getSupportFragmentManager(), "Edit Tuple Dialog");
         }
+    }
+
+    public void passwordGenerator(View v) {
+        Intent passwordGeneratorIntent = new Intent(this, PassGenActivity.class);
+        startActivity(passwordGeneratorIntent);
     }
 }

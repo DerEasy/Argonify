@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/np_passwordLength"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PassGen.PassGenActivity">
+
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/efab_generate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="generate"
+        android:text="@string/generate"
+        app:icon="@drawable/ic_round_check_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch_lowercase"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/lowercase"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch_uppercase"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/uppercase"
+        app:layout_constraintEnd_toEndOf="@+id/switch_lowercase"
+        app:layout_constraintStart_toStartOf="@+id/switch_lowercase"
+        app:layout_constraintTop_toBottomOf="@+id/switch_lowercase" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch_numbers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/numbers"
+        app:layout_constraintEnd_toEndOf="@+id/switch_lowercase"
+        app:layout_constraintStart_toStartOf="@+id/switch_lowercase"
+        app:layout_constraintTop_toBottomOf="@+id/switch_uppercase" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch_symbols"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/symbols"
+        app:layout_constraintEnd_toEndOf="@+id/switch_numbers"
+        app:layout_constraintStart_toStartOf="@+id/switch_numbers"
+        app:layout_constraintTop_toBottomOf="@+id/switch_numbers" />
+
+    <EditText
+        android:id="@+id/etxt_excludedChars"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/excluded_characters"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/switch_symbols"
+        app:layout_constraintStart_toStartOf="@+id/switch_symbols"
+        app:layout_constraintTop_toBottomOf="@+id/switch_symbols" />
+
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/etxt_excludedChars"
+        app:layout_constraintTop_toBottomOf="@+id/etxt_excludedChars" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

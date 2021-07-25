@@ -1,4 +1,4 @@
-package com.easy.passbase;
+package com.easy.passbase.Main;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
@@ -13,15 +13,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.core.content.ContextCompat;
 
-import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
-import static com.easy.passbase.PasswordDBHelper.COLUMN_NAME;
-import static com.easy.passbase.PasswordDBHelper.COLUMN_PASSWORD;
-import static com.easy.passbase.PasswordDBHelper.INDEX_EMAIL;
-import static com.easy.passbase.PasswordDBHelper.INDEX_NAME;
-import static com.easy.passbase.PasswordDBHelper.INDEX_NOTES;
-import static com.easy.passbase.PasswordDBHelper.INDEX_PASSWORD;
-import static com.easy.passbase.PasswordDBHelper.INDEX_USERNAME;
-import static com.easy.passbase.PasswordDBHelper.MAIN_ATTRIBUTES;
+import com.easy.passbase.R;
+
+import static com.easy.passbase.Main.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
+import static com.easy.passbase.Main.PasswordDBHelper.COLUMN_NAME;
+import static com.easy.passbase.Main.PasswordDBHelper.COLUMN_PASSWORD;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_EMAIL;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_NAME;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_NOTES;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_PASSWORD;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_USERNAME;
+import static com.easy.passbase.Main.PasswordDBHelper.MAIN_ATTRIBUTES;
 
 public class TupleManipulation extends AppCompatDialogFragment {
     public final EditText[] etxtAttribute = new EditText[AMOUNT_OF_MAIN_ATTRIBUTES];

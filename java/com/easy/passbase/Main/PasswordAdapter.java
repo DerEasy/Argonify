@@ -1,4 +1,4 @@
-package com.easy.passbase;
+package com.easy.passbase.Main;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -11,7 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.easy.passbase.PasswordDBHelper.COLUMN_NAME;
+import com.easy.passbase.R;
+
+import static com.easy.passbase.Main.PasswordDBHelper.COLUMN_NAME;
 
 public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.PasswordViewHolder> {
     private final TupleSelection dgSelection;

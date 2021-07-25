@@ -1,4 +1,4 @@
-package com.easy.passbase;
+package com.easy.passbase.Main;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -14,14 +14,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import static com.easy.passbase.PasswordDB.deleteTuple;
-import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
-import static com.easy.passbase.PasswordDBHelper.INDEX_EMAIL;
-import static com.easy.passbase.PasswordDBHelper.INDEX_NAME;
-import static com.easy.passbase.PasswordDBHelper.INDEX_NOTES;
-import static com.easy.passbase.PasswordDBHelper.INDEX_PASSWORD;
-import static com.easy.passbase.PasswordDBHelper.INDEX_USERNAME;
-import static com.easy.passbase.PasswordDBHelper._ID;
+import com.easy.passbase.R;
+
+import static com.easy.passbase.Main.PasswordDB.deleteTuple;
+import static com.easy.passbase.Main.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_EMAIL;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_NAME;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_NOTES;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_PASSWORD;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_USERNAME;
+import static com.easy.passbase.Main.PasswordDBHelper._ID;
 
 public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
     private final TextView[] txtAttribute = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];

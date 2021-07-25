@@ -1,12 +1,12 @@
-package com.easy.passbase;
+package com.easy.passbase.Main;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import static com.easy.passbase.PasswordDBHelper.COLUMN_NAME;
-import static com.easy.passbase.PasswordDBHelper.TABLE_NAME;
-import static com.easy.passbase.PasswordDBHelper._ID;
+import static com.easy.passbase.Main.PasswordDBHelper.COLUMN_NAME;
+import static com.easy.passbase.Main.PasswordDBHelper.TABLE_NAME;
+import static com.easy.passbase.Main.PasswordDBHelper._ID;
 
 public class PasswordDB {
     public static SQLiteDatabase passwordDB;

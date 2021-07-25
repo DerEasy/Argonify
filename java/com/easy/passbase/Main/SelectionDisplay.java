@@ -1,4 +1,4 @@
-package com.easy.passbase;
+package com.easy.passbase.Main;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -10,13 +10,15 @@ import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
-import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
-import static com.easy.passbase.PasswordDBHelper.INDEX_EMAIL;
-import static com.easy.passbase.PasswordDBHelper.INDEX_NAME;
-import static com.easy.passbase.PasswordDBHelper.INDEX_NOTES;
-import static com.easy.passbase.PasswordDBHelper.INDEX_PASSWORD;
-import static com.easy.passbase.PasswordDBHelper.INDEX_USERNAME;
-import static com.easy.passbase.PasswordDBHelper.MAIN_ATTRIBUTES;
+import com.easy.passbase.R;
+
+import static com.easy.passbase.Main.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_EMAIL;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_NAME;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_NOTES;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_PASSWORD;
+import static com.easy.passbase.Main.PasswordDBHelper.INDEX_USERNAME;
+import static com.easy.passbase.Main.PasswordDBHelper.MAIN_ATTRIBUTES;
 
 public class SelectionDisplay {
     private final static int AMOUNT_OF_COPY_BUTTONS = 3;

@@ -1,4 +1,4 @@
-package com.easy.passbase;
+package com.easy.passbase.Main;
 
 import android.app.Dialog;
 import android.content.ContentValues;
@@ -9,10 +9,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import static com.easy.passbase.PasswordDB.editTuple;
-import static com.easy.passbase.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
-import static com.easy.passbase.PasswordDBHelper.MAIN_ATTRIBUTES;
-import static com.easy.passbase.PasswordDBHelper._ID;
+import static com.easy.passbase.Main.PasswordDB.editTuple;
+import static com.easy.passbase.Main.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
+import static com.easy.passbase.Main.PasswordDBHelper.MAIN_ATTRIBUTES;
+import static com.easy.passbase.Main.PasswordDBHelper._ID;
 
 public class DgEditTupleConfirmation extends TupleManipulation {
     private final MainActivity mainActivity;

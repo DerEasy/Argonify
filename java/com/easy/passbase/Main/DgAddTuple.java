@@ -1,4 +1,4 @@
-package com.easy.passbase;
+package com.easy.passbase.Main;
 
 import android.app.Dialog;
 import android.content.ContentValues;
@@ -8,7 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import static com.easy.passbase.PasswordDB.insertTuple;
+import static com.easy.passbase.Main.PasswordDB.insertTuple;
 
 public class DgAddTuple extends TupleManipulation {
     @NonNull
