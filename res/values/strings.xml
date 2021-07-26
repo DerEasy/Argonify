@@ -39,6 +39,10 @@
     <string name="generated_password">Generated Password</string>
     <string name="copy_generated_password">Copy generated password to clipboard</string>
     <string name="length">Length</string>
+    <string name="instant_password">Instant PW</string>
+    <string name="open_password_generator">Open Password Generator</string>
+    <string name="instantly_generate_password">Instantly generate password</string>
+    <string name="password_auto_copy">The password is automatically copied to the password field of the previous window.</string>
     <!--Comment end-->
 
 </resources>

@@ -95,4 +95,32 @@
         app:layout_constraintStart_toEndOf="@+id/etxt_manipulatePassword"
         app:layout_constraintTop_toTopOf="@+id/etxt_manipulatePassword"
         android:contentDescription="@string/toggle_password_revelation" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/efab_addInstantGen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/instantly_generate_password"
+        android:text="@string/instant_password"
+        android:textSize="12sp"
+        app:icon="@drawable/ic_round_content_paste_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etxt_manipulateNotes"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/efab_addOpenGenerator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/open_password_generator"
+        android:src="@drawable/ic_round_password_24"
+        app:fabCustomSize="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/efab_addInstantGen"
+        app:layout_constraintEnd_toEndOf="@+id/etxt_manipulateNotes"
+        app:layout_constraintTop_toTopOf="@+id/efab_addInstantGen" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.easy.passbase.Main.TupleManipulation;
 import com.easy.passbase.R;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
@@ -39,6 +40,11 @@ public class PasswordDisplay {
         txtGeneratedPassword = passGenActivity.findViewById(R.id.txt_genPassword);
         ibtCopyGeneratedPW = passGenActivity.findViewById(R.id.ibt_copyGeneratedPW);
 
+        if (TupleManipulation.isOpen) {
+            ibtCopyGeneratedPW.setVisibility(View.GONE);
+            passGenActivity.findViewById(R.id.txt_genFromManipulation).setVisibility(View.VISIBLE);
+        }
+
         initialiseSwitches();
         initialiseNumberPicker();
     }
@@ -65,9 +71,10 @@ public class PasswordDisplay {
         Toast.makeText(passGenActivity, "Copied generated password to clipboard", Toast.LENGTH_SHORT).show();
     }
 
-    void onDisplayUpdate(String password) {
+    void onDisplayUpdate(String password, boolean showCopyButton) {
         txtGeneratedPassword.setText(password);
-        ibtCopyGeneratedPW.setVisibility(View.VISIBLE);
+        if (showCopyButton)
+            ibtCopyGeneratedPW.setVisibility(View.VISIBLE);
     }
 
     private LinkedList<Integer> getCharCategories() {

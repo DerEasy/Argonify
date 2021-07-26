@@ -104,6 +104,17 @@
         app:layout_constraintStart_toEndOf="@+id/ibt_copyGeneratedPW"
         app:layout_constraintTop_toTopOf="@+id/np_genPasswordLength" />
 
+    <TextView
+        android:id="@+id/txt_genFromManipulation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/password_auto_copy"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/txt_genPassword"
+        app:layout_constraintStart_toStartOf="@+id/etxt_genExcludedChars"
+        app:layout_constraintTop_toBottomOf="@+id/txt_genLength" />
+
     <ImageButton
         android:id="@+id/ibt_copyGeneratedPW"
         android:layout_width="32dp"

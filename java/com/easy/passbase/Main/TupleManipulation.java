@@ -3,6 +3,8 @@ package com.easy.passbase.Main;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +15,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.core.content.ContextCompat;
 
+import com.easy.passbase.PassGen.PassGenActivity;
+import com.easy.passbase.PassGen.PasswordGenerator;
 import com.easy.passbase.R;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.LinkedList;
 
 import static com.easy.passbase.Main.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
 import static com.easy.passbase.Main.PasswordDBHelper.COLUMN_NAME;
@@ -24,11 +32,13 @@ import static com.easy.passbase.Main.PasswordDBHelper.INDEX_NOTES;
 import static com.easy.passbase.Main.PasswordDBHelper.INDEX_PASSWORD;
 import static com.easy.passbase.Main.PasswordDBHelper.INDEX_USERNAME;
 import static com.easy.passbase.Main.PasswordDBHelper.MAIN_ATTRIBUTES;
+import static com.easy.passbase.PassGen.PasswordGenerator.AMOUNT_OF_CATS;
 
 public class TupleManipulation extends AppCompatDialogFragment {
     public final EditText[] etxtAttribute = new EditText[AMOUNT_OF_MAIN_ATTRIBUTES];
     public boolean isPasswordRevealed = false;
     public static boolean isOpen = false;
+    public static String generatedPassword = "";
     public View tupleView;
     public AlertDialog.Builder builder;
 
@@ -45,17 +55,28 @@ public class TupleManipulation extends AppCompatDialogFragment {
         etxtAttribute[INDEX_USERNAME] = tupleView.findViewById(R.id.etxt_manipulateUsername);
         etxtAttribute[INDEX_NOTES]    = tupleView.findViewById(R.id.etxt_manipulateNotes);
 
+        ExtendedFloatingActionButton efabInstantGen = tupleView.findViewById(R.id.efab_addInstantGen);
+        FloatingActionButton fabGenerator = tupleView.findViewById(R.id.efab_addOpenGenerator);
+
         attachPasswordRevealListener(tupleView.findViewById(R.id.ibt_manipulatePasswordReveal));
+        attachPasswordGeneratorListener(efabInstantGen, fabGenerator);
     }
 
     @Override
     public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
         isOpen = false;
+        generatedPassword = "";
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        etxtAttribute[INDEX_PASSWORD].setText(generatedPassword);
     }
 
     @SuppressWarnings("ConstantConditions")
-    public void attachPasswordRevealListener(ImageButton passwordReveal) {
+    private void attachPasswordRevealListener(ImageButton passwordReveal) {
         passwordReveal.setOnClickListener(v -> {
             isPasswordRevealed = !isPasswordRevealed;
             if (isPasswordRevealed) {
@@ -65,6 +86,27 @@ public class TupleManipulation extends AppCompatDialogFragment {
                 passwordReveal.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_round_visibility_24));
                 etxtAttribute[INDEX_PASSWORD].setTransformationMethod(new PasswordTransformationMethod());
             }
+        });
+    }
+
+    public void attachPasswordGeneratorListener(ExtendedFloatingActionButton efabInstantGen, FloatingActionButton fabGenerator) {
+        final int DEFAULT_PASSWORD_LENGTH = 20;
+        final LinkedList<Integer> charCategories = new LinkedList<>();
+        final char[] exclusions = {};
+
+        for (int i = 0; i < AMOUNT_OF_CATS; ++i)
+            charCategories.add(i);
+
+        efabInstantGen.setOnClickListener(v -> {
+            String password = new PasswordGenerator(
+                    null, null, charCategories, exclusions)
+                    .getPassword(DEFAULT_PASSWORD_LENGTH);
+
+            etxtAttribute[INDEX_PASSWORD].setText(password);
+        });
+        fabGenerator.setOnClickListener(v -> {
+            Intent passwordGeneratorIntent = new Intent(getActivity(), PassGenActivity.class);
+            startActivity(passwordGeneratorIntent);
         });
     }
 

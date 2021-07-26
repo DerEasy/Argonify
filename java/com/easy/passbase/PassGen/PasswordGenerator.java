@@ -1,5 +1,7 @@
 package com.easy.passbase.PassGen;
 
+import com.easy.passbase.Main.TupleManipulation;
+
 import java.security.SecureRandom;
 import java.util.LinkedList;
 
@@ -13,11 +15,11 @@ public class PasswordGenerator {
     private final LinkedList<Character> NUMBER = new LinkedList<>();
     private final LinkedList<Character> SYMBOL = new LinkedList<>();
 
+    public final static int AMOUNT_OF_CATS = 4;
     final LinkedList<LinkedList<Character>> CHAR_CATS = new LinkedList<>();
-    final static int AMOUNT_OF_CATS = 4;
     final boolean[] SELECTED_CATS = new boolean[AMOUNT_OF_CATS];
 
-    PasswordGenerator(PassGenActivity parentActivity, PasswordDisplay display, LinkedList<Integer> usedCategories, char[] exclusions) {
+    public PasswordGenerator(PassGenActivity parentActivity, PasswordDisplay display, LinkedList<Integer> usedCategories, char[] exclusions) {
         passGenActivity = parentActivity;
         passwordDisplay = display;
         initialiseCharLists();
@@ -70,10 +72,10 @@ public class PasswordGenerator {
             }
     }
 
-    public void getPassword(int passwordLength) {
+    public String getPassword(int passwordLength) {
         ValidityCheck validityCheck = new ValidityCheck(passGenActivity,this);
         if (validityCheck.hasErrors())
-            return;
+            return "";
 
         StringBuilder password = new StringBuilder();
 
@@ -88,6 +90,13 @@ public class PasswordGenerator {
             }
         }
 
-        passwordDisplay.onDisplayUpdate(password.toString());
+        if (passwordDisplay != null && !TupleManipulation.isOpen)
+            passwordDisplay.onDisplayUpdate(password.toString(), true);
+        else if (passwordDisplay != null){
+            passwordDisplay.onDisplayUpdate(password.toString(), false);
+            TupleManipulation.generatedPassword = password.toString();
+        }
+
+        return password.toString();
     }
 }

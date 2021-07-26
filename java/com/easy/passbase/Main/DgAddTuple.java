@@ -2,11 +2,14 @@ package com.easy.passbase.Main;
 
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.easy.passbase.PassGen.PassGenActivity;
 
 import static com.easy.passbase.Main.PasswordDB.insertTuple;
 
