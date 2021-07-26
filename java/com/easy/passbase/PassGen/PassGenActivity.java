@@ -22,4 +22,8 @@ public class PassGenActivity extends AppCompatActivity {
     public void generate(View v) {
         passwordDisplay.generate();
     }
+
+    public void copyGeneratedPassword(View v) {
+        passwordDisplay.copyGeneratedPasswordToClipboard();
+    }
 }

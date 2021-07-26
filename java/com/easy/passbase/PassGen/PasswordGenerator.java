@@ -1,22 +1,25 @@
 package com.easy.passbase.PassGen;
 
 import java.security.SecureRandom;
-import java.util.Arrays;
 import java.util.LinkedList;
 
 public class PasswordGenerator {
-    private final static SecureRandom RNG = new SecureRandom();
-    private final static int AMOUNT_OF_CATS = 4;
+    private final PasswordDisplay passwordDisplay;
+    private final PassGenActivity passGenActivity;
+    private final SecureRandom rng = new SecureRandom();
 
     private final LinkedList<Character> LOWERCASE = new LinkedList<>();
     private final LinkedList<Character> UPPERCASE = new LinkedList<>();
     private final LinkedList<Character> NUMBER = new LinkedList<>();
     private final LinkedList<Character> SYMBOL = new LinkedList<>();
 
-    private final LinkedList<LinkedList<Character>> CHAR_CATS = new LinkedList<>();
-    private final boolean[] SELECTED_CATS = new boolean[AMOUNT_OF_CATS];
+    final LinkedList<LinkedList<Character>> CHAR_CATS = new LinkedList<>();
+    final static int AMOUNT_OF_CATS = 4;
+    final boolean[] SELECTED_CATS = new boolean[AMOUNT_OF_CATS];
 
-    PasswordGenerator(LinkedList<Integer> usedCategories, char[] exclusions) {
+    PasswordGenerator(PassGenActivity parentActivity, PasswordDisplay display, LinkedList<Integer> usedCategories, char[] exclusions) {
+        passGenActivity = parentActivity;
+        passwordDisplay = display;
         initialiseCharLists();
         removeExclusions(exclusions);
         initialiseSelectedCats(usedCategories);
@@ -68,55 +71,23 @@ public class PasswordGenerator {
     }
 
     public void getPassword(int passwordLength) {
-        System.out.println(randomConcat(passwordLength));
-    }
-
-    private String randomConcat(int passwordLength) {
-        if (CHAR_CATS.size() == 0)
-            return null;
+        ValidityCheck validityCheck = new ValidityCheck(passGenActivity,this);
+        if (validityCheck.hasErrors())
+            return;
 
         StringBuilder password = new StringBuilder();
 
         for (int i = 0; i < passwordLength; ++i) {
-            LinkedList<Character> list = CHAR_CATS.get(RNG.nextInt(CHAR_CATS.size()));
-            char nextChar = list.get(RNG.nextInt(list.size()));
+            LinkedList<Character> list = CHAR_CATS.get(rng.nextInt(CHAR_CATS.size()));
+            char nextChar = list.get(rng.nextInt(list.size()));
             password.append(nextChar);
 
-            if (needsRebuilding(password, passwordLength)) {
+            if (validityCheck.needsRebuilding(password, passwordLength)) {
                 password = new StringBuilder();
-                i = 0;
+                i = -1; //I absolutely cannot fathom or grasp in any way whatsoever why this needs to be -1 instead of 0
             }
         }
 
-        return password.toString();
-    }
-
-    private boolean needsRebuilding(StringBuilder password, int passwordLength) {
-        return passwordLength >= CHAR_CATS.size() &&
-                password.length() == passwordLength - 1 &&
-                doesNotContainSelectedCats(password);
-    }
-
-    @SuppressWarnings("ConstantConditions")
-    private boolean doesNotContainSelectedCats(StringBuilder password) {
-        boolean[] presentCats = new boolean[AMOUNT_OF_CATS];
-
-        for (int i = 0; i < password.length(); ++i)
-            presentCats = checkPresentCats(presentCats, password.charAt(i));
-
-        return !Arrays.equals(presentCats, SELECTED_CATS);
-    }
-
-    private boolean[] checkPresentCats(boolean[] presentCats, char c) {
-        if (Character.isLowerCase(c))
-            presentCats[0] = true;
-        else if (Character.isUpperCase(c))
-            presentCats[1] = true;
-        else if (Character.isDigit(c))
-            presentCats[2] = true;
-        else
-            presentCats[3] = true;
-
-        return presentCats;
+        passwordDisplay.onDisplayUpdate(password.toString());
     }
 }

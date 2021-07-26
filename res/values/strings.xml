@@ -35,6 +35,10 @@
     <string name="lowercase">Lowercase characters</string>
     <string name="generate">Generate</string>
     <string name="excluded_characters">Excluded characters</string>
+    <string name="no_separation">No separation between characters required.</string>
+    <string name="generated_password">Generated Password</string>
+    <string name="copy_generated_password">Copy generated password to clipboard</string>
+    <string name="length">Length</string>
     <!--Comment end-->
 
 </resources>

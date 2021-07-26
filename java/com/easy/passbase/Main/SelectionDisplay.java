@@ -84,7 +84,7 @@ public class SelectionDisplay {
         txtAttribute[INDEX_PASSWORD].setText(currentPassword[HIDDEN_PASSWORD]);
     }
 
-    public void onDisplayUpdate(String[] attributes) {
+    void onDisplayUpdate(String[] attributes) {
         for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i)
             setTextView(i, attributes[i]);
 

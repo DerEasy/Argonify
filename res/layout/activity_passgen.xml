@@ -2,14 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/np_passwordLength"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PassGen.PassGenActivity">
 
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/efab_generate"
+        android:id="@+id/efab_genGenerate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -21,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/switch_lowercase"
+        android:id="@+id/switch_genLowercase"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -33,48 +32,97 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/switch_uppercase"
+        android:id="@+id/switch_genUppercase"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/uppercase"
-        app:layout_constraintEnd_toEndOf="@+id/switch_lowercase"
-        app:layout_constraintStart_toStartOf="@+id/switch_lowercase"
-        app:layout_constraintTop_toBottomOf="@+id/switch_lowercase" />
+        app:layout_constraintEnd_toEndOf="@+id/switch_genLowercase"
+        app:layout_constraintStart_toStartOf="@+id/switch_genLowercase"
+        app:layout_constraintTop_toBottomOf="@+id/switch_genLowercase" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/switch_numbers"
+        android:id="@+id/switch_genNumbers"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/numbers"
-        app:layout_constraintEnd_toEndOf="@+id/switch_lowercase"
-        app:layout_constraintStart_toStartOf="@+id/switch_lowercase"
-        app:layout_constraintTop_toBottomOf="@+id/switch_uppercase" />
+        app:layout_constraintEnd_toEndOf="@+id/switch_genLowercase"
+        app:layout_constraintStart_toStartOf="@+id/switch_genLowercase"
+        app:layout_constraintTop_toBottomOf="@+id/switch_genUppercase" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/switch_symbols"
+        android:id="@+id/switch_genSymbols"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/symbols"
-        app:layout_constraintEnd_toEndOf="@+id/switch_numbers"
-        app:layout_constraintStart_toStartOf="@+id/switch_numbers"
-        app:layout_constraintTop_toBottomOf="@+id/switch_numbers" />
+        app:layout_constraintEnd_toEndOf="@+id/switch_genNumbers"
+        app:layout_constraintStart_toStartOf="@+id/switch_genNumbers"
+        app:layout_constraintTop_toBottomOf="@+id/switch_genNumbers" />
 
     <EditText
-        android:id="@+id/etxt_excludedChars"
+        android:id="@+id/etxt_genExcludedChars"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/excluded_characters"
         android:inputType="textPersonName"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/switch_symbols"
-        app:layout_constraintStart_toStartOf="@+id/switch_symbols"
-        app:layout_constraintTop_toBottomOf="@+id/switch_symbols" />
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/switch_genSymbols"
+        app:layout_constraintStart_toStartOf="@+id/switch_genSymbols"
+        app:layout_constraintTop_toBottomOf="@+id/switch_genSymbols"
+        android:importantForAutofill="no" />
 
-    <NumberPicker
+    <TextView
+        android:id="@+id/txt_genNoSeparation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/etxt_excludedChars"
-        app:layout_constraintTop_toBottomOf="@+id/etxt_excludedChars" />
+        android:layout_marginStart="4dp"
+        android:text="@string/no_separation"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/etxt_genExcludedChars"
+        app:layout_constraintTop_toBottomOf="@+id/etxt_genExcludedChars" />
+
+    <TextView
+        android:id="@+id/txt_genLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/length"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/np_genPasswordLength"
+        app:layout_constraintStart_toStartOf="@+id/np_genPasswordLength"
+        app:layout_constraintTop_toBottomOf="@+id/np_genPasswordLength" />
+
+    <TextView
+        android:id="@+id/txt_genPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/generated_password"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/np_genPasswordLength"
+        app:layout_constraintEnd_toStartOf="@+id/np_genPasswordLength"
+        app:layout_constraintStart_toEndOf="@+id/ibt_copyGeneratedPW"
+        app:layout_constraintTop_toTopOf="@+id/np_genPasswordLength" />
+
+    <ImageButton
+        android:id="@+id/ibt_copyGeneratedPW"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_round_content_copy_24"
+        android:visibility="invisible"
+        android:onClick="copyGeneratedPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/np_genPasswordLength"
+        app:layout_constraintStart_toStartOf="@+id/etxt_genExcludedChars"
+        app:layout_constraintTop_toTopOf="@+id/np_genPasswordLength"
+        tools:visibility="visible"
+        android:contentDescription="@string/copy_generated_password" />
+
+    <NumberPicker
+        android:id="@+id/np_genPasswordLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/etxt_genExcludedChars"
+        app:layout_constraintTop_toBottomOf="@+id/etxt_genExcludedChars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
