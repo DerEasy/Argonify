@@ -3,7 +3,7 @@
 
     <!--These are mostly used for the SelectionDisplay-->
     <string name="select_tuple">Select Entry</string>
-    <string name="unavailable_info">-</string>
+    <string name="unavailable_info" />
     <string name="copy_password">Copy password to clipboard</string>
     <string name="copy_email">Copy email to clipboard</string>
     <string name="copy_username">Copy username to clipboard</string>
@@ -20,9 +20,9 @@
 
     <!--These are for the options menu-->
     <string name="options">Options</string>
-    <string name="add_entry">Add a new entry</string>
-    <string name="delete_entry">Delete an entry</string>
-    <string name="edit_entry">Edit an entry</string>
+    <string name="add_entry">Add entry</string>
+    <string name="delete_entry">Delete entry</string>
+    <string name="edit_entry">Edit entry</string>
     <string name="password_generator">Password Generator</string>
     <!--And this one is specifically for toggling password revelation whilst adding an entry-->
     <string name="toggle_password_revelation">Toggle password revelation</string>

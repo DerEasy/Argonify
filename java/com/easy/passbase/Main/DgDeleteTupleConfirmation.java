@@ -23,16 +23,20 @@ import static com.easy.passbase.Main.PasswordDBHelper.INDEX_NAME;
 import static com.easy.passbase.Main.PasswordDBHelper.INDEX_NOTES;
 import static com.easy.passbase.Main.PasswordDBHelper.INDEX_PASSWORD;
 import static com.easy.passbase.Main.PasswordDBHelper.INDEX_USERNAME;
+import static com.easy.passbase.Main.PasswordDBHelper.MAIN_ATTRIBUTES;
 import static com.easy.passbase.Main.PasswordDBHelper._ID;
+import static com.easy.passbase.Main.SelectionDisplay.ACTUAL_PASSWORD;
 
 public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
     private final TextView[] txtAttribute = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
     private final TextView[] txtTitle = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
     private final String[] attributes;
     private final Cursor tuple;
+    private final SelectionDisplay selectionDisplay;
     public static boolean isOpen = false;
 
-    DgDeleteTupleConfirmation(String[] attributes, Cursor tuple) {
+    DgDeleteTupleConfirmation(SelectionDisplay display, String[] attributes, Cursor tuple) {
+        this.selectionDisplay = display;
         this.attributes = attributes;
         this.tuple = tuple;
     }
@@ -54,6 +58,8 @@ public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
                 .setTitle("Are you sure to delete this entry?")
                 .setNegativeButton("Cancel", (dialog, which) -> {})
                 .setPositiveButton("Delete", (dialog, which) -> {
+                    if (isDisplayed())
+                        selectionDisplay.onDisplayUpdate(new String[] {"", "", "", "", ""});
                     deleteTuple(tuple.getInt(tuple.getColumnIndex(_ID)));
                     Toast.makeText(getContext(), String.format("%s deleted", attributes[INDEX_NAME]), Toast.LENGTH_SHORT).show();
                 });
@@ -65,6 +71,19 @@ public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
     public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
         isOpen = false;
+    }
+
+    private boolean isDisplayed() {
+        int displayCount = 0;
+        for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i) {
+            if (i != INDEX_PASSWORD) {
+                if (selectionDisplay.txtAttribute[i].getText().equals(tuple.getString(tuple.getColumnIndex(MAIN_ATTRIBUTES[i]))))
+                    ++displayCount;
+            } else
+                if (selectionDisplay.currentPassword[ACTUAL_PASSWORD].equals(tuple.getString(tuple.getColumnIndex(MAIN_ATTRIBUTES[i]))))
+                    ++displayCount;
+        }
+        return displayCount == AMOUNT_OF_MAIN_ATTRIBUTES;
     }
 
     private void setTextView(TextView attribute, TextView title, String text) {

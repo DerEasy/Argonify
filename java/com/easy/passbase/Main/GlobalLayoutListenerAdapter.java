@@ -7,7 +7,7 @@ import com.easy.passbase.R;
 
 public class GlobalLayoutListenerAdapter {
     private final MainActivity mainActivity;
-    private final View animSetup;
+    private final View setupY;
     private ViewTreeObserver.OnGlobalLayoutListener listener;
 
     /**
@@ -18,19 +18,18 @@ public class GlobalLayoutListenerAdapter {
      */
     public GlobalLayoutListenerAdapter(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
-        animSetup = mainActivity.findViewById(R.id.fab_optionAddTuple);
+        setupY = mainActivity.findViewById(R.id.fab_optionAddTuple);
         attach();
     }
 
     private void attach() {
-
-        animSetup.getViewTreeObserver().addOnGlobalLayoutListener(listener = () -> {
-            mainActivity.setOptionsAnimator(new OptionsAnimator(mainActivity, animSetup.getY()));
+        setupY.getViewTreeObserver().addOnGlobalLayoutListener(listener = () -> {
+            mainActivity.setOptionsAnimator(new OptionsAnimator(mainActivity, setupY.getY()));
             detach();
         });
     }
 
     private void detach() {
-        animSetup.getViewTreeObserver().removeOnGlobalLayoutListener(listener);
+        setupY.getViewTreeObserver().removeOnGlobalLayoutListener(listener);
     }
 }

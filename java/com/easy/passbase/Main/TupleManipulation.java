@@ -72,7 +72,8 @@ public class TupleManipulation extends AppCompatDialogFragment {
     @Override
     public void onResume() {
         super.onResume();
-        etxtAttribute[INDEX_PASSWORD].setText(generatedPassword);
+        if (!generatedPassword.isEmpty())
+            etxtAttribute[INDEX_PASSWORD].setText(generatedPassword);
     }
 
     @SuppressWarnings("ConstantConditions")

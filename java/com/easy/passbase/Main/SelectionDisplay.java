@@ -21,14 +21,14 @@ import static com.easy.passbase.Main.PasswordDBHelper.INDEX_USERNAME;
 import static com.easy.passbase.Main.PasswordDBHelper.MAIN_ATTRIBUTES;
 
 public class SelectionDisplay {
-    private final static int AMOUNT_OF_COPY_BUTTONS = 3;
-    private final static int ACTUAL_PASSWORD = 0;
-    private final static int HIDDEN_PASSWORD = 1;
     private final MainActivity mainActivity;
+    private final static int AMOUNT_OF_COPY_BUTTONS = 3;
+    final static int ACTUAL_PASSWORD = 0;
+    final static int HIDDEN_PASSWORD = 1;
 
     /**Index 0 is the actual password, index 1 is the password in 'hidden' symbols*/
-    private final String[] currentPassword = new String[2];
-    private final TextView[] txtAttribute = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
+    final String[] currentPassword = new String[2];
+    final TextView[] txtAttribute = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
     private final TextView[] txtTitle = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
     private final ImageButton[] ibtCopy = new ImageButton[AMOUNT_OF_COPY_BUTTONS];
     private final ImageButton ibtPasswordReveal;
@@ -94,7 +94,7 @@ public class SelectionDisplay {
         hidePassword();
     }
 
-    public void copyAttributeToClipboard(View v) {
+    void copyAttributeToClipboard(View v) {
         /* IMPORTANT:
          * The tags of the three 'Copy ImageButtons' in activity_main.xml are in order:
          * 0, 1, 2  -- for -- Password, Email, Notes

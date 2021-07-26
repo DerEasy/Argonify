@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/backgroundColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PassGen.PassGenActivity">
@@ -62,14 +63,16 @@
         android:id="@+id/etxt_genExcludedChars"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:ems="10"
         android:hint="@string/excluded_characters"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/switch_genSymbols"
-        app:layout_constraintStart_toStartOf="@+id/switch_genSymbols"
-        app:layout_constraintTop_toBottomOf="@+id/switch_genSymbols"
-        android:importantForAutofill="no" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_genSymbols" />
 
     <TextView
         android:id="@+id/txt_genNoSeparation"
@@ -92,47 +95,59 @@
         app:layout_constraintTop_toBottomOf="@+id/np_genPasswordLength" />
 
     <TextView
+        android:id="@+id/txt_genTitlePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="@string/password"
+        app:layout_constraintStart_toStartOf="@+id/txt_genNoSeparation"
+        app:layout_constraintTop_toTopOf="@+id/np_genPasswordLength" />
+
+    <TextView
         android:id="@+id/txt_genPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:hint="@string/generated_password"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/sharp_rectangle"
+        android:textColor="@color/whiteText"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/np_genPasswordLength"
-        app:layout_constraintEnd_toStartOf="@+id/np_genPasswordLength"
-        app:layout_constraintStart_toEndOf="@+id/ibt_copyGeneratedPW"
-        app:layout_constraintTop_toTopOf="@+id/np_genPasswordLength" />
+        app:layout_constraintEnd_toStartOf="@+id/ibt_copyGeneratedPW"
+        app:layout_constraintStart_toStartOf="@+id/txt_genNoSeparation"
+        app:layout_constraintTop_toBottomOf="@+id/txt_genTitlePassword" />
 
     <TextView
         android:id="@+id/txt_genFromManipulation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:text="@string/password_auto_copy"
         android:visibility="invisible"
-        tools:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@+id/txt_genPassword"
-        app:layout_constraintStart_toStartOf="@+id/etxt_genExcludedChars"
-        app:layout_constraintTop_toBottomOf="@+id/txt_genLength" />
+        android:textColor="?attr/colorPrimaryVariant"
+        app:layout_constraintEnd_toStartOf="@+id/np_genPasswordLength"
+        app:layout_constraintStart_toStartOf="@+id/txt_genPassword"
+        app:layout_constraintTop_toBottomOf="@+id/txt_genLength"
+        tools:visibility="visible" />
 
     <ImageButton
         android:id="@+id/ibt_copyGeneratedPW"
         android:layout_width="32dp"
         android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
         android:background="?android:selectableItemBackgroundBorderless"
+        android:contentDescription="@string/copy_generated_password"
+        android:onClick="copyGeneratedPassword"
         android:src="@drawable/ic_round_content_copy_24"
         android:visibility="invisible"
-        android:onClick="copyGeneratedPassword"
-        app:layout_constraintBottom_toBottomOf="@+id/np_genPasswordLength"
-        app:layout_constraintStart_toStartOf="@+id/etxt_genExcludedChars"
-        app:layout_constraintTop_toTopOf="@+id/np_genPasswordLength"
-        tools:visibility="visible"
-        android:contentDescription="@string/copy_generated_password" />
+        app:layout_constraintBottom_toBottomOf="@+id/txt_genPassword"
+        app:layout_constraintEnd_toStartOf="@+id/np_genPasswordLength"
+        app:layout_constraintTop_toTopOf="@+id/txt_genPassword"
+        tools:visibility="visible" />
 
     <NumberPicker
         android:id="@+id/np_genPasswordLength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toEndOf="@+id/etxt_genExcludedChars"
         app:layout_constraintTop_toBottomOf="@+id/etxt_genExcludedChars" />
 

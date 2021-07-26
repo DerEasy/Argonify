@@ -12,8 +12,8 @@ import com.easy.passbase.R;
 import static com.easy.passbase.Main.PasswordDB.passwordDB;
 
 public class MainActivity extends AppCompatActivity {
-    private SelectionDisplay selectionDisplay;
     private OptionsAnimator optionsAnimator;
+    SelectionDisplay selectionDisplay;
 
     public void setOptionsAnimator(OptionsAnimator anim) { optionsAnimator = anim; }
 
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public void deleteTuple(View v) {
         if (!DgDeleteTuple.isOpen) {
             optionsAnimator.close();
-            DgDeleteTuple dgDeleteTuple = new DgDeleteTuple();
+            DgDeleteTuple dgDeleteTuple = new DgDeleteTuple(selectionDisplay);
             dgDeleteTuple.show(getSupportFragmentManager(), "Delete Tuple Dialog");
         }
     }
