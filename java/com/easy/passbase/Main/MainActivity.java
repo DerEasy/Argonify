@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.easy.passbase.PassGen.PassGenActivity;
 import com.easy.passbase.R;
+import com.easy.passbase.Settings.SettingsActivity;
 
 import static com.easy.passbase.Main.PasswordDB.passwordDB;
 
@@ -75,5 +76,10 @@ public class MainActivity extends AppCompatActivity {
     public void passwordGenerator(View v) {
         Intent passwordGeneratorIntent = new Intent(this, PassGenActivity.class);
         startActivity(passwordGeneratorIntent);
+    }
+
+    public void settings(View v) {
+        Intent settingsIntent = new Intent(this, SettingsActivity.class);
+        startActivity(settingsIntent);
     }
 }

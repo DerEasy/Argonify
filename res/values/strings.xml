@@ -43,6 +43,14 @@
     <string name="open_password_generator">Open Password Generator</string>
     <string name="instantly_generate_password">Instantly generate password</string>
     <string name="password_auto_copy">The password is automatically copied to the password field of the previous window.</string>
+    <string name="applock_description">Choose a method for app protection</string>
+    <string name="pin">PIN</string>
+    <string name="orderless_pattern">Orderless Pattern</string>
+    <string name="settings">Settings</string>
+    <string name="OLPattern_instructions">Draw a pattern on the grid by clicking on the cells.</string>
+    <string name="OLPattern_requirements">Pattern must have at least 4 selected cells.</string>
+    <string name="possible_combinations">Possible combinations:</string>
+    <string name="save_new_pattern">Save new pattern</string>
     <!--Comment end-->
 
 </resources>

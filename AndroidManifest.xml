@@ -10,7 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Passbase">
-        <activity android:name=".Main.MainActivity"
+        <activity
+            android:name=".Settings.SetOLPatternActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Settings.ApplockPickerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Settings.SettingsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Main.MainActivity"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -19,8 +29,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".PassGen.PassGenActivity"
+        <activity
+            android:name=".PassGen.PassGenActivity"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
     </application>

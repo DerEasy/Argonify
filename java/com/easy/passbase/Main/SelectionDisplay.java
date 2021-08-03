@@ -49,9 +49,9 @@ public class SelectionDisplay {
         txtTitle[INDEX_USERNAME] = mainActivity.findViewById(R.id.txt_titleUsername);
         txtTitle[INDEX_NOTES]    = mainActivity.findViewById(R.id.txt_titleNotes);
 
-        ibtCopy[0] = mainActivity.findViewById(R.id.ibt_copyPassword);
-        ibtCopy[1] = mainActivity.findViewById(R.id.ibt_copyEmail);
-        ibtCopy[2] = mainActivity.findViewById(R.id.ibt_copyUsername);
+        ibtCopy[INDEX_PASSWORD - 1] = mainActivity.findViewById(R.id.ibt_copyPassword);
+        ibtCopy[INDEX_EMAIL - 1] = mainActivity.findViewById(R.id.ibt_copyEmail);
+        ibtCopy[INDEX_USERNAME - 1] = mainActivity.findViewById(R.id.ibt_copyUsername);
 
         ibtPasswordReveal = mainActivity.findViewById(R.id.ibt_selectPasswordReveal);
 

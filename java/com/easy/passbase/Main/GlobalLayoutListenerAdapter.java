@@ -5,7 +5,7 @@ import android.view.ViewTreeObserver;
 
 import com.easy.passbase.R;
 
-public class GlobalLayoutListenerAdapter {
+class GlobalLayoutListenerAdapter {
     private final MainActivity mainActivity;
     private final View setupY;
     private ViewTreeObserver.OnGlobalLayoutListener listener;

@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:id="@+id/table_setOLPattern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription">
+
+        <TableRow>
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="00" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="01" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="02" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="03" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="04" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="05" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="06" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="10" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="11" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="12" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="13" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="14" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="15" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="16" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="20" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="21" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="22" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="23" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="24" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="25" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="26" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="30" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="31" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="32" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="33" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="34" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="35" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="36" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="40" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="41" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="42" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="43" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="44" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="45" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="46" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="50" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="51" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="52" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="53" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="54" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="55" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="56" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="60" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="61" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="62" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="63" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="64" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="65" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onCellClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="66" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/txt_OLPatternInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/OLPattern_instructions"
+        app:layout_constraintBottom_toTopOf="@+id/txt_OLPatternRequirements"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_OLPatternRequirements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/OLPattern_requirements"
+        app:layout_constraintBottom_toTopOf="@+id/table_setOLPattern"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_OLPatternPossibleCombos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/possible_combinations"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/table_setOLPattern" />
+
+    <TextView
+        android:id="@+id/txt_OLPatternComboAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rectangle"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/whiteText"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/table_setOLPattern"
+        app:layout_constraintStart_toStartOf="@+id/table_setOLPattern"
+        app:layout_constraintTop_toBottomOf="@+id/txt_OLPatternPossibleCombos"
+        tools:ignore="HardcodedText" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/save_new_pattern"
+        android:gravity="end|bottom"
+        android:src="@drawable/ic_round_arrow_forward_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
