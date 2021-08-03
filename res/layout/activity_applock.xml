@@ -2,46 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/backgroundColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <View
-        android:id="@+id/bubble_applockViewHolder"
-        android:layout_width="0dp"
-        android:layout_height="109dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/sharp_rectangle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txt_applockDescription"
-        app:layout_constraintTop_toBottomOf="@+id/txt_applockDescription" />
-
-    <View
-        android:id="@+id/separator_applock1"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="#DC277d3e"
-        app:layout_constraintEnd_toEndOf="@+id/bubble_applockViewHolder"
-        app:layout_constraintStart_toStartOf="@+id/bubble_applockViewHolder"
-        app:layout_constraintTop_toBottomOf="@+id/txt_applockPIN" />
-
-    <View
-        android:id="@+id/separator_applock2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="#DC277d3e"
-        app:layout_constraintEnd_toEndOf="@+id/bubble_applockViewHolder"
-        app:layout_constraintStart_toStartOf="@+id/bubble_applockViewHolder"
-        app:layout_constraintTop_toBottomOf="@+id/txt_applockPassword" />
 
     <TextView
         android:id="@+id/txt_applockDescription"
@@ -50,52 +13,90 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/applock_description"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="?attr/colorPrimaryVariant"
+        app:layout_constraintStart_toStartOf="@+id/txt_applockPIN"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_applockPIN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/option_top_dark"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:text="@string/pin"
         android:textColor="@color/whiteText"
-        app:layout_constraintStart_toStartOf="@+id/bubble_applockViewHolder"
-        app:layout_constraintTop_toTopOf="@+id/bubble_applockViewHolder" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_applockDescription" />
 
     <TextView
         android:id="@+id/txt_applockPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="@drawable/option_middle_dark"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
         android:text="@string/password"
         android:textColor="@color/whiteText"
-        app:layout_constraintStart_toStartOf="@+id/txt_applockPIN"
-        app:layout_constraintTop_toBottomOf="@+id/separator_applock1" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_applockPIN" />
 
     <TextView
-        android:id="@+id/txt_applockOLPattern"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:id="@+id/txt_applockPattern"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="@drawable/option_bottom_dark"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:onClick="orderlessPattern"
         android:text="@string/orderless_pattern"
         android:textColor="@color/whiteText"
-        app:layout_constraintStart_toStartOf="@+id/txt_applockPassword"
-        app:layout_constraintTop_toBottomOf="@+id/separator_applock2" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_applockPassword" />
 
-    <Button
-        android:id="@+id/bt_applockOLPattern"
+    <View
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="3dp"
-        android:background="?android:selectableItemBackground"
-        android:onClick="orderlessPattern"
-        app:layout_constraintBottom_toBottomOf="@+id/bubble_applockViewHolder"
-        app:layout_constraintEnd_toEndOf="@+id/separator_applock2"
-        app:layout_constraintStart_toStartOf="@+id/separator_applock2"
-        app:layout_constraintTop_toBottomOf="@+id/separator_applock2" />
+        android:layout_height="1dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_applockPassword"
+        app:layout_constraintEnd_toEndOf="@+id/txt_applockPassword"
+        app:layout_constraintStart_toStartOf="@+id/txt_applockPassword"
+        app:layout_constraintTop_toBottomOf="@+id/txt_applockPassword" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_applockPIN"
+        app:layout_constraintEnd_toEndOf="@+id/txt_applockPIN"
+        app:layout_constraintStart_toStartOf="@+id/txt_applockPIN"
+        app:layout_constraintTop_toBottomOf="@+id/txt_applockPIN"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

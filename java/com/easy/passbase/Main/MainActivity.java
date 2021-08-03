@@ -3,8 +3,10 @@ package com.easy.passbase.Main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewTreeObserver;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.easy.passbase.PassGen.PassGenActivity;
 import com.easy.passbase.R;
@@ -16,19 +18,38 @@ public class MainActivity extends AppCompatActivity {
     private OptionsAnimator optionsAnimator;
     SelectionDisplay selectionDisplay;
 
-    public void setOptionsAnimator(OptionsAnimator anim) { optionsAnimator = anim; }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
         PasswordDBHelper dbHelper = new PasswordDBHelper(this);
         passwordDB = dbHelper.getWritableDatabase();
 
-        new GlobalLayoutListenerAdapter(this);
+        new GlobalLayoutListenerAdapter();
         selectionDisplay = new SelectionDisplay(this);
     }
+
+    private void setOptionsAnimator(OptionsAnimator anim) { optionsAnimator = anim; }
+
+    private class GlobalLayoutListenerAdapter {
+        private ViewTreeObserver.OnGlobalLayoutListener listener;
+
+        /**Attaches a GlobalLayoutListener to receive the y-position of the closed-state
+         * options menu, then automatically instantiates the MainActivity OptionsAnimator
+         * and detaches the listener.*/
+        private GlobalLayoutListenerAdapter() {
+            View setupY = findViewById(R.id.fab_optionAddTuple);
+
+            setupY.getViewTreeObserver().addOnGlobalLayoutListener(listener = () -> {
+                setOptionsAnimator(new OptionsAnimator(MainActivity.this, setupY.getY()));
+                setupY.getViewTreeObserver().removeOnGlobalLayoutListener(listener);
+            });
+        }
+    }
+
+
 
     public void onDisplayUpdate(String[] attributes) {
         selectionDisplay.onDisplayUpdate(attributes);

@@ -17,7 +17,7 @@ public class ApplockPickerActivity extends AppCompatActivity {
     }
 
     public void orderlessPattern(View v) {
-        Intent orderlessPatternIntent = new Intent(this, SetOLPatternActivity.class);
+        Intent orderlessPatternIntent = new Intent(this, SetPatternActivity.class);
         startActivity(orderlessPatternIntent);
     }
 }
