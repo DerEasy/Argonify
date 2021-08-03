@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TableLayout
-        android:id="@+id/table_setOLPattern"
+        android:id="@+id/table_requestOLPattern"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -484,70 +484,26 @@
     </TableLayout>
 
     <TextView
-        android:id="@+id/txt_OLPatternInstructions"
+        android:id="@+id/txt_OLPRequestDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="12dp"
-        android:textColor="?attr/colorPrimaryVariant"
-        android:text="@string/OLPattern_instructions"
-        app:layout_constraintBottom_toTopOf="@+id/txt_OLPatternRequirements"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/txt_OLPatternRequirements"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
         android:textColor="?attr/colorPrimaryVariant"
-        android:text="@string/OLPattern_requirements"
-        app:layout_constraintBottom_toTopOf="@+id/table_setOLPattern"
+        android:text="@string/confirm_action_OLPattern"
+        app:layout_constraintBottom_toTopOf="@+id/table_requestOLPattern"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_OLPatternPossibleCombos"
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:textColor="?attr/colorPrimaryVariant"
-        android:text="@string/possible_combinations"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/table_setOLPattern" />
-
-    <TextView
-        android:id="@+id/txt_OLPatternComboAmount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/rectangle"
-        android:gravity="center"
-        android:text="1"
-        android:textColor="@color/whiteText"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/table_setOLPattern"
-        app:layout_constraintStart_toStartOf="@+id/table_setOLPattern"
-        app:layout_constraintTop_toBottomOf="@+id/txt_OLPatternPossibleCombos"
-        tools:ignore="HardcodedText" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:gravity="end|bottom"
+        app:icon="@drawable/ic_round_check_24"
+        android:text="@string/confirm"
+        android:onClick="onPatternConfirmation"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:contentDescription="@string/save_new_pattern"
-        android:gravity="end|bottom"
-        android:src="@drawable/ic_round_arrow_forward_24"
-        android:onClick="onPatternConfirmation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

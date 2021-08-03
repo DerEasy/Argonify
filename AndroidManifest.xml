@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Passbase">
         <activity
+            android:name=".Settings.RequestOLPatternActivity"
+            android:exported="true" />
+        <activity
             android:name=".Settings.SetOLPatternActivity"
             android:exported="true" />
         <activity

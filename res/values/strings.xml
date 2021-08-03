@@ -51,6 +51,8 @@
     <string name="OLPattern_requirements">Pattern must have at least 4 selected cells.</string>
     <string name="possible_combinations">Possible combinations:</string>
     <string name="save_new_pattern">Save new pattern</string>
+    <string name="confirm_action_OLPattern">Confirm your action by drawing your pattern.</string>
+    <string name="confirm">Confirm</string>
     <!--Comment end-->
 
 </resources>

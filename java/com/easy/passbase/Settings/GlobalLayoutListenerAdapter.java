@@ -3,22 +3,35 @@ package com.easy.passbase.Settings;
 import android.view.ViewTreeObserver;
 import android.widget.TableLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.easy.passbase.R;
 
 class GlobalLayoutListenerAdapter {
-    private final SetOLPatternActivity patternActivity;
+    private SetOLPatternActivity setPatternActivity;
+    private RequestOLPatternActivity requestPatternActivity;
     private final TableLayout table;
     private ViewTreeObserver.OnGlobalLayoutListener listener;
 
-    public GlobalLayoutListenerAdapter(SetOLPatternActivity patternActivity) {
-        this.patternActivity = patternActivity;
-        table = patternActivity.findViewById(R.id.table_setOLPattern);
+    public GlobalLayoutListenerAdapter(AppCompatActivity patternActivity) {
+        if (patternActivity instanceof SetOLPatternActivity) {
+            setPatternActivity = (SetOLPatternActivity) patternActivity;
+            table = setPatternActivity.findViewById(R.id.table_setOLPattern);
+        } else {
+            requestPatternActivity = (RequestOLPatternActivity) patternActivity;
+            table = requestPatternActivity.findViewById(R.id.table_requestOLPattern);
+        }
+
         attach();
     }
 
     private void attach() {
         table.getViewTreeObserver().addOnGlobalLayoutListener(listener = () -> {
-            patternActivity.onTableInitialisation(table.getWidth());
+            if (setPatternActivity != null)
+                setPatternActivity.onTableInitialisation(table.getWidth());
+            else
+                requestPatternActivity.onTableInitialisation(table.getWidth());
+
             detach();
         });
     }
