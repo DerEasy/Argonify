@@ -11,13 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_setPatternRequirements"
         tools:ignore="ContentDescription">
 
         <TableRow>
@@ -29,7 +27,8 @@
                 android:onClick="onCellClick"
                 android:scaleType="fitCenter"
                 android:src="@drawable/pattern_rectangle_off"
-                android:tag="00" />
+                android:tag="00"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:layout_width="47dp"
@@ -489,39 +488,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="42dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="12dp"
-        android:textColor="?attr/colorPrimaryVariant"
         android:text="@string/setPattern_instructions"
-        app:layout_constraintBottom_toTopOf="@+id/txt_setPatternRequirements"
+        android:textColor="?attr/colorPrimaryVariant"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_setPatternRequirements"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
-        android:textColor="?attr/colorPrimaryVariant"
         android:text="@string/setPattern_requirements"
-        app:layout_constraintBottom_toTopOf="@+id/grid_setPattern"
+        android:textColor="?attr/colorPrimaryVariant"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_setPatternInstructions" />
 
     <TextView
         android:id="@+id/txt_setPatternComboDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
-        android:textColor="?attr/colorPrimaryVariant"
         android:text="@string/possible_combinations"
+        android:textColor="?attr/colorPrimaryVariant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grid_setPattern" />
+        app:layout_constraintTop_toBottomOf="@+id/ibt_setPatternUndo" />
 
     <TextView
         android:id="@+id/txt_setPatternComboAmount"
@@ -539,6 +538,30 @@
         app:layout_constraintStart_toStartOf="@+id/grid_setPattern"
         app:layout_constraintTop_toBottomOf="@+id/txt_setPatternComboDescription"
         tools:ignore="HardcodedText" />
+
+    <ImageButton
+        android:id="@+id/ibt_setPatternUndo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:onClick="onUndo"
+        android:src="@drawable/ic_round_undo_24"
+        app:layout_constraintEnd_toEndOf="@+id/grid_setPattern"
+        app:layout_constraintTop_toBottomOf="@+id/grid_setPattern"
+        android:contentDescription="@string/undo" />
+
+    <ImageButton
+        android:id="@+id/ibt_setPatternClear"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="12dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:onClick="onClear"
+        android:src="@drawable/ic_round_clear_24"
+        app:layout_constraintEnd_toStartOf="@+id/ibt_setPatternUndo"
+        app:layout_constraintTop_toTopOf="@+id/ibt_setPatternUndo"
+        android:contentDescription="@string/clear" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_setPatternConfirm"

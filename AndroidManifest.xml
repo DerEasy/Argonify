@@ -11,10 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Passbase">
         <activity
-            android:name=".Settings.RequestPatternActivity"
+            android:name=".Settings.Pattern.RequestPatternActivity"
             android:exported="true" />
         <activity
-            android:name=".Settings.SetPatternActivity"
+            android:name=".Settings.Pattern.SetPatternActivity"
             android:exported="true" />
         <activity
             android:name=".Settings.ApplockPickerActivity"
