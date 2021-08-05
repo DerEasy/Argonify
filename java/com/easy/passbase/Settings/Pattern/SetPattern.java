@@ -5,7 +5,9 @@ import static com.easy.passbase.Settings.ThousandSeparator.thousandSeparatorForm
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.SeekBar;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.easy.passbase.R;
@@ -16,9 +18,9 @@ import java.math.BigDecimal;
 public class SetPattern extends Pattern implements ApplockStrings {
     private final SetPatternActivity setPatternActivity;
 
-    SetPattern(SetPatternActivity parentActivity, TableLayout grid) {
-        super(grid);
-        setPatternActivity = parentActivity;
+    SetPattern(SetPatternActivity.SetPatternInitialisation initData) {
+        super(initData.grid, initData.trafficRow, initData.bars);
+        setPatternActivity = initData.parentActivity;
     }
 
     @Override

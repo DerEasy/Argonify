@@ -15,7 +15,7 @@ public class RequestPattern extends Pattern implements ApplockStrings {
     private final String actionOnConfirm;
 
     RequestPattern(RequestPatternActivity.RequestPatternInitialisation initData) {
-        super(initData.grid);
+        super(initData.grid, initData.trafficRow, initData.bars);
         requestPatternActivity = initData.parentActivity;
         requestedPattern = initData.requestedPattern;
         actionOnConfirm = initData.actionOnConfirm;

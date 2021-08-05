@@ -27,8 +27,7 @@
                 android:onClick="onCellClick"
                 android:scaleType="fitCenter"
                 android:src="@drawable/pattern_rectangle_off"
-                android:tag="00"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:tag="00" />
 
             <ImageButton
                 android:layout_width="47dp"
@@ -490,7 +489,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="42dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/setPattern_instructions"
+        android:text="@string/set_pattern_instructions"
         android:textColor="?attr/colorPrimaryVariant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -503,7 +502,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/setPattern_requirements"
+        android:text="@string/set_pattern_requirements"
         android:textColor="?attr/colorPrimaryVariant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -514,13 +513,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
         android:text="@string/possible_combinations"
         android:textColor="?attr/colorPrimaryVariant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ibt_setPatternUndo" />
+        app:layout_constraintTop_toTopOf="@+id/fab_setPatternConfirm" />
 
     <TextView
         android:id="@+id/txt_setPatternComboAmount"
@@ -575,4 +574,71 @@
         android:onClick="onPatternConfirmation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/grid_setPattern"
+        app:layout_constraintTop_toBottomOf="@+id/grid_setPattern"
+        tools:ignore="ContentDescription">
+
+        <TableRow android:id="@+id/traffic_setPattern">
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onTrafficClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="0" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onTrafficClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="1" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onTrafficClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="2" />
+        </TableRow>
+
+    </TableLayout>
+
+    <SeekBar
+        android:id="@+id/seekBar_setPatternTop"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:max="9"
+        android:progress="0"
+        app:layout_constraintEnd_toEndOf="@+id/ibt_setPatternUndo"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <SeekBar
+        android:id="@+id/seekBar_setPatternBottom"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:max="9"
+        android:progress="0"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar_setPatternTop"
+        app:layout_constraintStart_toStartOf="@+id/seekBar_setPatternTop"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_setPatternTop" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

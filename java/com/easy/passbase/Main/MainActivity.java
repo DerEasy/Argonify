@@ -13,6 +13,7 @@ import com.easy.passbase.R;
 import com.easy.passbase.Settings.SettingsActivity;
 
 import static com.easy.passbase.Main.PasswordDB.passwordDB;
+import static com.easy.passbase.Settings.Argon2Utility.argonHash;
 
 public class MainActivity extends AppCompatActivity {
     private OptionsAnimator optionsAnimator;

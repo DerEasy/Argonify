@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TableLayout
-        android:id="@+id/table_reqPattern"
+        android:id="@+id/grid_reqPattern"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -502,8 +502,8 @@
         android:contentDescription="@string/undo"
         android:onClick="onUndo"
         android:src="@drawable/ic_round_undo_24"
-        app:layout_constraintEnd_toEndOf="@+id/table_reqPattern"
-        app:layout_constraintTop_toBottomOf="@+id/table_reqPattern" />
+        app:layout_constraintEnd_toEndOf="@+id/grid_reqPattern"
+        app:layout_constraintTop_toBottomOf="@+id/grid_reqPattern" />
 
     <ImageButton
         android:id="@+id/ibt_reqPatternClear"
@@ -527,5 +527,71 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/grid_reqPattern"
+        app:layout_constraintTop_toBottomOf="@+id/grid_reqPattern"
+        tools:ignore="ContentDescription">
+
+        <TableRow android:id="@+id/traffic_reqPattern">
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onTrafficClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="0" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onTrafficClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="1" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/transparent"
+                android:onClick="onTrafficClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pattern_rectangle_off"
+                android:tag="2" />
+        </TableRow>
+
+    </TableLayout>
+
+    <SeekBar
+        android:id="@+id/seekBar_reqPatternTop"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:max="9"
+        android:progress="0"
+        app:layout_constraintEnd_toEndOf="@+id/ibt_reqPatternUndo"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+
+    <SeekBar
+        android:id="@+id/seekBar_reqPatternBottom"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:max="9"
+        android:progress="0"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar_reqPatternTop"
+        app:layout_constraintStart_toStartOf="@+id/seekBar_reqPatternTop"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_reqPatternTop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

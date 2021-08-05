@@ -8,7 +8,6 @@ public interface ApplockStrings {
     String EMPTY = "";
 
     //Applock types
-    String PIN = "PIN";
     String PASSWORD = "PASSWORD";
     String PATTERN = "PATTERN";
 
