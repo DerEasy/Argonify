@@ -58,6 +58,7 @@
     <string name="undo">Undo</string>
     <string name="clear">Clear</string>
     <string name="set_password_requirements">Password must contain at least 8 characters.</string>
+    <string name="encrypting">Encrypting...</string>
     <!--Comment end-->
 
 </resources>

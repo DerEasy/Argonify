@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/backgroundColor"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:background="?attr/backgroundColor">
 
     <TableLayout
         android:id="@+id/grid_reqPattern"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/trafficGrid_reqPattern"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_reqPatternReason"
         tools:ignore="ContentDescription">
 
         <TableRow>
@@ -483,59 +483,73 @@
     </TableLayout>
 
     <TextView
+        android:id="@+id/txt_reqPatternError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toTopOf="@+id/txt_reqPatternReason"
+        app:layout_constraintEnd_toEndOf="@+id/txt_reqPatternReason"
+        app:layout_constraintStart_toStartOf="@+id/txt_reqPatternReason"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/txt_reqPatternReason"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="78dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/confirm_action_pattern"
         android:textColor="?attr/colorPrimaryVariant"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/grid_reqPattern"
+        app:layout_constraintEnd_toEndOf="@+id/grid_reqPattern"
+        app:layout_constraintStart_toStartOf="@+id/grid_reqPattern" />
 
     <ImageButton
         android:id="@+id/ibt_reqPatternUndo"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
         android:background="?android:selectableItemBackgroundBorderless"
         android:contentDescription="@string/undo"
         android:onClick="onUndo"
         android:src="@drawable/ic_round_undo_24"
-        app:layout_constraintEnd_toEndOf="@+id/grid_reqPattern"
-        app:layout_constraintTop_toBottomOf="@+id/grid_reqPattern" />
+        app:layout_constraintEnd_toEndOf="@+id/seekBar_reqPatternTop"
+        app:layout_constraintTop_toTopOf="@+id/ibt_reqPatternClear" />
 
     <ImageButton
         android:id="@+id/ibt_reqPatternClear"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="12dp"
         android:background="?android:selectableItemBackgroundBorderless"
         android:contentDescription="@string/clear"
         android:onClick="onClear"
         android:src="@drawable/ic_round_clear_24"
         app:layout_constraintEnd_toStartOf="@+id/ibt_reqPatternUndo"
-        app:layout_constraintTop_toTopOf="@+id/ibt_reqPatternUndo" />
+        app:layout_constraintTop_toBottomOf="@+id/grid_reqPattern" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/extendedFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:icon="@drawable/ic_round_check_24"
-        android:text="@string/confirm"
-        android:onClick="onPatternConfirmation"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:onClick="onPatternConfirmation"
+        android:text="@string/confirm"
+        app:icon="@drawable/ic_round_check_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
 
     <TableLayout
-        android:id="@+id/tableLayout2"
-        android:layout_width="wrap_content"
+        android:id="@+id/trafficGrid_reqPattern"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar_reqPatternTop"
+        app:layout_constraintEnd_toEndOf="@+id/grid_reqPattern"
         app:layout_constraintStart_toStartOf="@+id/grid_reqPattern"
-        app:layout_constraintTop_toBottomOf="@+id/grid_reqPattern"
         tools:ignore="ContentDescription">
 
         <TableRow android:id="@+id/traffic_reqPattern">
@@ -573,25 +587,27 @@
     <SeekBar
         android:id="@+id/seekBar_reqPatternTop"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="0dp"
+        android:layout_width="329dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:max="9"
         android:progress="0"
-        app:layout_constraintEnd_toEndOf="@+id/ibt_reqPatternUndo"
-        app:layout_constraintStart_toStartOf="@+id/tableLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+        app:layout_constraintBottom_toTopOf="@+id/seekBar_reqPatternBottom"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar_reqPatternBottom"
+        app:layout_constraintStart_toStartOf="@+id/seekBar_reqPatternBottom" />
 
     <SeekBar
         android:id="@+id/seekBar_reqPatternBottom"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="0dp"
+        android:layout_width="329dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
         android:max="9"
         android:progress="0"
-        app:layout_constraintEnd_toEndOf="@+id/seekBar_reqPatternTop"
-        app:layout_constraintStart_toStartOf="@+id/seekBar_reqPatternTop"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar_reqPatternTop" />
+        app:layout_constraintBottom_toTopOf="@+id/extendedFloatingActionButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

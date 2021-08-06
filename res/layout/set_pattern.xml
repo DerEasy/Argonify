@@ -8,7 +8,7 @@
 
     <TableLayout
         android:id="@+id/grid_setPattern"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
@@ -508,36 +508,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_setPatternInstructions" />
 
-    <TextView
-        android:id="@+id/txt_setPatternComboDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/possible_combinations"
-        android:textColor="?attr/colorPrimaryVariant"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fab_setPatternConfirm" />
-
-    <TextView
-        android:id="@+id/txt_setPatternComboAmount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/rect_round_green"
-        android:gravity="center"
-        android:text="1"
-        android:textColor="@color/whiteText"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/grid_setPattern"
-        app:layout_constraintStart_toStartOf="@+id/grid_setPattern"
-        app:layout_constraintTop_toBottomOf="@+id/txt_setPatternComboDescription"
-        tools:ignore="HardcodedText" />
-
     <ImageButton
         android:id="@+id/ibt_setPatternUndo"
         android:layout_width="40dp"
@@ -576,10 +546,13 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="wrap_content"
+        android:id="@+id/trafficGrid_setPattern"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/grid_setPattern"
         app:layout_constraintStart_toStartOf="@+id/grid_setPattern"
         app:layout_constraintTop_toBottomOf="@+id/grid_setPattern"
         tools:ignore="ContentDescription">
@@ -625,8 +598,8 @@
         android:max="9"
         android:progress="0"
         app:layout_constraintEnd_toEndOf="@+id/ibt_setPatternUndo"
-        app:layout_constraintStart_toStartOf="@+id/tableLayout"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+        app:layout_constraintStart_toStartOf="@+id/trafficGrid_setPattern"
+        app:layout_constraintTop_toBottomOf="@+id/trafficGrid_setPattern" />
 
     <SeekBar
         android:id="@+id/seekBar_setPatternBottom"
@@ -639,6 +612,18 @@
         app:layout_constraintEnd_toEndOf="@+id/seekBar_setPatternTop"
         app:layout_constraintStart_toStartOf="@+id/seekBar_setPatternTop"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_setPatternTop" />
+
+    <TextView
+        android:id="@+id/txt_setPatternError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="172dp"
+        android:textColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_setPatternBottom" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,7 +31,7 @@ public class PasswordGenerator {
         char[] l = "abcdefghijklmnopqrstuvwxyz".toCharArray();
         char[] u = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
         char[] n = "0123456789".toCharArray();
-        char[] s = "$*.[]{}()?-\"!@#%&/\\,><':;|_".toCharArray();
+        char[] s = "$*.[]{}()?~-\"!@#%&/\\,><':;|_".toCharArray();
 
         for (char c : l)
             LOWERCASE.add(c);

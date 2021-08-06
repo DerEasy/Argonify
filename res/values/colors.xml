@@ -11,8 +11,11 @@
     <color name="darkGrey">#171717</color>
     <color name="green">#43d96c</color>
     <color name="darkGreen">#C833a652</color>
+    <color name="darkGreenOpaque">#33a652</color>
     <color name="forestGreen">#DC277d3e</color>
     <color name="buttonGreen">#AA277D3E</color>
+    <color name="red">#ff5e5e</color>
+    <color name="darkRed">#c74040</color>
 
     <color name="grey">#303030</color>
     <color name="whiteText">#DCFFFFFF</color>

@@ -1,29 +1,24 @@
 package com.easy.passbase.Settings.Pattern;
 
-import static com.easy.passbase.Settings.Argon2Utility.matchesArgonHash;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.widget.Toast;
 
-import com.easy.passbase.Settings.ApplockStrings;
-
-public class RequestPattern extends Pattern implements ApplockStrings {
+public class RequestPattern extends Pattern {
     private final RequestPatternActivity requestPatternActivity;
     private final String requestedPattern;
     private final String actionOnConfirm;
 
     RequestPattern(RequestPatternActivity.RequestPatternInitialisation initData) {
-        super(initData.grid, initData.trafficRow, initData.bars);
-        requestPatternActivity = initData.parentActivity;
+        super(initData);
+        requestPatternActivity = (RequestPatternActivity) initData.parentActivity;
         requestedPattern = initData.requestedPattern;
         actionOnConfirm = initData.actionOnConfirm;
     }
 
     @Override
     void onPatternConfirmation() {
-        if (matchesArgonHash(getPattern(), requestedPattern)) {
+        if (noErrorsExtended()) {
             switch (actionOnConfirm) {
                 case RUN_SET_PATTERN:
                     Intent patternIntent = new Intent(requestPatternActivity, SetPatternActivity.class);
@@ -40,10 +35,18 @@ public class RequestPattern extends Pattern implements ApplockStrings {
             }
             requestPatternActivity.finish();
         }
-        else
-            Toast.makeText(requestPatternActivity, PATTERN_ERROR_MISMATCH, Toast.LENGTH_SHORT).show();
+    }
+
+    boolean noErrorsExtended() {
+        if (!noErrors())
+            return false;
+        if (!inputPatternMatches(requestedPattern)) {
+            txtError.setText(PATTERN_ERROR_MISMATCH);
+            return false;
+        }
+        return true;
     }
 
     @Override
-    void onGridUpdate() {}
+    void onCellToggled() {}
 }

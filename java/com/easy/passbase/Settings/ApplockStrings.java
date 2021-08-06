@@ -26,4 +26,8 @@ public interface ApplockStrings {
 
     //Pattern errors
     String PATTERN_ERROR_MISMATCH = "Pattern does not match";
+    String PATTERN_ERROR_MISSING_FAVOURITE = "You must select one favourite cell.";
+    String PATTERN_ERROR_MISSING_TRAFFICLIGHT = "You must select one of the 3 cells at the bottom.";
+    String PATTERN_ERROR_MISSING_SEEKBAR = "You must set both sliders to a value.";
+    String PATTERN_ERROR_TRAFFICLIGHT_INDEX = "Traffic light index out of range.";
 }

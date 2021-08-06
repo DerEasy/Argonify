@@ -1,13 +1,7 @@
 package com.easy.passbase.Settings.Pattern;
 
-import static com.easy.passbase.Settings.Pattern.Pattern.BOTTOM_BAR_INDEX;
-import static com.easy.passbase.Settings.Pattern.Pattern.TOP_BAR_INDEX;
-
 import android.os.Bundle;
 import android.view.View;
-import android.widget.SeekBar;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,37 +21,26 @@ public class RequestPatternActivity extends AppCompatActivity implements Applock
         requestPattern = new RequestPattern(new RequestPatternInitialisation());
     }
 
-    class RequestPatternInitialisation {
-        final RequestPatternActivity parentActivity;
-        final TableLayout grid;
-        final TableRow trafficRow;
-        final SeekBar[] bars;
-        final String requestedPattern;
-        final String actionOnConfirm;
+    class RequestPatternInitialisation extends PatternInitialisation {
+        final String requestedPattern = initialiseString(REQUESTED_PATTERN);
+        final String actionOnConfirm = initialiseString(ACTION_ON_CONFIRM);
 
         RequestPatternInitialisation() {
-            parentActivity = RequestPatternActivity.this;
-            grid = findViewById(R.id.grid_reqPattern);
-            trafficRow = findViewById(R.id.traffic_reqPattern);
-            bars = getSeekBars();
-
-            String p = getIntent().getStringExtra(REQUESTED_PATTERN);
-            if (p != null) requestedPattern = p;
-            else           requestedPattern = EMPTY;
-
-            String a = getIntent().getStringExtra(ACTION_ON_CONFIRM);
-            if (a != null) actionOnConfirm = a;
-            else           actionOnConfirm = EMPTY;
+            super(
+                    RequestPatternActivity.this,
+                    findViewById(R.id.grid_reqPattern),
+                    findViewById(R.id.traffic_reqPattern),
+                    findViewById(R.id.txt_reqPatternError),
+                    getSeekBars(
+                            findViewById(R.id.seekBar_reqPatternTop),
+                            findViewById(R.id.seekBar_reqPatternBottom)
+                    )
+            );
         }
 
-        private SeekBar[] getSeekBars() {
-            SeekBar[] bars = new SeekBar[2];
-            bars[TOP_BAR_INDEX] = findViewById(R.id.seekBar_reqPatternTop);
-            bars[BOTTOM_BAR_INDEX] = findViewById(R.id.seekBar_reqPatternBottom);
-            bars[TOP_BAR_INDEX].getThumb().setAlpha(0);
-            bars[BOTTOM_BAR_INDEX].getThumb().setAlpha(0);
-
-            return bars;
+        private String initialiseString(String intentExtra) {
+            String temp = getIntent().getStringExtra(intentExtra);
+            return temp != null ? temp : EMPTY;
         }
     }
 
