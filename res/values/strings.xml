@@ -50,7 +50,7 @@
     <string name="enhanced_pattern">Enhanced Pattern</string>
     <string name="settings">Settings</string>
     <string name="set_pattern_instructions">Draw a pattern on the grid by clicking on the cells.</string>
-    <string name="set_pattern_requirements">Pattern must have at least 8 selected cells.</string>
+    <string name="set_pattern_requirements">Pattern must have at least 6 selected cells.</string>
     <string name="possible_combinations">Possible combinations:</string>
     <string name="save_new_pattern">Save new pattern</string>
     <string name="confirm_action_pattern">Confirm your action by drawing your pattern.</string>
@@ -58,7 +58,8 @@
     <string name="undo">Undo</string>
     <string name="clear">Clear</string>
     <string name="set_password_requirements">Password must contain at least 8 characters.</string>
-    <string name="encrypting">Encrypting...</string>
+    <string name="encrypting">Encrypting…</string>
+    <string name="decrypting">Decrypting…</string>
     <!--Comment end-->
 
 </resources>

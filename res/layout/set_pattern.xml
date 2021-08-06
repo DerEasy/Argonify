@@ -613,17 +613,28 @@
         app:layout_constraintStart_toStartOf="@+id/seekBar_setPatternTop"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_setPatternTop" />
 
-    <TextView
-        android:id="@+id/txt_setPatternError"
+    <ProgressBar
+        android:id="@+id/load_setPatternLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="163dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="172dp"
-        android:textColor="@color/red"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar_setPatternBottom" />
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_setPatternConfirm"
+        app:layout_constraintStart_toStartOf="@+id/seekBar_setPatternBottom"
+        app:layout_constraintTop_toTopOf="@+id/fab_setPatternConfirm" />
+
+    <TextView
+        android:id="@+id/txt_setPatternLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/encrypting"
+        android:textSize="16sp"
+        android:textColor="?attr/colorPrimaryVariant"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/load_setPatternLoading"
+        app:layout_constraintStart_toEndOf="@+id/load_setPatternLoading"
+        app:layout_constraintTop_toTopOf="@+id/load_setPatternLoading" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,7 +24,7 @@ abstract class Pattern implements ApplockStrings {
     final static int TOP_BAR_INDEX = 0;
     final static int BOTTOM_BAR_INDEX = 1;
 
-    final static int MIN_SELECTABLE_CELLS = 8;
+    final static int MIN_SELECTABLE_CELLS = 6;
     final static int CELLS_PER_SIDE = 7;
     final static int TRAFFIC_CELLS = 3;
     final static int SEEKBAR_AMOUNT = 2;
@@ -70,6 +70,7 @@ abstract class Pattern implements ApplockStrings {
                 }
                 public void onStopTrackingTouch(SeekBar seekBar) {
                     usedSeekBar[TOP_BAR_INDEX] = true;
+                    onControlStateChange();
                 }
             });
 
@@ -82,6 +83,7 @@ abstract class Pattern implements ApplockStrings {
                 }
                 public void onStopTrackingTouch(SeekBar seekBar) {
                     usedSeekBar[BOTTOM_BAR_INDEX] = true;
+                    onControlStateChange();
                 }
             });
         }
@@ -124,7 +126,6 @@ abstract class Pattern implements ApplockStrings {
             txtError.setText(PATTERN_ERROR_MISSING_SEEKBAR);
             return false;
         }
-
         return true;
     }
 
@@ -139,6 +140,8 @@ abstract class Pattern implements ApplockStrings {
             removeOldFavCell(v);
             setFavCell(v, cellTag, row, column);
         }
+
+        onControlStateChange();
     }
 
     private void turnOnCell(View v, String cellTag, int row, int column) {
@@ -146,7 +149,6 @@ abstract class Pattern implements ApplockStrings {
         cellState[row][column] = !cellState[row][column];
         cell[row][column].setImageDrawable(AppCompatResources.getDrawable(v.getContext(), R.drawable.pattern_rectangle_on));
         ++selectedCells;
-        onCellToggled();
     }
 
     private void turnOffCell(View v, int row, int column) {
@@ -154,7 +156,6 @@ abstract class Pattern implements ApplockStrings {
         cell[row][column].setImageDrawable(AppCompatResources.getDrawable(v.getContext(), R.drawable.pattern_rectangle_off));
         patternData.pop();
         --selectedCells;
-        onCellToggled();
     }
 
     private void setFavCell(View v, String cellTag, int row, int column) {
@@ -170,15 +171,16 @@ abstract class Pattern implements ApplockStrings {
         }
     }
 
+    void onTrafficClick(View v) {
+        trafficData = Integer.parseInt((String) v.getTag());
+        setTrafficLight(v);
+        onControlStateChange();
+    }
+
     private void setTrafficLight(View v) {
         for (int i = 0; i < TRAFFIC_CELLS; ++i)
             traffic[i].setImageDrawable(AppCompatResources.getDrawable(v.getContext(), R.drawable.pattern_rectangle_off));
         traffic[trafficData].setImageDrawable(AppCompatResources.getDrawable(v.getContext(), R.drawable.pattern_rectangle_on));
-    }
-
-    void onTrafficClick(View v) {
-        trafficData = Integer.parseInt((String) v.getTag());
-        setTrafficLight(v);
     }
 
     @SuppressWarnings("ConstantConditions")
@@ -192,6 +194,7 @@ abstract class Pattern implements ApplockStrings {
         int column = Integer.parseInt(String.valueOf(patternData.peek().charAt(TAG_COLUMN_INDEX)));
 
         turnOffCell(v, row, column);
+        onControlStateChange();
     }
 
     void onClear(View v) {
@@ -210,5 +213,5 @@ abstract class Pattern implements ApplockStrings {
     }
 
     abstract void onPatternConfirmation();
-    abstract void onCellToggled();
+    abstract void onControlStateChange();
 }

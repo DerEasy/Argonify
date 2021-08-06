@@ -3,6 +3,9 @@ package com.easy.passbase.Settings.Pattern;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.view.View;
+
+import com.easy.passbase.R;
 
 public class RequestPattern extends Pattern {
     private final RequestPatternActivity requestPatternActivity;
@@ -38,15 +41,23 @@ public class RequestPattern extends Pattern {
     }
 
     boolean noErrorsExtended() {
-        if (!noErrors())
+        if (!noErrors()) {
+            hideLoading();
             return false;
+        }
         if (!inputPatternMatches(requestedPattern)) {
+            hideLoading();
             txtError.setText(PATTERN_ERROR_MISMATCH);
             return false;
         }
         return true;
     }
 
+    private void hideLoading() {
+        requestPatternActivity.findViewById(R.id.load_reqPatternLoading).setVisibility(View.INVISIBLE);
+        requestPatternActivity.findViewById(R.id.txt_reqPatternLoading).setVisibility(View.INVISIBLE);
+    }
+
     @Override
-    void onCellToggled() {}
+    void onControlStateChange() {}
 }

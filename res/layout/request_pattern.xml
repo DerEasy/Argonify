@@ -610,4 +610,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/load_reqPatternLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/extendedFloatingActionButton"
+        app:layout_constraintStart_toStartOf="@+id/seekBar_reqPatternBottom"
+        app:layout_constraintTop_toTopOf="@+id/extendedFloatingActionButton" />
+
+    <TextView
+        android:id="@+id/txt_reqPatternLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/decrypting"
+        android:textColor="?attr/colorPrimaryVariant"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/load_reqPatternLoading"
+        app:layout_constraintStart_toEndOf="@+id/load_reqPatternLoading"
+        app:layout_constraintTop_toTopOf="@+id/load_reqPatternLoading" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

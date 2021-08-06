@@ -1,9 +1,14 @@
 package com.easy.passbase.Settings.Pattern;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 
 import com.easy.passbase.R;
 
@@ -24,7 +29,7 @@ public class SetPatternActivity extends AppCompatActivity {
                     SetPatternActivity.this,
                     findViewById(R.id.grid_setPattern),
                     findViewById(R.id.traffic_setPattern),
-                    findViewById(R.id.txt_setPatternError),
+                    null,
                     getSeekBars(
                             findViewById(R.id.seekBar_setPatternTop),
                             findViewById(R.id.seekBar_setPatternBottom)
@@ -50,6 +55,12 @@ public class SetPatternActivity extends AppCompatActivity {
     }
 
     public void onPatternConfirmation(View v) {
-        setPattern.onPatternConfirmation();
+        showLoading();
+        new Handler(Looper.getMainLooper()).post(() -> setPattern.onPatternConfirmation());
+    }
+
+    private void showLoading() {
+        findViewById(R.id.load_setPatternLoading).setVisibility(View.VISIBLE);
+        findViewById(R.id.txt_setPatternLoading).setVisibility(View.VISIBLE);
     }
 }

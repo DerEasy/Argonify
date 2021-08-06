@@ -1,6 +1,8 @@
 package com.easy.passbase.Settings.Pattern;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.TextView;
 
@@ -66,6 +68,14 @@ public class RequestPatternActivity extends AppCompatActivity implements Applock
     }
 
     public void onPatternConfirmation(View v) {
-        requestPattern.onPatternConfirmation();
+        showLoading();
+        new Handler(Looper.getMainLooper()).post(() -> requestPattern.onPatternConfirmation());
+    }
+
+    private void showLoading() {
+        if (requestPattern.noErrors()) {
+            findViewById(R.id.load_reqPatternLoading).setVisibility(View.VISIBLE);
+            findViewById(R.id.txt_reqPatternLoading).setVisibility(View.VISIBLE);
+        }
     }
 }
