@@ -484,7 +484,7 @@
 
     <TextView
         android:id="@+id/txt_reqPatternError"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/red"
         app:layout_constraintBottom_toTopOf="@+id/txt_reqPatternReason"
@@ -496,7 +496,7 @@
         android:id="@+id/txt_reqPatternReason"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:textColor="?attr/colorPrimaryVariant"
         app:layout_constraintBottom_toTopOf="@+id/grid_reqPattern"
@@ -546,7 +546,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/seekBar_reqPatternTop"
         app:layout_constraintEnd_toEndOf="@+id/seekBar_reqPatternTop"
         app:layout_constraintStart_toStartOf="@+id/seekBar_reqPatternTop"
@@ -588,8 +588,8 @@
         android:id="@+id/seekBar_reqPatternTop"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="8dp"
         android:max="9"
         android:progress="0"
         app:layout_constraintBottom_toTopOf="@+id/seekBar_reqPatternBottom"
@@ -599,25 +599,24 @@
     <SeekBar
         android:id="@+id/seekBar_reqPatternBottom"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="329dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="16dp"
         android:max="9"
         android:progress="0"
         app:layout_constraintBottom_toTopOf="@+id/extendedFloatingActionButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/extendedFloatingActionButton"
+        app:layout_constraintStart_toStartOf="@+id/load_reqPatternLoading" />
 
     <ProgressBar
         android:id="@+id/load_reqPatternLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:indeterminate="true"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/extendedFloatingActionButton"
-        app:layout_constraintStart_toStartOf="@+id/seekBar_reqPatternBottom"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/extendedFloatingActionButton"
         tools:visibility="visible" />
 

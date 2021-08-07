@@ -12,13 +12,13 @@
         android:id="@+id/fab_options"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="24dp"
         android:contentDescription="@string/options"
         android:onClick="options"
         android:src="@drawable/ic_round_expand_more_24"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_selectTuple"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bt_selectTuple"
         tools:ignore="ImageContrastCheck" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -137,7 +137,7 @@
         android:id="@+id/bt_selectTuple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/rect_round_green"
         android:onClick="selectTuple"
         android:text="@string/select_tuple"
@@ -354,7 +354,7 @@
     <ImageButton
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:background="?android:selectableItemBackgroundBorderless"
         android:contentDescription="@string/settings"
         android:onClick="settings"
@@ -371,5 +371,16 @@
         app:layout_constraintBottom_toTopOf="@+id/bt_selectTuple"
         app:layout_constraintEnd_toEndOf="@+id/bt_selectTuple"
         app:layout_constraintStart_toStartOf="@+id/bt_selectTuple" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/app_icon_variant1_circle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
