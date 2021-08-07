@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.content.res.AppCompatResources;
 
+import com.easy.argonify.Main.TextDecryptor;
 import com.easy.argonify.R;
 import com.easy.argonify.Settings.ApplockStrings;
 

@@ -40,11 +40,13 @@ public class MainActivity extends AppCompatActivity {
          * options menu, then automatically instantiates the MainActivity OptionsAnimator
          * and detaches the listener.*/
         private GlobalLayoutListenerAdapter() {
-            View setupY = findViewById(R.id.fab_optionAddTuple);
+            View optionY = findViewById(R.id.fab_optionAddTuple);
+            View icon = findViewById(R.id.img_mainAppIcon);
 
-            setupY.getViewTreeObserver().addOnGlobalLayoutListener(listener = () -> {
-                setOptionsAnimator(new OptionsAnimator(MainActivity.this, setupY.getY()));
-                setupY.getViewTreeObserver().removeOnGlobalLayoutListener(listener);
+            optionY.getViewTreeObserver().addOnGlobalLayoutListener(listener = () -> {
+                setOptionsAnimator(new OptionsAnimator(MainActivity.this, optionY.getY()));
+                new AppIconAnimator(MainActivity.this);
+                optionY.getViewTreeObserver().removeOnGlobalLayoutListener(listener);
             });
         }
     }

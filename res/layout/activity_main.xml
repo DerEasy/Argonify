@@ -373,14 +373,29 @@
         app:layout_constraintStart_toStartOf="@+id/bt_selectTuple" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/img_mainAppIcon"
         android:layout_width="128dp"
         android:layout_height="128dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="0dp"
+        android:alpha="0"
+        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/app_icon_variant1_circle" />
+        app:srcCompat="@drawable/app_icon_variant1_circle"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/txt_mainAppIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        android:textColor="?attr/colorPrimaryVariant"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_mainAppIcon"
+        app:layout_constraintEnd_toEndOf="@+id/img_mainAppIcon"
+        app:layout_constraintStart_toStartOf="@+id/img_mainAppIcon"
+        tools:ignore="SpUsage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

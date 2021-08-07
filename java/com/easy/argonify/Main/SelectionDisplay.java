@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class SelectionDisplay {
     private final TextView[] txtTitle = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
     private final ImageButton[] ibtCopy = new ImageButton[AMOUNT_OF_COPY_BUTTONS];
     private final ImageButton ibtPasswordReveal;
+    private final ImageView appicon;
     private boolean isPasswordRevealed = false;
 
     SelectionDisplay(MainActivity parentActivity) {
@@ -54,6 +56,7 @@ public class SelectionDisplay {
         ibtCopy[INDEX_USERNAME - 1] = mainActivity.findViewById(R.id.ibt_copyUsername);
 
         ibtPasswordReveal = mainActivity.findViewById(R.id.ibt_selectPasswordReveal);
+        appicon = mainActivity.findViewById(R.id.img_mainAppIcon);
 
         attachPasswordRevealListener();
     }
@@ -91,6 +94,7 @@ public class SelectionDisplay {
         setCurrentPassword(attributes[INDEX_PASSWORD]);
         setCopyButtonVisibility();
         setPasswordRevealVisibility();
+        setAppIconVisibility();
         hidePassword();
     }
 
@@ -150,5 +154,19 @@ public class SelectionDisplay {
             ibtPasswordReveal.setVisibility(View.VISIBLE);
         else
             ibtPasswordReveal.setVisibility(View.INVISIBLE);
+    }
+
+    private void setAppIconVisibility() {
+        if (displayIsEmpty())
+            appicon.setVisibility(View.VISIBLE);
+        else
+            appicon.setVisibility(View.GONE);
+    }
+
+    private boolean displayIsEmpty() {
+        for (TextView txt : txtAttribute)
+            if (txt.getVisibility() == View.VISIBLE)
+                return false;
+        return true;
     }
 }

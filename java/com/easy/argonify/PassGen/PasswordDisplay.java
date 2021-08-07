@@ -10,6 +10,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.easy.argonify.Main.TextDecryptor;
 import com.easy.argonify.Main.TupleManipulation;
 import com.easy.argonify.R;
 import com.google.android.material.switchmaterial.SwitchMaterial;
