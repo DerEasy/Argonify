@@ -53,13 +53,16 @@
     <string name="set_pattern_requirements">Pattern must have at least 6 selected cells.</string>
     <string name="possible_combinations">Possible combinations:</string>
     <string name="save_new_pattern">Save new pattern</string>
-    <string name="confirm_action_pattern">Confirm your action by drawing your pattern.</string>
     <string name="confirm">Confirm</string>
     <string name="undo">Undo</string>
     <string name="clear">Clear</string>
     <string name="set_password_requirements">Password must contain at least 8 characters.</string>
     <string name="encrypting">Encrypting…</string>
     <string name="decrypting">Decrypting…</string>
+    <string name="pattern_requirement_length">At least 6 cells</string>
+    <string name="pattern_requirement_favourite">1 favourite cell</string>
+    <string name="pattern_requirement_trafficlight">1 triple cell</string>
+    <string name="pattern_requirement_sliders">Both sliders set</string>
     <!--Comment end-->
 
 </resources>

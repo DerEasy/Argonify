@@ -7,7 +7,7 @@ public class Argon2Utility {
             new Argon2PasswordEncoder(
                     16,
                     48,
-                    Math.max(Runtime.getRuntime().availableProcessors(), 1),
+                    Runtime.getRuntime().availableProcessors(),
                     1 << 15,
                     3
             );
