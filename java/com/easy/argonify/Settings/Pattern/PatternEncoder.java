@@ -48,10 +48,10 @@ class PatternEncoder implements ApplockStrings {
     }
 
     private ArrayList<String> getBasicPattern() {
-        ArrayList<String> flexibleRawPattern = new ArrayList<>(patternData.size() + 1);
-        flexibleRawPattern.addAll(patternData);
+        ArrayList<String> unfinishedRawPattern = new ArrayList<>(patternData.size() + 1);
+        unfinishedRawPattern.addAll(patternData);
 
-        return flexibleRawPattern;
+        return unfinishedRawPattern;
     }
 
     private ArrayList<String> putExtraCharacter(ArrayList<String> rawPattern, int index, String extraChar) {

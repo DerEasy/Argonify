@@ -21,7 +21,7 @@ public class SetPattern extends Pattern {
         Intent requestPatternIntent = new Intent(setPatternActivity, RequestPatternActivity.class);
         requestPatternIntent.putExtra(REQUESTED_PATTERN, getHashedPattern());
         requestPatternIntent.putExtra(ACTION_ON_CONFIRM, SAVE_PATTERN);
-        requestPatternIntent.putExtra(REQUEST_REASON, PATTERN_REDRAW_CONFIRM);
+        requestPatternIntent.putExtra(REQUEST_REASON, PATTERN_REASON_REDRAW_CONFIRM);
 
         setPatternActivity.startActivity(requestPatternIntent);
         setPatternActivity.finish();

@@ -34,6 +34,7 @@ public class SelectionDisplay {
     private final ImageButton[] ibtCopy = new ImageButton[AMOUNT_OF_COPY_BUTTONS];
     private final ImageButton ibtPasswordReveal;
     private final ImageView appicon;
+    private final TextView appname;
     private boolean isPasswordRevealed = false;
 
     SelectionDisplay(MainActivity parentActivity) {
@@ -56,7 +57,8 @@ public class SelectionDisplay {
         ibtCopy[INDEX_USERNAME - 1] = mainActivity.findViewById(R.id.ibt_copyUsername);
 
         ibtPasswordReveal = mainActivity.findViewById(R.id.ibt_selectPasswordReveal);
-        appicon = mainActivity.findViewById(R.id.img_mainAppIcon);
+        appicon = mainActivity.findViewById(R.id.img_mainAppName);
+        appname = mainActivity.findViewById(R.id.txt_mainAppIcon);
 
         attachPasswordRevealListener();
     }
@@ -113,7 +115,7 @@ public class SelectionDisplay {
             attribute = (String) txtAttribute[index].getText();
 
         ClipboardManager clipboard = (ClipboardManager) mainActivity.getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("Clipped " + MAIN_ATTRIBUTES[index], attribute);
+        ClipData clip = ClipData.newPlainText("Argonify " + MAIN_ATTRIBUTES[index], attribute);
         clipboard.setPrimaryClip(clip);
 
         Toast.makeText(
@@ -158,9 +160,9 @@ public class SelectionDisplay {
 
     private void setAppIconVisibility() {
         if (displayIsEmpty())
-            appicon.setVisibility(View.VISIBLE);
+            appicon.animate().alpha(1).setDuration(800);
         else
-            appicon.setVisibility(View.GONE);
+            appicon.animate().alpha(0).setDuration(800);
     }
 
     private boolean displayIsEmpty() {

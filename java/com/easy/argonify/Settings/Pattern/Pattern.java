@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.content.res.AppCompatResources;
 
-import com.easy.argonify.Main.TextDecryptor;
 import com.easy.argonify.R;
 import com.easy.argonify.Settings.ApplockStrings;
 
@@ -206,6 +205,11 @@ abstract class Pattern implements ApplockStrings {
     String getHashedPattern() {
         PatternEncoder encoder = new PatternEncoder(patternData, favCell, trafficData, barData);
         return encoder.getHashedPattern();
+    }
+
+    String getRawPattern() {
+        PatternEncoder encoder = new PatternEncoder(patternData, favCell, trafficData, barData);
+        return encoder.getRawPattern();
     }
 
     boolean inputPatternMatches(String requestedPattern) {

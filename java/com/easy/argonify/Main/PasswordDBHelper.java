@@ -1,13 +1,17 @@
 package com.easy.argonify.Main;
 
+import static com.easy.argonify.Main.PasswordDB.passwordDB;
+import static com.easy.argonify.Settings.ApplockStrings.APPLOCK;
+
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+import android.content.SharedPreferences;
+import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+import net.sqlcipher.database.SQLiteDatabase;
 
-public class PasswordDBHelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 1;
+import java.io.File;
+
+public class PasswordDBHelper {
     public static final int AMOUNT_OF_MAIN_ATTRIBUTES = 5;
     public static final String DATABASE_NAME = "pw.db";
 
@@ -27,9 +31,7 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
 
     public static final String[] MAIN_ATTRIBUTES = new String[AMOUNT_OF_MAIN_ATTRIBUTES];
 
-    public PasswordDBHelper(@Nullable Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-
+    static {
         //Puts the most used columns in an array for making iterations and loops easier
         //The order of the columns must ALWAYS be Name, Password, Email, Username, Notes
         MAIN_ATTRIBUTES[INDEX_NAME]     = COLUMN_NAME;
@@ -39,11 +41,18 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
         MAIN_ATTRIBUTES[INDEX_NOTES]    = COLUMN_NOTES;
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
+    public static boolean createDatabase(File databaseFile, String password) {
+        boolean dbErasure = false;
+        try {
+            passwordDB = SQLiteDatabase.openOrCreateDatabase(databaseFile, password, null);
+        } catch (RuntimeException exception) {
+            dbErasure = databaseFile.delete();
+            passwordDB = SQLiteDatabase.openOrCreateDatabase(databaseFile, password, null);
+        }
+
         final String SQL_CREATE_PASSWORD_TABLE =
-                                  "CREATE TABLE " +
-                TABLE_NAME      + " (" +
+                                  " CREATE TABLE IF NOT EXISTS " +
+                TABLE_NAME      + " ( " +
                 _ID             + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME     + " TEXT, " +
                 COLUMN_PASSWORD + " TEXT, " +
@@ -51,9 +60,8 @@ public class PasswordDBHelper extends SQLiteOpenHelper {
                 COLUMN_USERNAME + " TEXT, " +
                 COLUMN_NOTES    + " TEXT  " +
                                   " );";
-        db.execSQL(SQL_CREATE_PASSWORD_TABLE);
-    }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+        passwordDB.execSQL(SQL_CREATE_PASSWORD_TABLE);
+        return dbErasure;
+    }
 }

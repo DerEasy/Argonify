@@ -13,7 +13,7 @@ public class AppIconAnimator {
     private final TextDecryptor decryptor;
 
     AppIconAnimator(MainActivity parentActivity) {
-        icon = parentActivity.findViewById(R.id.img_mainAppIcon);
+        icon = parentActivity.findViewById(R.id.img_mainAppName);
         txt = parentActivity.findViewById(R.id.txt_mainAppIcon);
         decryptor = new TextDecryptor(txt, "ARGONIFY");
 

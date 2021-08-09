@@ -33,7 +33,6 @@ public class TextDecryptor {
 
     public void setDecryptionText(String text) {
         decryptionText = text;
-        currentText = new StringBuilder(decryptionText.length());
     }
 
     public void setShufflingSettings(int amount, int msTime) {

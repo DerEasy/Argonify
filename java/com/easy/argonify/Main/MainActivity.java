@@ -1,20 +1,30 @@
 package com.easy.argonify.Main;
 
-import static com.easy.argonify.Main.PasswordDB.passwordDB;
+import static com.easy.argonify.Main.PasswordDBHelper.DATABASE_NAME;
+import static com.easy.argonify.Main.PasswordDBHelper.createDatabase;
+import static net.sqlcipher.database.SQLiteDatabase.loadLibs;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.easy.argonify.PassGen.PassGenActivity;
 import com.easy.argonify.R;
+import com.easy.argonify.Settings.ApplockPickerActivity;
+import com.easy.argonify.Settings.ApplockStrings;
+import com.easy.argonify.Settings.Pattern.RequestPatternActivity;
 import com.easy.argonify.Settings.SettingsActivity;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.File;
+
+public class MainActivity extends AppCompatActivity implements ApplockStrings {
     private OptionsAnimator optionsAnimator;
     SelectionDisplay selectionDisplay;
 
@@ -24,14 +34,51 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
-        PasswordDBHelper dbHelper = new PasswordDBHelper(this);
-        passwordDB = dbHelper.getWritableDatabase();
+        if (hasApplock() && getIntent().getStringExtra(RAW_KEY) == null) {
+            showApplock();
+            finish();
+        } else {
+            initialiseDatabase();
+            initialiseMainDisplay();
+        }
+    }
 
+    private boolean hasApplock() {
+        SharedPreferences preferences = getSharedPreferences(APPLOCK, Context.MODE_PRIVATE);
+        if (preferences.getString(APPLOCK_TYPE, EMPTY).equals(EMPTY)) {
+            Intent applockIntent = new Intent(this, ApplockPickerActivity.class);
+            startActivity(applockIntent);
+            finish();
+            return false;
+        }
+        return true;
+    }
+
+    private void initialiseDatabase() {
+        loadLibs(this);
+
+        File databaseFile = getDatabasePath(DATABASE_NAME);
+        if (createDatabase(databaseFile, getIntent().getStringExtra(RAW_KEY)))
+            Toast.makeText(this, "An error has occurred. Database has been reset.", Toast.LENGTH_LONG).show();
+
+        getIntent().removeExtra(RAW_KEY);
+    }
+
+    private void initialiseMainDisplay() {
         new GlobalLayoutListenerAdapter();
         selectionDisplay = new SelectionDisplay(this);
     }
 
-    private void setOptionsAnimator(OptionsAnimator anim) { optionsAnimator = anim; }
+    private void showApplock() {
+        SharedPreferences preferences = getSharedPreferences(APPLOCK, Context.MODE_PRIVATE);
+        Intent applockRequest = new Intent(this, RequestPatternActivity.class);
+
+        applockRequest.putExtra(REQUESTED_PATTERN, preferences.getString(APPLOCK_KEY, null));
+        applockRequest.putExtra(ACTION_ON_CONFIRM, ALLOW_APP_ACCESS);
+        applockRequest.putExtra(REQUEST_REASON, PATTERN_REASON_APP_ACCESS);
+        startActivity(applockRequest);
+        finish();
+    }
 
     private class GlobalLayoutListenerAdapter {
         private ViewTreeObserver.OnGlobalLayoutListener listener;
@@ -41,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
          * and detaches the listener.*/
         private GlobalLayoutListenerAdapter() {
             View optionY = findViewById(R.id.fab_optionAddTuple);
-            View icon = findViewById(R.id.img_mainAppIcon);
 
             optionY.getViewTreeObserver().addOnGlobalLayoutListener(listener = () -> {
                 setOptionsAnimator(new OptionsAnimator(MainActivity.this, optionY.getY()));
@@ -50,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+    private void setOptionsAnimator(OptionsAnimator anim) { optionsAnimator = anim; }
 
 
 

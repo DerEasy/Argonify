@@ -2,7 +2,7 @@ package com.easy.argonify.Main;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteDatabase;
 
 import static com.easy.argonify.Main.PasswordDBHelper.COLUMN_NAME;
 import static com.easy.argonify.Main.PasswordDBHelper.TABLE_NAME;

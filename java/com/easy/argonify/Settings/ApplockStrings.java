@@ -4,7 +4,7 @@ public interface ApplockStrings {
     //General
     String APPLOCK = "APPLOCK";
     String APPLOCK_TYPE = "APPLOCK_TYPE";
-    String APPLOCK_PASS = "APPLOCK_PASS";
+    String APPLOCK_KEY = "APPLOCK_KEY";
     String EMPTY = "";
 
     //Applock types
@@ -15,14 +15,20 @@ public interface ApplockStrings {
     String REQUESTED_PATTERN = "REQUESTED_PATTERN";
     String ACTION_ON_CONFIRM = "ACTION_ON_CONFIRM";
     String REQUEST_REASON = "REQUEST_REASON";
+    String APP_ACCESS_GRANTED = "APP_ACCESS_GRANTED";
+    //Missing applock
+    String APPLOCK_IS_SET = "APPLOCK_IS_SET";
+    String RAW_KEY = "RAW_KEY";
 
     //Actions on confirmation
     String RUN_SET_PATTERN = "RUN_SET_PATTERN";
     String SAVE_PATTERN = "SAVE_PATTERN";
+    String ALLOW_APP_ACCESS = "ALLOW_APP_ACCESS";
 
     //Pattern request reasons
-    String PATTERN_SENSITIVE_DATA = "Draw your current pattern to change this setting.";
-    String PATTERN_REDRAW_CONFIRM = "Redraw the pattern to confirm the change.";
+    String PATTERN_REASON_SENSITIVE_DATA = "Draw your pattern to change this setting.";
+    String PATTERN_REASON_REDRAW_CONFIRM = "Redraw the pattern to confirm the change.";
+    String PATTERN_REASON_APP_ACCESS = "Draw your pattern to access the app.";
 
     //Pattern errors
     String PATTERN_ERROR_MISMATCH = "Pattern does not match.";

@@ -293,8 +293,8 @@
 
     <ImageButton
         android:id="@+id/ibt_copyPassword"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:layout_marginStart="8dp"
         android:background="?android:selectableItemBackgroundBorderless"
         android:contentDescription="@string/copy_password"
@@ -309,8 +309,8 @@
 
     <ImageButton
         android:id="@+id/ibt_copyEmail"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:background="?android:selectableItemBackgroundBorderless"
         android:contentDescription="@string/copy_email"
         android:onClick="copyAttributeToClipboard"
@@ -324,8 +324,8 @@
 
     <ImageButton
         android:id="@+id/ibt_copyUsername"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:background="?android:selectableItemBackgroundBorderless"
         android:contentDescription="@string/copy_username"
         android:onClick="copyAttributeToClipboard"
@@ -339,8 +339,8 @@
 
     <ImageButton
         android:id="@+id/ibt_selectPasswordReveal"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:layout_marginEnd="16dp"
         android:background="?android:selectableItemBackgroundBorderless"
         android:contentDescription="@string/toggle_password_revelation"
@@ -373,7 +373,7 @@
         app:layout_constraintStart_toStartOf="@+id/bt_selectTuple" />
 
     <ImageView
-        android:id="@+id/img_mainAppIcon"
+        android:id="@+id/img_mainAppName"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_marginBottom="0dp"
@@ -393,9 +393,9 @@
         android:textColor="?attr/colorPrimaryVariant"
         android:textSize="26dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/img_mainAppIcon"
-        app:layout_constraintEnd_toEndOf="@+id/img_mainAppIcon"
-        app:layout_constraintStart_toStartOf="@+id/img_mainAppIcon"
+        app:layout_constraintBottom_toBottomOf="@+id/img_mainAppName"
+        app:layout_constraintEnd_toEndOf="@+id/img_mainAppName"
+        app:layout_constraintStart_toStartOf="@+id/img_mainAppName"
         tools:ignore="SpUsage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
