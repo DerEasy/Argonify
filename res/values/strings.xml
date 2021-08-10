@@ -63,6 +63,8 @@
     <string name="pattern_requirement_favourite">1 favourite cell</string>
     <string name="pattern_requirement_trafficlight">1 triple cell</string>
     <string name="pattern_requirement_sliders">Both sliders set</string>
+    <string name="applock">Applock</string>
+    <string name="choose_app_protection">Choose how you want to protect your data.</string>
     <!--Comment end-->
 
 </resources>

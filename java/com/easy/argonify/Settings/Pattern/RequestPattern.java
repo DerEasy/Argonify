@@ -54,20 +54,15 @@ public class RequestPattern extends Pattern {
 
     boolean noErrorsExtended() {
         if (!noErrors()) {
-            hideLoading();
+            requestPatternActivity.hideLoading();
             return false;
         }
         if (!inputPatternMatches(requestedPattern)) {
-            hideLoading();
+            requestPatternActivity.hideLoading();
             txtError.setText(PATTERN_ERROR_MISMATCH);
             return false;
         }
         return true;
-    }
-
-    private void hideLoading() {
-        requestPatternActivity.findViewById(R.id.load_reqPatternLoading).setVisibility(View.INVISIBLE);
-        requestPatternActivity.findViewById(R.id.txt_reqPatternLoading).setVisibility(View.INVISIBLE);
     }
 
     @Override

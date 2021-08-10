@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements ApplockStrings {
         if (hasApplock() && getIntent().getStringExtra(RAW_KEY) == null) {
             showApplock();
             finish();
-        } else {
+        } else if (getIntent().getStringExtra(RAW_KEY) != null) {
             initialiseDatabase();
             initialiseMainDisplay();
         }

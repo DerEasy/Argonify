@@ -79,4 +79,9 @@ public class RequestPatternActivity extends AppCompatActivity implements Applock
             findViewById(R.id.txt_reqPatternLoading).setVisibility(View.VISIBLE);
         }
     }
+
+    void hideLoading() {
+        findViewById(R.id.load_reqPatternLoading).setVisibility(View.INVISIBLE);
+        findViewById(R.id.txt_reqPatternLoading).setVisibility(View.INVISIBLE);
+    }
 }

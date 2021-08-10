@@ -8,6 +8,8 @@ import androidx.appcompat.content.res.AppCompatResources;
 
 import com.easy.argonify.R;
 
+import java.math.BigDecimal;
+
 public class SetPattern extends Pattern {
     private final SetPatternActivity setPatternActivity;
 

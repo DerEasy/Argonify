@@ -10,9 +10,11 @@
 
     <color name="darkGrey">#171717</color>
     <color name="green">#43d96c</color>
+    <color name="greenTransparent">#CF43d96c</color>
     <color name="darkGreen">#C833a652</color>
     <color name="darkGreenOpaque">#33a652</color>
     <color name="forestGreen">#DC277d3e</color>
+    <color name="forestGreenOpaque">#277d3e</color>
     <color name="buttonGreen">#AA277D3E</color>
     <color name="red">#ff5e5e</color>
     <color name="darkRed">#c74040</color>

@@ -15,7 +15,6 @@ public interface ApplockStrings {
     String REQUESTED_PATTERN = "REQUESTED_PATTERN";
     String ACTION_ON_CONFIRM = "ACTION_ON_CONFIRM";
     String REQUEST_REASON = "REQUEST_REASON";
-    String APP_ACCESS_GRANTED = "APP_ACCESS_GRANTED";
     //Missing applock
     String APPLOCK_IS_SET = "APPLOCK_IS_SET";
     String RAW_KEY = "RAW_KEY";

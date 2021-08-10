@@ -27,16 +27,12 @@ class PatternEncoder implements ApplockStrings {
         this.barData = barData;
     }
 
-    @SuppressWarnings("ConstantConditions")
     String getRawPattern() {
-        ArrayList<String> rawPattern = getBasicPattern();
-        rawPattern = putExtraCharacter(rawPattern, rawPattern.indexOf(favCell), getExtraChar(barData));
+        ArrayList<String> basicPattern = getBasicPattern();
+        StringBuilder pattern = getEncodedPattern(basicPattern);
+        int favCellIndex = 1 + 3 * basicPattern.indexOf(favCell);
 
-        StringBuilder pattern = new StringBuilder();
-        for (String tag : rawPattern)
-            pattern.append(tag);
-
-        return pattern.toString();
+        return putExtraCharacter(pattern, favCellIndex, getExtraChar(barData));
     }
 
     String getHashedPattern() {
@@ -47,30 +43,68 @@ class PatternEncoder implements ApplockStrings {
         return matchesArgonHash(getRawPattern(), requestedPattern);
     }
 
-    private ArrayList<String> getBasicPattern() {
-        ArrayList<String> unfinishedRawPattern = new ArrayList<>(patternData.size() + 1);
-        unfinishedRawPattern.addAll(patternData);
+    private StringBuilder getEncodedPattern(ArrayList<String> basicPattern) {
+        StringBuilder encodedPattern = new StringBuilder(basicPattern.size() * 2);
 
-        return unfinishedRawPattern;
+        for (String tag : basicPattern)
+            encodedPattern.append(getEncodedCoordinate(tag));
+
+        return encodedPattern;
     }
 
-    private ArrayList<String> putExtraCharacter(ArrayList<String> rawPattern, int index, String extraChar) {
-        switch (trafficData) {
-            case 0: //LEFT
-                rawPattern.add(index, extraChar);
-                break;
-            case 1: //MIDDLE
-                final int MIDDLE_INDEX = 1;
-                StringBuilder tag = new StringBuilder(rawPattern.get(index));
-                tag.insert(MIDDLE_INDEX, extraChar);
-                rawPattern.set(index, tag.toString());
-                break;
-            case 2: //RIGHT
-                rawPattern.add(index + 1, extraChar);
-                break;
-            default:
-                throw new IndexOutOfBoundsException(PATTERN_ERROR_TRAFFICLIGHT_INDEX);
+    private ArrayList<String> getBasicPattern() {
+        ArrayList<String> basicPattern = new ArrayList<>(patternData.size());
+        basicPattern.addAll(patternData);
+
+        return basicPattern;
+    }
+
+    private String putExtraCharacter(StringBuilder encodedPattern, int index, String extraChar) {
+        encodedPattern.insert(index + trafficData, extraChar);
+        return encodedPattern.toString();
+    }
+
+    private String getEncodedCoordinate(String coord) {
+        if (coord.length() != 2)
+            throw new IllegalArgumentException("Coordinate did not have exactly 2 numbers in it.");
+
+        StringBuilder encodedCoord = new StringBuilder();
+        int asciiCodeOfY = coord.charAt(0);
+        int asciiCodeOfX = coord.charAt(1);
+        encodedCoord.append(asciiCodeOfY);
+        encodedCoord.append(asciiCodeOfX);
+
+        char leftMiddleNumber = encodedCoord.toString().charAt(1);
+        char rightMiddleNumber = encodedCoord.toString().charAt(2);
+
+        encodedCoord.deleteCharAt(2);
+        encodedCoord.setCharAt(1, getSingleDigitNumber(charToInt(leftMiddleNumber), charToInt(rightMiddleNumber)));
+
+        return shuffleASCIICoordinate(encodedCoord, coord);
+    }
+
+    private String shuffleASCIICoordinate(StringBuilder encodedCoord, String coord) {
+        encodedCoord.setCharAt(0, getSingleDigitNumber(encodedCoord.charAt(0), encodedCoord.charAt(1)));
+        encodedCoord.setCharAt(0, getSingleDigitNumber(encodedCoord.charAt(0), encodedCoord.charAt(2)));
+        encodedCoord.setCharAt(1, getSingleDigitNumber(encodedCoord.charAt(1), encodedCoord.charAt(2)));
+
+        if (Integer.parseInt(coord) % 2 == 0) {
+            char x = encodedCoord.charAt(2);
+            encodedCoord.setCharAt(2, encodedCoord.charAt(1));
+            encodedCoord.setCharAt(1, x);
         }
-        return rawPattern;
+
+        return encodedCoord.toString();
+    }
+
+    private char getSingleDigitNumber(int operand1, int operand2) {
+        if (operand1 + operand2 < 10)
+            return String.valueOf(operand1 + operand2).charAt(0);
+        else
+            return String.valueOf(Math.abs(operand1 - operand2)).charAt(0);
+    }
+
+    private int charToInt(char character) {
+        return Integer.parseInt(String.valueOf(character));
     }
 }

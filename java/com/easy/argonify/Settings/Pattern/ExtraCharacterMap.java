@@ -3,14 +3,12 @@ package com.easy.argonify.Settings.Pattern;
 import static com.easy.argonify.Settings.Pattern.Pattern.BOTTOM_BAR_INDEX;
 import static com.easy.argonify.Settings.Pattern.Pattern.TOP_BAR_INDEX;
 
-@SuppressWarnings("SpellCheckingInspection")
 public class ExtraCharacterMap {
     private static final String allChars =
             "abcdefghijklmnopqrstuvwxyz" +
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-            "789" +
             "$*.[]{}()?~-\"!@#%&/\\,><':;|_" +
-            "ÄÅÆËÊÏÎÐÑÔÖØÚÜßäå";
+            "ÄÅÆËÊÏÎÐÑÔÖØÚÜßäåýþÿ";
 
     private static final char[] extraCharacter = allChars.toCharArray();
 
