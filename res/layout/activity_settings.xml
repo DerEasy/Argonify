@@ -56,7 +56,7 @@
         android:id="@+id/txt_settingsPassGen"
         android:layout_width="0dp"
         android:layout_height="70sp"
-        android:background="@drawable/option_middle_dark"
+        android:background="@drawable/option_bottom_dark"
         android:clickable="true"
         android:focusable="true"
         android:gravity="start"
