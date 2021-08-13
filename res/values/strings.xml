@@ -65,12 +65,15 @@
     <string name="pattern_requirement_trafficlight">1 triple cell</string>
     <string name="pattern_requirement_sliders">Both sliders set</string>
     <string name="applock">Applock</string>
-    <string name="choose_app_protection">Choose how you want to protect your data.</string>
+    <string name="choose_app_protection">Choose how you want to protect your data</string>
     <string name="password_requirement_length">At least 8 characters</string>
     <string name="password_requirement_lowercase">At least 1 lowercase character</string>
     <string name="password_requirement_uppercase">At least 1 uppercase character</string>
     <string name="password_requirement_numbers">At least 1 number</string>
     <string name="password_requirement_symbols">At least 1 symbol</string>
+    <string name="default_settings_passgen">Password generation configuration</string>
+    <string name="password_length">Password length</string>
+    <string name="generator_configuration">Generator configuration</string>
     <!--Comment end-->
 
 </resources>
