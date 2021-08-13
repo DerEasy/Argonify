@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.easy.argonify.Main.PasswordAdapter;
 import com.easy.argonify.R;
 
-public class TupleSelection extends AppCompatDialogFragment {
+public abstract class TupleSelection extends AppCompatDialogFragment {
     public static boolean isOpen = false;
     public String[] attributes = new String[AMOUNT_OF_MAIN_ATTRIBUTES];
     public Cursor tuple;

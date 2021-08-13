@@ -1,5 +1,6 @@
 package com.easy.argonify.Main.Dialogs;
 
+import static com.easy.argonify.Utility.ApplockStrings.EMPTY;
 import static com.easy.argonify.Utility.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
 import static com.easy.argonify.Utility.PasswordDBHelper.COLUMN_NAME;
 import static com.easy.argonify.Utility.PasswordDBHelper.COLUMN_PASSWORD;
@@ -33,11 +34,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.LinkedList;
 
-public class TupleManipulation extends AppCompatDialogFragment {
+public abstract class TupleManipulation extends AppCompatDialogFragment {
     public final EditText[] etxtAttribute = new EditText[AMOUNT_OF_MAIN_ATTRIBUTES];
     public boolean isPasswordRevealed = false;
     public static boolean isOpen = false;
-    public static String generatedPassword = "";
+    public static String generatedPassword = EMPTY;
     public View tupleView;
     public AlertDialog.Builder builder;
 
@@ -65,7 +66,7 @@ public class TupleManipulation extends AppCompatDialogFragment {
     public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
         isOpen = false;
-        generatedPassword = "";
+        generatedPassword = EMPTY;
     }
 
     @Override
