@@ -10,90 +10,236 @@
         android:id="@+id/txt_settingsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="@string/settings"
         android:textColor="?attr/colorPrimaryVariant"
         android:textSize="22sp"
-        app:layout_constraintStart_toStartOf="@+id/txt_settingsApplock"
+        app:layout_constraintStart_toStartOf="@+id/layout_settingsApplock"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_settingsApplock"
-        android:layout_width="0dp"
-        android:layout_height="70sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/option_top_dark"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="start"
-        android:onClick="applock"
-        android:paddingStart="16dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="16dp"
-        android:text="@string/applock"
-        android:textColor="?attr/colorPrimaryVariant"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_settingsName" />
-
-    <TextView
-        android:id="@+id/txt_settingsApplockDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/choose_app_protection"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_settingsApplock"
-        app:layout_constraintEnd_toEndOf="@+id/txt_settingsApplock"
-        app:layout_constraintStart_toStartOf="@+id/txt_settingsApplock" />
-
-    <TextView
-        android:id="@+id/txt_settingsPassGen"
-        android:layout_width="0dp"
-        android:layout_height="70sp"
-        android:background="@drawable/option_bottom_dark"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="start"
-        android:onClick="passgenSettings"
-        android:paddingStart="16dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="16dp"
-        android:text="@string/password_generator"
-        android:textColor="?attr/colorPrimaryVariant"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/txt_settingsApplock"
-        app:layout_constraintStart_toStartOf="@+id/txt_settingsApplock"
-        app:layout_constraintTop_toBottomOf="@+id/txt_settingsApplock" />
-
     <View
-        android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="14dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:elevation="20dp"
         android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_settingsApplock"
-        app:layout_constraintEnd_toEndOf="@+id/txt_settingsApplock"
-        app:layout_constraintStart_toStartOf="@+id/txt_settingsApplock"
-        app:layout_constraintTop_toBottomOf="@+id/txt_settingsApplock" />
+        app:layout_constraintBottom_toTopOf="@+id/layout_settingsPassGen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_settingsApplock" />
 
-    <TextView
-        android:id="@+id/txt_settingsPassGenDescription"
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:elevation="20dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/layout_settingsExport"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_settingsImport" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_settingsApplock"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/default_settings_passgen"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_settingsPassGen"
-        app:layout_constraintEnd_toEndOf="@+id/txt_settingsPassGen"
-        app:layout_constraintStart_toStartOf="@+id/txt_settingsPassGen" />
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_settingsName">
+
+        <ImageButton
+            android:id="@+id/ibt_settingsApplock"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="-12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="-12dp"
+            android:background="@drawable/option_top_dark"
+            android:contentDescription="@string/password_generator"
+            android:onClick="applock"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_settingsApplockDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txt_settingsApplock" />
+
+        <TextView
+            android:id="@+id/txt_settingsApplock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/applock"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/ibt_settingsApplock"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_settingsApplockDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/applock_description"
+            app:layout_constraintEnd_toEndOf="@+id/ibt_settingsApplock"
+            app:layout_constraintStart_toStartOf="@+id/txt_settingsApplock"
+            app:layout_constraintTop_toBottomOf="@+id/txt_settingsApplock" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_settingsPassGen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_settingsApplock">
+
+        <ImageButton
+            android:id="@+id/ibt_settingsPassGen"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="-12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="-12dp"
+            android:background="@drawable/option_bottom_dark"
+            android:contentDescription="@string/password_generator"
+            android:onClick="passgenSettings"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_settingsPassGenDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txt_settingsPassGen" />
+
+        <TextView
+            android:id="@+id/txt_settingsPassGen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/password_generator"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/ibt_settingsPassGen"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_settingsPassGenDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/default_settings_passgen"
+            app:layout_constraintEnd_toEndOf="@+id/ibt_settingsPassGen"
+            app:layout_constraintStart_toStartOf="@+id/txt_settingsPassGen"
+            app:layout_constraintTop_toBottomOf="@+id/txt_settingsPassGen" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_settingsImport"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_settingsPassGen">
+
+        <ImageButton
+            android:id="@+id/ibt_settingsImport"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="-12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="-12dp"
+            android:onClick="importDatabase"
+            android:background="@drawable/option_top_dark"
+            android:contentDescription="@string/import_database"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_settingsImportDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txt_settingsImport" />
+
+        <TextView
+            android:id="@+id/txt_settingsImport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/import_database"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/ibt_settingsImport"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_settingsImportDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/import_entries"
+            app:layout_constraintEnd_toEndOf="@+id/ibt_settingsImport"
+            app:layout_constraintStart_toStartOf="@+id/txt_settingsImport"
+            app:layout_constraintTop_toBottomOf="@+id/txt_settingsImport" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_settingsExport"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_settingsImport">
+
+        <ImageButton
+            android:id="@+id/ibt_settingsExport"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="-12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="-12dp"
+            android:background="@drawable/option_bottom_dark"
+            android:contentDescription="@string/export_database"
+            android:onClick="exportDatabase"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_settingsExportDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txt_settingsExport" />
+
+        <TextView
+            android:id="@+id/txt_settingsExport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/export_database"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/ibt_settingsExport"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_settingsExportDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/export_entries"
+            app:layout_constraintEnd_toEndOf="@+id/ibt_settingsExport"
+            app:layout_constraintStart_toStartOf="@+id/txt_settingsExport"
+            app:layout_constraintTop_toBottomOf="@+id/txt_settingsExport" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

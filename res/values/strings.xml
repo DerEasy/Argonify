@@ -74,6 +74,14 @@
     <string name="default_settings_passgen">Password generation configuration</string>
     <string name="password_length">Password length</string>
     <string name="generator_configuration">Generator configuration</string>
+    <string name="import_entries">Import entries from an external database</string>
+    <string name="import_database">Import Database</string>
+    <string name="export_database">Export Database</string>
+    <string name="export_entries">Export entries to an external database</string>
+    <string name="export_notice">Exporting will copy an unencrypted database of all your data in your local storage.
+        This renders all security measures of Argonify useless, hence it is important NOT to keep the file on your phone.</string>
+    <string name="import_notice">Importing requires any unencrypted database that contains all five main attributes, like the
+        ones you get from exporting in Argonify. Place the file in your internal storage as /Argonify/unencryptedArgonify.db</string>
     <!--Comment end-->
 
 </resources>
