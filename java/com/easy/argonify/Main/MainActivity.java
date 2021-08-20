@@ -2,6 +2,7 @@ package com.easy.argonify.Main;
 
 import static com.easy.argonify.Utility.PasswordDBHelper.DATABASE_NAME;
 import static com.easy.argonify.Utility.PasswordDBHelper.createDatabase;
+import static com.easy.argonify.Utility.PasswordDBHelper.exportDatabase;
 import static net.sqlcipher.database.SQLiteDatabase.loadLibs;
 
 import android.content.Context;
@@ -28,10 +29,12 @@ import com.easy.argonify.Settings.Applock.Pattern.RequestPatternActivity;
 import com.easy.argonify.Settings.SettingsActivity;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements ApplockStrings {
     private OptionsAnimator optionsAnimator;
-    SelectionDisplay selectionDisplay;
+    public SelectionDisplay selectionDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,9 +127,9 @@ public class MainActivity extends AppCompatActivity implements ApplockStrings {
     }
 
     public void selectTuple(View v) {
-        if (! DgSelectTuple.isOpen) {
+        if (!DgSelectTuple.isOpen) {
             DgSelectTuple dgSelectTuple = new DgSelectTuple(this);
-            dgSelectTuple.show(getSupportFragmentManager(), "Select Tuple Dialog");
+            dgSelectTuple.show(getSupportFragmentManager(), null);
         }
     }
 
@@ -139,26 +142,26 @@ public class MainActivity extends AppCompatActivity implements ApplockStrings {
     }
 
     public void addTuple(View v) {
-        if (! DgAddTuple.isOpen) {
+        if (!DgAddTuple.isOpen) {
             optionsAnimator.close();
             DgAddTuple dgAddTuple = new DgAddTuple();
-            dgAddTuple.show(getSupportFragmentManager(), "Add Tuple Dialog");
+            dgAddTuple.show(getSupportFragmentManager(), null);
         }
     }
 
     public void deleteTuple(View v) {
-        if (! DgDeleteTuple.isOpen) {
+        if (!DgDeleteTuple.isOpen) {
             optionsAnimator.close();
             DgDeleteTuple dgDeleteTuple = new DgDeleteTuple(selectionDisplay);
-            dgDeleteTuple.show(getSupportFragmentManager(), "Delete Tuple Dialog");
+            dgDeleteTuple.show(getSupportFragmentManager(), null);
         }
     }
 
     public void editTuple(View v) {
-        if (! DgEditTuple.isOpen) {
+        if (!DgEditTuple.isOpen) {
             optionsAnimator.close();
             DgEditTuple dgEditTuple = new DgEditTuple(this);
-            dgEditTuple.show(getSupportFragmentManager(), "Edit Tuple Dialog");
+            dgEditTuple.show(getSupportFragmentManager(), null);
         }
     }
 

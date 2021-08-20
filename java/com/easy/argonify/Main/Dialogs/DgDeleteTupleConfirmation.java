@@ -30,7 +30,7 @@ import androidx.core.content.ContextCompat;
 import com.easy.argonify.Main.SelectionDisplay;
 import com.easy.argonify.R;
 
-class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
+public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
     private final TextView[] txtAttribute = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
     private final TextView[] txtTitle = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
     private final String[] attributes;

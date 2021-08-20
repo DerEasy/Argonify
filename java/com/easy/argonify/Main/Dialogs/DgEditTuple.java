@@ -15,7 +15,7 @@ public class DgEditTuple extends TupleSelection {
     public void onTupleSelection(int adapterPosition, Cursor idCursor) {
         super.onTupleSelection(adapterPosition, idCursor);
         DgEditTupleConfirmation confirmation = new DgEditTupleConfirmation(mainActivity, tuple);
-        confirmation.show(getParentFragmentManager(), "Edit Tuple Dialog");
+        confirmation.show(getParentFragmentManager(), null);
         dismiss();
     }
 }

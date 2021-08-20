@@ -28,7 +28,7 @@ public class SelectionDisplay {
     public final static int HIDDEN_PASSWORD = 1;
 
     /**Index 0 is the actual password, index 1 is the password in 'hidden' symbols*/
-    public final String[] currentPassword = new String[2];
+    public final String[] currentPassword = new String[] {"", ""};
     public final TextView[] txtAttribute = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
     private final TextView[] txtTitle = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
     private final ImageButton[] ibtCopy = new ImageButton[AMOUNT_OF_COPY_BUTTONS];

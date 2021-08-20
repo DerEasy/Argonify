@@ -1,23 +1,22 @@
 package com.easy.argonify.Utility;
 
 import static com.easy.argonify.Utility.PasswordDBHelper.COLUMN_NAME;
+import static com.easy.argonify.Utility.PasswordDBHelper.MAIN_ATTRIBUTES;
 import static com.easy.argonify.Utility.PasswordDBHelper.TABLE_NAME;
 import static com.easy.argonify.Utility.PasswordDBHelper._ID;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import com.easy.argonify.Utility.PasswordDBHelper;
-
 import net.sqlcipher.database.SQLiteDatabase;
 
 public class PasswordDB {
     public static SQLiteDatabase passwordDB;
 
-    public static Cursor getEntireRelation() {
+    public static Cursor getMainAttributes() {
         Cursor cursor = passwordDB.query(
                 TABLE_NAME,
-                null,
+                MAIN_ATTRIBUTES,
                 null,
                 null,
                 null,

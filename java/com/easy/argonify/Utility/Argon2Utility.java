@@ -8,7 +8,7 @@ public class Argon2Utility {
                     16,
                     48,
                     Runtime.getRuntime().availableProcessors(),
-                    (1 << 14) + (1 << 13),
+                    3 << 13,
                     3
             );
 

@@ -20,7 +20,7 @@ import androidx.core.content.ContextCompat;
 import com.easy.argonify.Main.MainActivity;
 import com.easy.argonify.R;
 
-class DgEditTupleConfirmation extends TupleManipulation {
+public class DgEditTupleConfirmation extends TupleManipulation {
     private final MainActivity mainActivity;
     private final String[] oldAttributes = new String[AMOUNT_OF_MAIN_ATTRIBUTES];
     private final int id;

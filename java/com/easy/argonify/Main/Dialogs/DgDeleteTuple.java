@@ -2,6 +2,7 @@ package com.easy.argonify.Main.Dialogs;
 
 import android.database.Cursor;
 
+import com.easy.argonify.Main.MainActivity;
 import com.easy.argonify.Main.SelectionDisplay;
 
 public class DgDeleteTuple extends TupleSelection {
@@ -15,7 +16,7 @@ public class DgDeleteTuple extends TupleSelection {
     public void onTupleSelection(int adapterPosition, Cursor idCursor) {
         super.onTupleSelection(adapterPosition, idCursor);
         DgDeleteTupleConfirmation confirmation = new DgDeleteTupleConfirmation(selectionDisplay, attributes, tuple);
-        confirmation.show(getParentFragmentManager(), "Deletion Confirmation Dialog");
+        confirmation.show(getParentFragmentManager(), null);
         dismiss();
     }
 }
