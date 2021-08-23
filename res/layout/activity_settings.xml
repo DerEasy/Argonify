@@ -300,6 +300,7 @@
             app:layout_constraintEnd_toEndOf="@+id/ibt_settingsClear"
             app:layout_constraintStart_toStartOf="@+id/txt_settingsClear"
             app:layout_constraintTop_toBottomOf="@+id/txt_settingsClear" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
