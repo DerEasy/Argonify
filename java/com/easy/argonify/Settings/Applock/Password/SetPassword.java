@@ -1,5 +1,7 @@
 package com.easy.argonify.Settings.Applock.Password;
 
+import static com.easy.argonify.Utility.RequestApplock.requestApplock;
+
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
@@ -40,12 +42,7 @@ class SetPassword extends Password implements ApplockStrings {
 
     @Override
     void onPasswordConfirmation() {
-        Intent requestPasswordIntent = new Intent(setPasswordActivity, RequestPasswordActivity.class);
-        requestPasswordIntent.putExtra(REQUESTED_KEY, getHashedPassword());
-        requestPasswordIntent.putExtra(ACTION_ON_CONFIRM, SAVE_KEY);
-        requestPasswordIntent.putExtra(REQUEST_REASON, PASSWORD_REASON_REENTER_CONFIRM);
-
-        setPasswordActivity.startActivity(requestPasswordIntent);
+        requestApplock(setPasswordActivity, REASON_REENTER_CONFIRM, SAVE_KEY, PASSWORD, getHashedPassword());
         setPasswordActivity.finish();
     }
 

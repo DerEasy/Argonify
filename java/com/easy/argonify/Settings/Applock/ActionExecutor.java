@@ -5,6 +5,7 @@ import static android.content.Context.MODE_PRIVATE;
 import static com.easy.argonify.Utility.PasswordDB.passwordDB;
 import static com.easy.argonify.Utility.PasswordDBHelper.TABLE_NAME;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
@@ -15,9 +16,9 @@ import com.easy.argonify.Settings.Applock.Password.SetPasswordActivity;
 import com.easy.argonify.Settings.Applock.Pattern.SetPatternActivity;
 
 public class ActionExecutor implements ApplockStrings {
-    private final AppCompatActivity activity;
+    private final Context activity;
 
-    public ActionExecutor(AppCompatActivity activity) {
+    public ActionExecutor(Context activity) {
         this.activity = activity;
     }
 

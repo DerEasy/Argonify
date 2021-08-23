@@ -30,7 +30,8 @@ public class RequestPasswordActivity extends AppCompatActivity implements Apploc
 
     private void setRequestReason() {
         TextView reasonView = findViewById(R.id.txt_reqPasswordReason);
-        reasonView.setText(getIntent().getStringExtra(REQUEST_REASON));
+        String requestReason = getIntent().getStringExtra(REQUEST_REASON);
+        reasonView.setText(requestReason != null ? requestReason : EMPTY);
     }
 
     public void onPasswordConfirmation(View v) {

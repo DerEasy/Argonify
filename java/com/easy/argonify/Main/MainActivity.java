@@ -3,6 +3,7 @@ package com.easy.argonify.Main;
 import static com.easy.argonify.Utility.PasswordDBHelper.DATABASE_NAME;
 import static com.easy.argonify.Utility.PasswordDBHelper.createDatabase;
 import static com.easy.argonify.Utility.PasswordDBHelper.exportDatabase;
+import static com.easy.argonify.Utility.RequestApplock.requestApplock;
 import static net.sqlcipher.database.SQLiteDatabase.loadLibs;
 
 import android.content.Context;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements ApplockStrings {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
         if (hasApplock() && getIntent().getStringExtra(RAW_KEY) == null) {
-            showApplock();
+            requestApplock(this, REASON_APP_ACCESS, ALLOW_APP_ACCESS);
             finish();
         } else if (getIntent().getStringExtra(RAW_KEY) != null) {
             initialiseDatabase();
@@ -75,32 +76,6 @@ public class MainActivity extends AppCompatActivity implements ApplockStrings {
     private void initialiseMainDisplay() {
         new GlobalLayoutListenerAdapter();
         selectionDisplay = new SelectionDisplay(this);
-    }
-
-    private void showApplock() {
-        SharedPreferences preferences = getSharedPreferences(APPLOCK, Context.MODE_PRIVATE);
-        Intent applockRequest;
-
-        switch (preferences.getString(APPLOCK_TYPE, EMPTY)) {
-            case PATTERN:
-                applockRequest = new Intent(this, RequestPatternActivity.class);
-                runApplockRequest(applockRequest, PATTERN_REASON_APP_ACCESS);
-                break;
-            case PASSWORD:
-                applockRequest = new Intent(this, RequestPasswordActivity.class);
-                runApplockRequest(applockRequest, PASSWORD_REASON_APP_ACCESS);
-                break;
-        }
-    }
-
-    private void runApplockRequest(Intent requestIntent, String REASON) {
-        SharedPreferences preferences = getSharedPreferences(APPLOCK, Context.MODE_PRIVATE);
-        requestIntent.putExtra(REQUESTED_KEY, preferences.getString(APPLOCK_KEY, null));
-        requestIntent.putExtra(ACTION_ON_CONFIRM, ALLOW_APP_ACCESS);
-        requestIntent.putExtra(REQUEST_REASON, REASON);
-
-        startActivity(requestIntent);
-        finish();
     }
 
     private class GlobalLayoutListenerAdapter {

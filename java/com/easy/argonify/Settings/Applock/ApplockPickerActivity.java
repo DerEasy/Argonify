@@ -1,5 +1,7 @@
 package com.easy.argonify.Settings.Applock;
 
+import static com.easy.argonify.Utility.RequestApplock.requestApplock;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,57 +29,11 @@ public class ApplockPickerActivity extends AppCompatActivity implements ApplockS
     }
 
     public void enhancedPattern(View v) {
-        Intent applock;
-        SharedPreferences preferences = getSharedPreferences(APPLOCK, Context.MODE_PRIVATE);
-
-        switch (preferences.getString(APPLOCK_TYPE, EMPTY)) {
-            case PATTERN:
-                applock = new Intent(this, RequestPatternActivity.class);
-                applock.putExtra(REQUESTED_KEY, preferences.getString(APPLOCK_KEY, null));
-                applock.putExtra(ACTION_ON_CONFIRM, RUN_SET_PATTERN);
-                applock.putExtra(REQUEST_REASON, PATTERN_REASON_SENSITIVE_DATA);
-                startActivity(applock);
-                break;
-            case PASSWORD:
-                applock = new Intent(this, RequestPasswordActivity.class);
-                applock.putExtra(REQUESTED_KEY, preferences.getString(APPLOCK_KEY, null));
-                applock.putExtra(ACTION_ON_CONFIRM, RUN_SET_PATTERN);
-                applock.putExtra(REQUEST_REASON, PASSWORD_REASON_SENSITIVE_DATA);
-                startActivity(applock);
-                break;
-            case EMPTY:
-                applock = new Intent(this, SetPatternActivity.class);
-                startActivity(applock);
-                finish();
-                break;
-        }
+        requestApplock(this, REASON_SENSITIVE_DATA, RUN_SET_PATTERN);
     }
 
     public void password(View v) {
-        Intent applock;
-        SharedPreferences preferences = getSharedPreferences(APPLOCK, Context.MODE_PRIVATE);
-
-        switch (preferences.getString(APPLOCK_TYPE, EMPTY)) {
-            case PATTERN:
-                applock = new Intent(this, RequestPatternActivity.class);
-                applock.putExtra(REQUESTED_KEY, preferences.getString(APPLOCK_KEY, null));
-                applock.putExtra(ACTION_ON_CONFIRM, RUN_SET_PASSWORD);
-                applock.putExtra(REQUEST_REASON, PATTERN_REASON_SENSITIVE_DATA);
-                startActivity(applock);
-                break;
-            case PASSWORD:
-                applock = new Intent(this, RequestPasswordActivity.class);
-                applock.putExtra(REQUESTED_KEY, preferences.getString(APPLOCK_KEY, null));
-                applock.putExtra(ACTION_ON_CONFIRM, RUN_SET_PASSWORD);
-                applock.putExtra(REQUEST_REASON, PASSWORD_REASON_SENSITIVE_DATA);
-                startActivity(applock);
-                break;
-            case EMPTY:
-                applock = new Intent(this, SetPasswordActivity.class);
-                startActivity(applock);
-                finish();
-                break;
-        }
+        requestApplock(this, REASON_SENSITIVE_DATA, RUN_SET_PASSWORD);
     }
 
     private void onApplockSet() {

@@ -1,5 +1,7 @@
 package com.easy.argonify.Settings.Applock.Pattern;
 
+import static com.easy.argonify.Utility.RequestApplock.requestApplock;
+
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,12 +21,7 @@ public class SetPattern extends Pattern {
 
     @Override
     void onPatternConfirmation() {
-        Intent requestPatternIntent = new Intent(setPatternActivity, RequestPatternActivity.class);
-        requestPatternIntent.putExtra(REQUESTED_KEY, getHashedPattern());
-        requestPatternIntent.putExtra(ACTION_ON_CONFIRM, SAVE_KEY);
-        requestPatternIntent.putExtra(REQUEST_REASON, PATTERN_REASON_REDRAW_CONFIRM);
-
-        setPatternActivity.startActivity(requestPatternIntent);
+        requestApplock(setPatternActivity, REASON_REENTER_CONFIRM, SAVE_KEY, PATTERN, getHashedPattern());
         setPatternActivity.finish();
     }
 

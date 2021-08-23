@@ -48,7 +48,8 @@ public class RequestPatternActivity extends AppCompatActivity implements Applock
 
     private void setRequestReason() {
         TextView reasonView = findViewById(R.id.txt_reqPatternReason);
-        reasonView.setText(getIntent().getStringExtra(REQUEST_REASON));
+        String requestReason = getIntent().getStringExtra(REQUEST_REASON);
+        reasonView.setText(requestReason != null ? requestReason : EMPTY);
     }
 
     public void onCellClick(View v) {
