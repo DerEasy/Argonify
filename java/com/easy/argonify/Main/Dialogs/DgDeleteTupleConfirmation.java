@@ -1,6 +1,7 @@
 package com.easy.argonify.Main.Dialogs;
 
 import static com.easy.argonify.Settings.Applock.ApplockStrings.EMPTY;
+import static com.easy.argonify.Utility.ArgonifyDialog.argonifyDialog;
 import static com.easy.argonify.Utility.PasswordDB.deleteTuple;
 import static com.easy.argonify.Utility.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
 import static com.easy.argonify.Utility.PasswordDBHelper.INDEX_EMAIL;
@@ -67,14 +68,7 @@ public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
                     Toast.makeText(getContext(), String.format("%s deleted", attributes[INDEX_NAME]), Toast.LENGTH_SHORT).show();
                 });
 
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(getContext(), R.color.green));
-        dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(getContext(), R.color.green));
-        dialog.getWindow().setBackgroundDrawableResource(R.color.darkGrey);
-
-        return dialog;
+        return argonifyDialog(builder, getContext());
     }
 
     @Override

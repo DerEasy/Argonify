@@ -1,5 +1,6 @@
 package com.easy.argonify.Main.Dialogs;
 
+import static com.easy.argonify.Utility.ArgonifyDialog.argonifyDialog;
 import static com.easy.argonify.Utility.PasswordDB.insertTuple;
 
 import android.app.AlertDialog;
@@ -32,14 +33,7 @@ public class DgAddTuple extends TupleManipulation {
                         Toast.makeText(getContext(), "Entry must have at least a name and a password", Toast.LENGTH_SHORT).show();
                 });
 
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(getContext(), R.color.green));
-        dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(getContext(), R.color.green));
-        dialog.getWindow().setBackgroundDrawableResource(R.color.darkGrey);
-
-        return dialog;
+        return argonifyDialog(builder, getContext());
     }
 
     private boolean add(ContentValues cv) {

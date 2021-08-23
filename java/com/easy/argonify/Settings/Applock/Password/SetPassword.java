@@ -43,7 +43,7 @@ class SetPassword extends Password implements ApplockStrings {
         Intent requestPasswordIntent = new Intent(setPasswordActivity, RequestPasswordActivity.class);
         requestPasswordIntent.putExtra(REQUESTED_KEY, getHashedPassword());
         requestPasswordIntent.putExtra(ACTION_ON_CONFIRM, SAVE_KEY);
-        requestPasswordIntent.putExtra(REQUEST_REASON, PASSWORD_REASON_REDRAW_CONFIRM);
+        requestPasswordIntent.putExtra(REQUEST_REASON, PASSWORD_REASON_REENTER_CONFIRM);
 
         setPasswordActivity.startActivity(requestPasswordIntent);
         setPasswordActivity.finish();
@@ -58,6 +58,9 @@ class SetPassword extends Password implements ApplockStrings {
     }
 
     boolean evaluateRequirements() {
+        if (passwordData.equals("0"))
+            return true;
+
         boolean[] requirement = new boolean[AMOUNT_OF_REQUIREMENTS];
         requirement[INDEX_REQUIREMENT_LENGTH] = evaluateLength();
         requirement[INDEX_REQUIREMENT_LOWERCASE] = evaluateLowercase();

@@ -194,6 +194,7 @@ abstract class Pattern implements ApplockStrings {
     }
 
     String getRawPattern() {
+        System.out.println(new PatternEncoder(PATTERN_DATA, favCell, trafficData, BAR_DATA).getRawKey());
         return new PatternEncoder(PATTERN_DATA, favCell, trafficData, BAR_DATA)
                 .getRawKey();
     }

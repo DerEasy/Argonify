@@ -37,6 +37,9 @@ class RequestPassword extends Password implements ApplockStrings {
                 case ALLOW_APP_ACCESS:
                     actionExecutor.allowAppAccess(getRawPassword());
                     break;
+                case CLEAR_DATA:
+                    actionExecutor.clearData();
+                    break;
             }
             requestPasswordActivity.finish();
         }

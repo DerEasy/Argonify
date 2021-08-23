@@ -36,6 +36,9 @@ public class RequestPattern extends Pattern implements ApplockStrings {
                 case ALLOW_APP_ACCESS:
                     actionExecutor.allowAppAccess(getRawPattern());
                     break;
+                case CLEAR_DATA:
+                    actionExecutor.clearData();
+                    break;
             }
             requestPatternActivity.finish();
         }

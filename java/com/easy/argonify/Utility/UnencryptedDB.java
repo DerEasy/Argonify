@@ -1,6 +1,7 @@
 package com.easy.argonify.Utility;
 
 import static com.easy.argonify.Utility.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
+import static com.easy.argonify.Utility.PasswordDBHelper.COLUMN_NAME;
 import static com.easy.argonify.Utility.PasswordDBHelper.MAIN_ATTRIBUTES;
 import static com.easy.argonify.Utility.PasswordDBHelper.TABLE_NAME;
 
@@ -24,18 +25,18 @@ public class UnencryptedDB {
             case MODE_EXPORT:
                 cursor = PasswordDB.getMainAttributes(); break;
             default:
-                throw new IllegalArgumentException("Mode error.");
+                throw new IllegalArgumentException("Mode error. Use MODE_IMPORT or MODE_EXPORT.");
         }
     }
 
-    public void copyEncryptedDatabase() {
+    public void exportDB() {
         for (int i = 0; i < cursor.getCount(); ++i) {
-            insertTuple(getTupleCV());
+            this.insertTuple(getTupleCV());
             cursor.moveToNext();
         }
     }
 
-    public void importEntries() {
+    public void importDB() {
         for (int i = 0; i < cursor.getCount(); ++i) {
             PasswordDB.insertTuple(getTupleCV());
             cursor.moveToNext();
@@ -66,7 +67,7 @@ public class UnencryptedDB {
                 null,
                 null,
                 null,
-                PasswordDBHelper.COLUMN_NAME + " ASC"
+                COLUMN_NAME + " ASC"
         );
         cursor.moveToFirst();
         return cursor;

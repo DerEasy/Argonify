@@ -24,16 +24,37 @@ public interface ApplockStrings {
     String RUN_SET_PASSWORD = "RUN_SET_PASSWORD";
     String SAVE_KEY = "SAVE_KEY";
     String ALLOW_APP_ACCESS = "ALLOW_APP_ACCESS";
+    String CLEAR_DATA = "CLEAR_DATA";
 
     //Pattern request reasons
     String PATTERN_REASON_SENSITIVE_DATA = "Draw your pattern to change this setting.";
     String PATTERN_REASON_REDRAW_CONFIRM = "Redraw the pattern to confirm the change.";
     String PATTERN_REASON_APP_ACCESS = "Draw your pattern to access the app.";
+    String PATTERN_REASON_CLEAR_DATA = "Draw your pattern to erase all data.";
 
     //Password request reasons
     String PASSWORD_REASON_SENSITIVE_DATA = "Enter your password to change this setting.";
-    String PASSWORD_REASON_REDRAW_CONFIRM = "Reenter the password to confirm the change.";
+    String PASSWORD_REASON_REENTER_CONFIRM = "Reenter the password to confirm the change.";
     String PASSWORD_REASON_APP_ACCESS = "Enter your password to access the app.";
+    String PASSWORD_REASON_CLEAR_DATA = "Enter your password to erase all data.";
+
+    //Generic request reasons
+    String[] REASON_SENSITIVE_DATA = {
+            PATTERN_REASON_SENSITIVE_DATA,
+            PASSWORD_REASON_SENSITIVE_DATA
+    };
+    String[] REASON_REENTER_CONFIRM = {
+            PATTERN_REASON_REDRAW_CONFIRM,
+            PASSWORD_REASON_REENTER_CONFIRM
+    };
+    String[] REASON_APP_ACCESS = {
+            PATTERN_REASON_APP_ACCESS,
+            PASSWORD_REASON_APP_ACCESS
+    };
+    String[] REASON_CLEAR_DATA = {
+            PATTERN_REASON_CLEAR_DATA,
+            PASSWORD_REASON_CLEAR_DATA
+    };
 
     //Pattern errors
     String PATTERN_ERROR_MISMATCH = "Pattern does not match.";

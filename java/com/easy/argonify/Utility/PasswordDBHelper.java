@@ -88,7 +88,7 @@ public class PasswordDBHelper {
         SQLiteDatabase unencryptedDB;
         unencryptedDB = openOrCreateDatabase(internalPath, (String) null, null);
         unencryptedDB.execSQL(SQL_CREATE_PASSWORD_TABLE);
-        new UnencryptedDB(unencryptedDB, UnencryptedDB.MODE_EXPORT).copyEncryptedDatabase();
+        new UnencryptedDB(unencryptedDB, UnencryptedDB.MODE_EXPORT).exportDB();
     }
 
     public static void exportDatabase(Context context) throws IOException {
@@ -114,7 +114,7 @@ public class PasswordDBHelper {
     private static void importEntries(String internalPath) {
         SQLiteDatabase unencryptedDB;
         unencryptedDB = openOrCreateDatabase(internalPath, (String) null, null);
-        new UnencryptedDB(unencryptedDB, UnencryptedDB.MODE_IMPORT).importEntries();
+        new UnencryptedDB(unencryptedDB, UnencryptedDB.MODE_IMPORT).importDB();
     }
 
     public static void importDatabase(Context context) throws IOException {

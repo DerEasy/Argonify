@@ -1,5 +1,6 @@
 package com.easy.argonify.Main.Dialogs;
 
+import static com.easy.argonify.Utility.ArgonifyDialog.argonifyDialog;
 import static com.easy.argonify.Utility.PasswordDB.getIDsAndNames;
 import static com.easy.argonify.Utility.PasswordDB.getTupleByID;
 import static com.easy.argonify.Utility.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
@@ -50,13 +51,7 @@ public abstract class TupleSelection extends AppCompatDialogFragment {
                 .setTitle("Pick desired entry")
                 .setNegativeButton("Cancel", ((dialog, which) -> {}));
 
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-        dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(getContext(), R.color.green));
-        dialog.getWindow().setBackgroundDrawableResource(R.color.darkGrey);
-
-        return dialog;
+        return argonifyDialog(builder, getContext());
     }
 
     @Override
