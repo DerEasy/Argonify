@@ -42,6 +42,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_settingsImport" />
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:elevation="20dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/layout_settingsClear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_settingsExport" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_settingsApplock"
         android:layout_width="0dp"
@@ -209,7 +221,7 @@
             android:layout_marginTop="-12dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="-12dp"
-            android:background="@drawable/option_bottom_dark"
+            android:background="@drawable/option_middle_dark"
             android:contentDescription="@string/export_database"
             android:onClick="exportDatabase"
             app:layout_constraintBottom_toBottomOf="@+id/txt_settingsExportDescription"
@@ -239,6 +251,55 @@
             app:layout_constraintEnd_toEndOf="@+id/ibt_settingsExport"
             app:layout_constraintStart_toStartOf="@+id/txt_settingsExport"
             app:layout_constraintTop_toBottomOf="@+id/txt_settingsExport" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_settingsClear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_settingsExport">
+
+        <ImageButton
+            android:id="@+id/ibt_settingsClear"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="-12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="-12dp"
+            android:background="@drawable/option_bottom_dark"
+            android:contentDescription="@string/clear_database"
+            android:onClick="clearDatabase"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_settingsClearDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txt_settingsClear" />
+
+        <TextView
+            android:id="@+id/txt_settingsClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/clear_database"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/ibt_settingsClear"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_settingsClearDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/clear_entries"
+            app:layout_constraintEnd_toEndOf="@+id/ibt_settingsClear"
+            app:layout_constraintStart_toStartOf="@+id/txt_settingsClear"
+            app:layout_constraintTop_toBottomOf="@+id/txt_settingsClear" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

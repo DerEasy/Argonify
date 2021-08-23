@@ -46,7 +46,7 @@
     <!--Comment end-->
 
     <!--These are for the settings-->
-    <string name="applock_description">Choose a method for app protection</string>
+    <string name="applock_description">Choose a method for app protection.</string>
     <string name="enhanced_pattern">Enhanced Pattern</string>
     <string name="settings">Settings</string>
     <string name="set_pattern_instructions">Draw a pattern on the grid by clicking on the cells.</string>
@@ -71,17 +71,20 @@
     <string name="password_requirement_uppercase">At least 1 uppercase character</string>
     <string name="password_requirement_numbers">At least 1 number</string>
     <string name="password_requirement_symbols">At least 1 symbol</string>
-    <string name="default_settings_passgen">Password generation configuration</string>
+    <string name="default_settings_passgen">Password generation configuration.</string>
     <string name="password_length">Password length</string>
     <string name="generator_configuration">Generator configuration</string>
-    <string name="import_entries">Import entries from an external database</string>
+    <string name="import_entries">Import entries from an external database.</string>
     <string name="import_database">Import Database</string>
     <string name="export_database">Export Database</string>
-    <string name="export_entries">Export entries to an external database</string>
+    <string name="export_entries">Export entries to an external database.</string>
     <string name="export_notice">Exporting will copy an unencrypted database of all your data in your local storage.
         This renders all security measures of Argonify useless, hence it is important NOT to keep the file on your phone.</string>
     <string name="import_notice">Importing requires any unencrypted database that contains all five main attributes, like the
         ones you get from exporting in Argonify. Place the file in your internal storage as /Argonify/unencryptedArgonify.db</string>
+    <string name="clear_database">Clear Database</string>
+    <string name="clear_entries">Irreversibly delete all entries.</string>
+    <string name="clear_notice">This action cannot be undone. You will be asked for confirmation in the next step.</string>
     <!--Comment end-->
 
 </resources>
