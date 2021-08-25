@@ -1,7 +1,6 @@
 package com.easy.argonify.PassGen;
 
 import static android.content.Context.MODE_PRIVATE;
-
 import static com.easy.argonify.Settings.Applock.ApplockStrings.EMPTY;
 
 import android.content.ClipData;

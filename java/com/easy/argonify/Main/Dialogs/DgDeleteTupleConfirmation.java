@@ -1,5 +1,6 @@
 package com.easy.argonify.Main.Dialogs;
 
+import static com.easy.argonify.Main.SelectionDisplay.ACTUAL_PASSWORD;
 import static com.easy.argonify.Settings.Applock.ApplockStrings.EMPTY;
 import static com.easy.argonify.Utility.ArgonifyDialog.argonifyDialog;
 import static com.easy.argonify.Utility.PasswordDB.deleteTuple;
@@ -11,7 +12,6 @@ import static com.easy.argonify.Utility.PasswordDBHelper.INDEX_PASSWORD;
 import static com.easy.argonify.Utility.PasswordDBHelper.INDEX_USERNAME;
 import static com.easy.argonify.Utility.PasswordDBHelper.MAIN_ATTRIBUTES;
 import static com.easy.argonify.Utility.PasswordDBHelper._ID;
-import static com.easy.argonify.Main.SelectionDisplay.ACTUAL_PASSWORD;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -26,7 +26,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.core.content.ContextCompat;
 
 import com.easy.argonify.Main.SelectionDisplay;
 import com.easy.argonify.R;

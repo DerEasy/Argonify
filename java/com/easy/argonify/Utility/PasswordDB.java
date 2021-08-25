@@ -8,13 +8,11 @@ import static com.easy.argonify.Utility.PasswordDBHelper.COLUMN_USERNAME;
 import static com.easy.argonify.Utility.PasswordDBHelper.MAIN_ATTRIBUTES;
 import static com.easy.argonify.Utility.PasswordDBHelper.TABLE_NAME;
 import static com.easy.argonify.Utility.PasswordDBHelper._ID;
-
 import static net.sqlcipher.DatabaseUtils.sqlEscapeString;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import net.sqlcipher.DatabaseUtils;
 import net.sqlcipher.database.SQLiteDatabase;
 
 public class PasswordDB {
@@ -28,7 +26,7 @@ public class PasswordDB {
                 null,
                 null,
                 null,
-                COLUMN_NAME + " ASC"
+                null
         );
         cursor.moveToFirst();
         return cursor;
@@ -42,7 +40,7 @@ public class PasswordDB {
                 null,
                 null,
                 null,
-                null
+                COLUMN_NAME + " COLLATE NOCASE ASC"
         );
         cursor.moveToFirst();
         return cursor;

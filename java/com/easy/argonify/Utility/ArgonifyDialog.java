@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
-
 import androidx.core.content.ContextCompat;
 
 import com.easy.argonify.R;

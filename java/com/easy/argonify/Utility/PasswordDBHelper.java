@@ -3,16 +3,7 @@ package com.easy.argonify.Utility;
 import static com.easy.argonify.Utility.PasswordDB.passwordDB;
 import static net.sqlcipher.database.SQLiteDatabase.openOrCreateDatabase;
 
-import android.content.Context;
-
-import android.os.Environment;
-
-import net.sqlcipher.database.SQLiteDatabase;
-
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class PasswordDBHelper {
     public static final int AMOUNT_OF_MAIN_ATTRIBUTES = 5;
@@ -34,7 +25,7 @@ public class PasswordDBHelper {
 
     public static final String[] MAIN_ATTRIBUTES = new String[AMOUNT_OF_MAIN_ATTRIBUTES];
 
-    private static final String SQL_CREATE_PASSWORD_TABLE =
+    public static final String SQL_CREATE_PASSWORD_TABLE =
                                       " CREATE TABLE IF NOT EXISTS " +
                     TABLE_NAME      + " ( " +
                     _ID             + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -82,59 +73,5 @@ public class PasswordDBHelper {
 
         passwordDB.execSQL(SQL_CREATE_PASSWORD_TABLE);
         return dbErasure;
-    }
-
-    private static void createDatabaseCopy(String internalPath) {
-        SQLiteDatabase unencryptedDB;
-        unencryptedDB = openOrCreateDatabase(internalPath, (String) null, null);
-        unencryptedDB.execSQL(SQL_CREATE_PASSWORD_TABLE);
-        new UnencryptedDB(unencryptedDB, UnencryptedDB.MODE_EXPORT).exportDB();
-    }
-
-    public static void exportDatabase(Context context) throws IOException {
-        String internalPath = context.getDatabasePath("unencryptedArgonify.db").getPath();
-        createDatabaseCopy(internalPath);
-        File internalFile = new File(internalPath);
-        FileInputStream inputStream = new FileInputStream(internalFile);
-
-        String externalPath = Environment.getExternalStorageDirectory() + "/Argonify/unencryptedArgonify.db";
-        File externalFile = new File(externalPath);
-        FileOutputStream outputStream = new FileOutputStream(externalFile.getPath());
-
-        byte[] buffer = new byte[1 << 10];
-        while (inputStream.read(buffer) != -1)
-            outputStream.write(buffer);
-
-        outputStream.flush();
-        outputStream.close();
-        inputStream.close();
-        internalFile.delete();
-    }
-
-    private static void importEntries(String internalPath) {
-        SQLiteDatabase unencryptedDB;
-        unencryptedDB = openOrCreateDatabase(internalPath, (String) null, null);
-        new UnencryptedDB(unencryptedDB, UnencryptedDB.MODE_IMPORT).importDB();
-    }
-
-    public static void importDatabase(Context context) throws IOException {
-        String externalPath = Environment.getExternalStorageDirectory() + "/Argonify/unencryptedArgonify.db";
-        File externalFile = new File(externalPath);
-        FileInputStream inputStream = new FileInputStream(externalFile);
-
-        String internalPath = context.getDatabasePath("unencryptedArgonify.db").getPath();
-        File internalFile = new File(internalPath);
-        FileOutputStream outputStream = new FileOutputStream(internalFile.getPath());
-
-        byte[] buffer = new byte[1 << 10];
-        while (inputStream.read(buffer) != -1)
-            outputStream.write(buffer);
-
-        outputStream.flush();
-        outputStream.close();
-        inputStream.close();
-
-        importEntries(internalPath);
-        internalFile.delete();
     }
 }

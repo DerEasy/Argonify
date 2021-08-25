@@ -2,7 +2,6 @@ package com.easy.argonify.Settings.Applock.Password;
 
 import static com.easy.argonify.Utility.RequestApplock.requestApplock;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -55,9 +54,6 @@ class SetPassword extends Password implements ApplockStrings {
     }
 
     boolean evaluateRequirements() {
-        if (passwordData.equals("0"))
-            return true;
-
         boolean[] requirement = new boolean[AMOUNT_OF_REQUIREMENTS];
         requirement[INDEX_REQUIREMENT_LENGTH] = evaluateLength();
         requirement[INDEX_REQUIREMENT_LOWERCASE] = evaluateLowercase();

@@ -42,8 +42,7 @@ public class RequestApplock implements ApplockStrings {
             KEY = preferences.getString(APPLOCK_KEY, null);
         }
         if (LOCK_TYPE.equals(EMPTY)) {
-            skipToKeylessAction(context, ACTION);
-            return;
+            skipToKeylessAction(context, ACTION); return;
         }
 
         Intent applockRequest;

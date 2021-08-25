@@ -6,20 +6,16 @@ import static com.easy.argonify.Utility.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUT
 import static com.easy.argonify.Utility.PasswordDBHelper.MAIN_ATTRIBUTES;
 import static com.easy.argonify.Utility.PasswordDBHelper._ID;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 
 import com.easy.argonify.Main.MainActivity;
-import com.easy.argonify.R;
 
 public class DgEditTupleConfirmation extends TupleManipulation {
     private final MainActivity mainActivity;

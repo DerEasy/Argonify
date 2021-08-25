@@ -1,15 +1,14 @@
 package com.easy.argonify.Settings.Applock;
 
 import static android.content.Context.MODE_PRIVATE;
-
 import static com.easy.argonify.Utility.PasswordDB.passwordDB;
 import static com.easy.argonify.Utility.PasswordDBHelper.TABLE_NAME;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Handler;
+import android.os.Looper;
 
 import com.easy.argonify.Main.MainActivity;
 import com.easy.argonify.Settings.Applock.Password.SetPasswordActivity;
@@ -53,10 +52,12 @@ public class ActionExecutor implements ApplockStrings {
     }
 
     public void clearData() {
-        passwordDB.delete(
-                TABLE_NAME,
-                null,
-                null
+        new Handler(Looper.getMainLooper()).post(() ->
+                passwordDB.delete(
+                        TABLE_NAME,
+                        null,
+                        null
+                )
         );
     }
 }

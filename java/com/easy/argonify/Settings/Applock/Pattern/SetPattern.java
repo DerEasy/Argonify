@@ -2,7 +2,6 @@ package com.easy.argonify.Settings.Applock.Pattern;
 
 import static com.easy.argonify.Utility.RequestApplock.requestApplock;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 

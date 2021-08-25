@@ -1,5 +1,6 @@
 package com.easy.argonify.Main.Dialogs;
 
+import static com.easy.argonify.PassGen.PasswordGenerator.AMOUNT_OF_CATS;
 import static com.easy.argonify.Settings.Applock.ApplockStrings.EMPTY;
 import static com.easy.argonify.Utility.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
 import static com.easy.argonify.Utility.PasswordDBHelper.COLUMN_NAME;
@@ -10,7 +11,6 @@ import static com.easy.argonify.Utility.PasswordDBHelper.INDEX_NOTES;
 import static com.easy.argonify.Utility.PasswordDBHelper.INDEX_PASSWORD;
 import static com.easy.argonify.Utility.PasswordDBHelper.INDEX_USERNAME;
 import static com.easy.argonify.Utility.PasswordDBHelper.MAIN_ATTRIBUTES;
-import static com.easy.argonify.PassGen.PasswordGenerator.AMOUNT_OF_CATS;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;

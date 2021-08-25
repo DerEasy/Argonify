@@ -3,19 +3,13 @@ package com.easy.argonify.Main.Dialogs;
 import static com.easy.argonify.Utility.ArgonifyDialog.argonifyDialog;
 import static com.easy.argonify.Utility.PasswordDB.insertTuple;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
-import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-
-import com.easy.argonify.R;
 
 public class DgAddTuple extends TupleManipulation {
     @NonNull

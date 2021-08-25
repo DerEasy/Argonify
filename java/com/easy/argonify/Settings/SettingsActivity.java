@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewOverlay;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -13,8 +12,8 @@ import androidx.core.app.ActivityCompat;
 import com.easy.argonify.R;
 import com.easy.argonify.Settings.Applock.ApplockPickerActivity;
 import com.easy.argonify.Settings.Clear.DgClear;
-import com.easy.argonify.Settings.Export.DgExport;
-import com.easy.argonify.Settings.Import.DgImport;
+import com.easy.argonify.Settings.DBManipulation.DgExport;
+import com.easy.argonify.Settings.DBManipulation.DgImport;
 import com.easy.argonify.Settings.PassGenConfig.PassGenConfigActivity;
 
 public class SettingsActivity extends AppCompatActivity {

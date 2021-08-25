@@ -2,7 +2,6 @@ package com.easy.argonify.Main.Dialogs;
 
 import android.database.Cursor;
 
-import com.easy.argonify.Main.MainActivity;
 import com.easy.argonify.Main.SelectionDisplay;
 
 public class DgDeleteTuple extends TupleSelection {

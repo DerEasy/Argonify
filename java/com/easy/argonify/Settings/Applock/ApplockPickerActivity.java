@@ -2,9 +2,7 @@ package com.easy.argonify.Settings.Applock;
 
 import static com.easy.argonify.Utility.RequestApplock.requestApplock;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,10 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.easy.argonify.Main.MainActivity;
 import com.easy.argonify.R;
-import com.easy.argonify.Settings.Applock.Password.RequestPasswordActivity;
-import com.easy.argonify.Settings.Applock.Password.SetPasswordActivity;
-import com.easy.argonify.Settings.Applock.Pattern.RequestPatternActivity;
-import com.easy.argonify.Settings.Applock.Pattern.SetPatternActivity;
 
 public class ApplockPickerActivity extends AppCompatActivity implements ApplockStrings {
 
