@@ -10,7 +10,7 @@ public class TextDecryptor {
     private static final String allChars =
                     "abcdefghijklmnopqrstuvwxyz" +
                     "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-                    "789" +
+                    "0123456789" +
                     "$*.[]{}()?~-\"!@#%&/\\,><':;|_";
     private static final char[] chars = allChars.toCharArray();
     private static final Random rng = new Random();
@@ -75,7 +75,9 @@ public class TextDecryptor {
 
     private void updateText() {
         currentText.deleteCharAt(currentIndex);
-        new Handler(Looper.getMainLooper()).postDelayed((Runnable) this::insertActualChar, shufflingTime);
+        new Handler(Looper.getMainLooper()).postDelayed(
+                (Runnable) this::insertActualChar, shufflingTime
+        );
     }
 
     private void insertActualChar() {

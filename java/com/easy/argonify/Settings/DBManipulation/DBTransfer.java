@@ -3,11 +3,17 @@ package com.easy.argonify.Settings.DBManipulation;
 import static com.easy.argonify.Utility.PasswordDBHelper.SQL_CREATE_PASSWORD_TABLE;
 import static net.sqlcipher.database.SQLiteDatabase.openOrCreateDatabase;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Environment;
+import android.provider.Settings;
 import android.view.Gravity;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.easy.argonify.R;
@@ -24,6 +30,8 @@ public class DBTransfer {
         try {
             if (externalFile.exists())
                 externalFile.delete();
+            else
+                externalFile.getParentFile().mkdirs();
 
             unencryptedDB = openOrCreateDatabase(
                     externalFile,
@@ -31,11 +39,11 @@ public class DBTransfer {
                     null
             );
         } catch (Exception e) {
-            Toast toast = Toast.makeText(context, "Task failed. Did you grant read permissions?", Toast.LENGTH_LONG);
-            TextView v = toast.getView().findViewById(R.id.message);
-            if (v != null)
-                v.setGravity(Gravity.CENTER); toast.show();
-
+            Toast.makeText(
+                    context,
+                    "Unexpected failure.",
+                    Toast.LENGTH_SHORT
+            ).show();
             e.printStackTrace();
             return;
         }
@@ -66,16 +74,23 @@ public class DBTransfer {
                     null
             );
         } catch (Exception e) {
-            Toast toast = Toast.makeText(context, "Task failed. Did you grant read permissions?", Toast.LENGTH_LONG);
-            TextView v = toast.getView().findViewById(R.id.message);
-            if (v != null)
-                v.setGravity(Gravity.CENTER); toast.show();
-
+            Toast.makeText(
+                    context,
+                    "Unexpected failure.",
+                    Toast.LENGTH_SHORT
+            ).show();
             e.printStackTrace();
             return;
         }
 
-        new UnencryptedDB(unencryptedDB)
-                .importDB(context);
+        try {
+            new UnencryptedDB(unencryptedDB)
+                    .importDB(context);
+        } catch (net.sqlcipher.database.SQLiteException e) {
+            Toast.makeText(
+                    context,
+                    "Database structure does not match requirements.",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }
