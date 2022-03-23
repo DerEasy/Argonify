@@ -85,6 +85,9 @@
     <string name="clear_database">Clear Database</string>
     <string name="clear_entries">Irreversibly delete all entries.</string>
     <string name="clear_notice">This action cannot be undone. You will be asked for confirmation in the next step.</string>
+    <string name="permission_rw_notice">Argonify needs your permission to read and write files on your device, so exporting and
+        importing your database may function. In the app info screen you can go to "Permissions" and allow the management of files
+        on your device. Open app info?</string>
     <!--Comment end-->
 
 </resources>

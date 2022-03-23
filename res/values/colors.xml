@@ -21,4 +21,5 @@
 
     <color name="grey">#303030</color>
     <color name="whiteText">#DCFFFFFF</color>
+    <color name="cellBlack">#060606</color>
 </resources>
