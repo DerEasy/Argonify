@@ -29,6 +29,7 @@ public abstract class TupleSelection extends AppCompatDialogFragment {
     public static boolean isOpen = false;
     public String[] attributes = new String[AMOUNT_OF_MAIN_ATTRIBUTES];
     public Cursor tuple;
+    protected int selectionID;
 
     @SuppressWarnings("ConstantConditions")
     @NonNull
@@ -65,16 +66,18 @@ public abstract class TupleSelection extends AppCompatDialogFragment {
 
     private void setAttributes(int adapterPosition, Cursor idCursor) {
         int[] idTuples = new int[idCursor.getCount()];
+
         for (int i = 0; i < idCursor.getCount(); ++i) {
             idTuples[i] = idCursor.getInt(idCursor.getColumnIndex(_ID));
             idCursor.moveToNext();
         }
 
-        tuple = getTupleByID(idTuples[adapterPosition]);
-        tuple.moveToFirst();
+        selectionID = idTuples[adapterPosition];
+        tuple = getTupleByID(selectionID);
 
-        for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i)
+        for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i) {
             attributes[i] = getAttribute(tuple, MAIN_ATTRIBUTES[i]);
+        }
     }
 
     /**

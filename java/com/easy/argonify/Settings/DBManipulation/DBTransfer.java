@@ -1,5 +1,7 @@
 package com.easy.argonify.Settings.DBManipulation;
 
+import static androidx.core.app.ActivityCompat.startActivityForResult;
+import static androidx.core.content.ContextCompat.startActivity;
 import static com.easy.argonify.Utility.PasswordDBHelper.SQL_CREATE_PASSWORD_TABLE;
 import static net.sqlcipher.database.SQLiteDatabase.openOrCreateDatabase;
 

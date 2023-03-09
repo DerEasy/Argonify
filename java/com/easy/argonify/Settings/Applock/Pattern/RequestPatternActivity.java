@@ -1,10 +1,14 @@
 package com.easy.argonify.Settings.Applock.Pattern;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -72,6 +76,18 @@ public class RequestPatternActivity extends AppCompatActivity implements Applock
         showLoading();
         new Handler(Looper.getMainLooper()).post(() ->
                 requestPattern.onPatternConfirmation());
+    }
+
+    public void clearAttributeFromClipboard(View v) {
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("", "");
+        clipboard.setPrimaryClip(clip);
+
+        Toast.makeText(
+                this,
+                "Cleared latest clipboard entry.",
+                Toast.LENGTH_SHORT
+        ).show();
     }
 
     private void showLoading() {

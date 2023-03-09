@@ -1,9 +1,12 @@
 package com.easy.argonify.Main.Dialogs;
 
 import static com.easy.argonify.Main.SelectionDisplay.ACTUAL_PASSWORD;
+import static com.easy.argonify.Main.SelectionDisplay.HIDDEN_PASSWORD;
+import static com.easy.argonify.Main.SelectionDisplay.NO_ID;
 import static com.easy.argonify.Settings.Applock.ApplockStrings.EMPTY;
 import static com.easy.argonify.Utility.ArgonifyDialog.argonifyDialog;
 import static com.easy.argonify.Utility.PasswordDB.deleteTuple;
+import static com.easy.argonify.Utility.PasswordDB.getTupleByID;
 import static com.easy.argonify.Utility.PasswordDBHelper.AMOUNT_OF_MAIN_ATTRIBUTES;
 import static com.easy.argonify.Utility.PasswordDBHelper.INDEX_EMAIL;
 import static com.easy.argonify.Utility.PasswordDBHelper.INDEX_NAME;
@@ -33,15 +36,19 @@ import com.easy.argonify.R;
 public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
     private final TextView[] txtAttribute = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
     private final TextView[] txtTitle = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
-    private final String[] attributes;
+    private final String[] attributes = new String[AMOUNT_OF_MAIN_ATTRIBUTES];
     private final Cursor tuple;
     private final SelectionDisplay selectionDisplay;
     public static boolean isOpen = false;
 
-    DgDeleteTupleConfirmation(SelectionDisplay display, String[] attributes, Cursor tuple) {
-        this.selectionDisplay = display;
-        this.attributes = attributes;
-        this.tuple = tuple;
+
+    public DgDeleteTupleConfirmation(SelectionDisplay display) {
+        selectionDisplay = display;
+        tuple = getTupleByID(selectionDisplay.getSelectionID());
+
+        for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i) {
+            attributes[i] = getAttribute(tuple, MAIN_ATTRIBUTES[i]);
+        }
     }
 
     @SuppressWarnings("ConstantConditions")
@@ -54,17 +61,28 @@ public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
         View confirmationView = inflater.inflate(R.layout.dg_delete_tuple, null);
         initialiseTextViews(confirmationView);
 
-        for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i)
-            setTextView(txtAttribute[i], txtTitle[i],attributes[i]);
+        for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i) {
+            if (i == INDEX_PASSWORD) {
+                setTextView(txtAttribute[i], txtTitle[i], selectionDisplay.currentPassword[HIDDEN_PASSWORD]);
+            } else {
+                setTextView(txtAttribute[i], txtTitle[i], attributes[i]);
+            }
+        }
 
         builder.setView(confirmationView)
                 .setTitle("Are you sure to delete this entry?")
                 .setNegativeButton("Cancel", (dialog, which) -> {})
                 .setPositiveButton("Delete", (dialog, which) -> {
-                    if (isDisplayed())
-                        selectionDisplay.onDisplayUpdate(new String[] {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY});
+                    String[] empty = new String[] {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY};
+                    selectionDisplay.onDisplayUpdate(empty, NO_ID);
+
                     deleteTuple(tuple.getInt(tuple.getColumnIndex(_ID)));
-                    Toast.makeText(getContext(), String.format("%s deleted", attributes[INDEX_NAME]), Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(
+                            getContext(),
+                            String.format("%s deleted", attributes[INDEX_NAME]),
+                            Toast.LENGTH_SHORT
+                    ).show();
                 });
 
         return argonifyDialog(builder, getContext());
@@ -82,10 +100,12 @@ public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
             if (i != INDEX_PASSWORD) {
                 if (selectionDisplay.txtAttribute[i].getText().equals(tuple.getString(tuple.getColumnIndex(MAIN_ATTRIBUTES[i]))))
                     ++displayCount;
-            } else
+            } else {
                 if (selectionDisplay.currentPassword[ACTUAL_PASSWORD].equals(tuple.getString(tuple.getColumnIndex(MAIN_ATTRIBUTES[i]))))
                     ++displayCount;
+            }
         }
+
         return displayCount == AMOUNT_OF_MAIN_ATTRIBUTES;
     }
 
@@ -96,8 +116,9 @@ public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
         if (text == null || text.isEmpty()) {
             title.setVisibility(View.GONE);
             attribute.setVisibility(View.GONE);
-        } else
+        } else {
             attribute.setText(text);
+        }
     }
 
     private void initialiseTextViews(View confirmationView) {
@@ -119,5 +140,9 @@ public class DgDeleteTupleConfirmation extends AppCompatDialogFragment {
         txtAttribute[INDEX_EMAIL]    = confirmationView.findViewById(R.id.txt_deleteEmail);
         txtAttribute[INDEX_USERNAME] = confirmationView.findViewById(R.id.txt_deleteUsername);
         txtAttribute[INDEX_NOTES]    = confirmationView.findViewById(R.id.txt_deleteNotes);
+    }
+
+    private String getAttribute(Cursor cursor, String column) {
+        return cursor.getString(cursor.getColumnIndex(column));
     }
 }

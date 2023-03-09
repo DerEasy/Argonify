@@ -1,5 +1,6 @@
 package com.easy.argonify.Main;
 
+import static com.easy.argonify.Main.SelectionDisplay.NO_ID;
 import static com.easy.argonify.Utility.PasswordDBHelper.DATABASE_NAME;
 import static com.easy.argonify.Utility.PasswordDBHelper.createDatabase;
 import static com.easy.argonify.Utility.RequestApplock.requestApplock;
@@ -17,8 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.easy.argonify.Main.Dialogs.DgAddTuple;
-import com.easy.argonify.Main.Dialogs.DgDeleteTuple;
-import com.easy.argonify.Main.Dialogs.DgEditTuple;
+import com.easy.argonify.Main.Dialogs.DgDeleteTupleConfirmation;
+import com.easy.argonify.Main.Dialogs.DgEditTupleConfirmation;
 import com.easy.argonify.Main.Dialogs.DgSelectTuple;
 import com.easy.argonify.PassGen.PassGenActivity;
 import com.easy.argonify.R;
@@ -62,8 +63,14 @@ public class MainActivity extends AppCompatActivity implements ApplockStrings {
         loadLibs(this);
 
         File databaseFile = getDatabasePath(DATABASE_NAME);
-        if (createDatabase(databaseFile, getIntent().getStringExtra(RAW_KEY)))
-            Toast.makeText(this, "A fatal error has occurred. Database has been reset.", Toast.LENGTH_LONG).show();
+
+        if (createDatabase(databaseFile, getIntent().getStringExtra(RAW_KEY))) {
+            Toast.makeText(
+                    this,
+                    "ERROR: Restart app or device.",
+                    Toast.LENGTH_LONG
+            ).show();
+        }
 
         getIntent().removeExtra(RAW_KEY);
     }
@@ -89,22 +96,23 @@ public class MainActivity extends AppCompatActivity implements ApplockStrings {
             });
         }
     }
-    private void setOptionsAnimator(OptionsAnimator anim) { optionsAnimator = anim; }
-
-
-    public void onDisplayUpdate(String[] attributes) {
-        selectionDisplay.onDisplayUpdate(attributes);
+    private void setOptionsAnimator(OptionsAnimator anim) {
+        optionsAnimator = anim;
     }
 
     public void selectTuple(View v) {
         if (!DgSelectTuple.isOpen) {
-            DgSelectTuple dgSelectTuple = new DgSelectTuple(this);
+            DgSelectTuple dgSelectTuple = new DgSelectTuple(selectionDisplay);
             dgSelectTuple.show(getSupportFragmentManager(), null);
         }
     }
 
     public void copyAttributeToClipboard(View v) {
         selectionDisplay.copyAttributeToClipboard(v);
+    }
+
+    public void clearAttributeFromClipboard(View v) {
+        selectionDisplay.clearAttributeFromClipboard();
     }
 
     public void options(View v) {
@@ -120,18 +128,32 @@ public class MainActivity extends AppCompatActivity implements ApplockStrings {
     }
 
     public void deleteTuple(View v) {
-        if (!DgDeleteTuple.isOpen) {
+        if (!DgDeleteTupleConfirmation.isOpen && selectionDisplay.getSelectionID() == NO_ID) {
+            Toast.makeText(this,
+                    "Select an entry first.",
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
+
+        else if (!DgDeleteTupleConfirmation.isOpen) {
             optionsAnimator.close();
-            DgDeleteTuple dgDeleteTuple = new DgDeleteTuple(selectionDisplay);
-            dgDeleteTuple.show(getSupportFragmentManager(), null);
+            DgDeleteTupleConfirmation confirmation = new DgDeleteTupleConfirmation(selectionDisplay);
+            confirmation.show(getSupportFragmentManager(), null);
         }
     }
 
     public void editTuple(View v) {
-        if (!DgEditTuple.isOpen) {
+        if (!DgEditTupleConfirmation.isOpen && selectionDisplay.getSelectionID() == NO_ID) {
+            Toast.makeText(this,
+                    "Select an entry first.",
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
+
+        else if (!DgEditTupleConfirmation.isOpen) {
             optionsAnimator.close();
-            DgEditTuple dgEditTuple = new DgEditTuple(this);
-            dgEditTuple.show(getSupportFragmentManager(), null);
+            DgEditTupleConfirmation confirmation = new DgEditTupleConfirmation(selectionDisplay);
+            confirmation.show(getSupportFragmentManager(), null);
         }
     }
 

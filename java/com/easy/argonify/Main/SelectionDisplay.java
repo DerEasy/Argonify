@@ -26,6 +26,7 @@ public class SelectionDisplay {
     private final static int AMOUNT_OF_COPY_BUTTONS = 3;
     public final static int ACTUAL_PASSWORD = 0;
     public final static int HIDDEN_PASSWORD = 1;
+    public final static int NO_ID = -1;
 
     /**Index 0 is the actual password, index 1 is the password in 'hidden' symbols*/
     public final String[] currentPassword = new String[] {"", ""};
@@ -33,9 +34,9 @@ public class SelectionDisplay {
     private final TextView[] txtTitle = new TextView[AMOUNT_OF_MAIN_ATTRIBUTES];
     private final ImageButton[] ibtCopy = new ImageButton[AMOUNT_OF_COPY_BUTTONS];
     private final ImageButton ibtPasswordReveal;
-    private final ImageView appicon;
-    private final TextView appname;
+    private final ImageView appIcon;
     private boolean isPasswordRevealed = false;
+    private int selectionID = NO_ID;
 
     SelectionDisplay(MainActivity parentActivity) {
         mainActivity = parentActivity;
@@ -57,8 +58,7 @@ public class SelectionDisplay {
         ibtCopy[INDEX_USERNAME - 1] = mainActivity.findViewById(R.id.ibt_copyUsername);
 
         ibtPasswordReveal = mainActivity.findViewById(R.id.ibt_selectPasswordReveal);
-        appicon = mainActivity.findViewById(R.id.img_mainAppName);
-        appname = mainActivity.findViewById(R.id.txt_mainAppIcon);
+        appIcon = mainActivity.findViewById(R.id.img_mainAppName);
 
         attachPasswordRevealListener();
     }
@@ -66,6 +66,7 @@ public class SelectionDisplay {
     private void attachPasswordRevealListener() {
         ibtPasswordReveal.setOnClickListener(v -> {
             isPasswordRevealed = !isPasswordRevealed;
+
             if (isPasswordRevealed) {
                 ibtPasswordReveal.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.ic_round_visibility_off_24));
                 txtAttribute[INDEX_PASSWORD].setText(currentPassword[ACTUAL_PASSWORD]);
@@ -89,9 +90,12 @@ public class SelectionDisplay {
         txtAttribute[INDEX_PASSWORD].setText(currentPassword[HIDDEN_PASSWORD]);
     }
 
-    public void onDisplayUpdate(String[] attributes) {
-        for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i)
+    public void onDisplayUpdate(String[] attributes, int id) {
+        selectionID = id;
+
+        for (int i = 0; i < AMOUNT_OF_MAIN_ATTRIBUTES; ++i) {
             setTextView(i, attributes[i]);
+        }
 
         setCurrentPassword(attributes[INDEX_PASSWORD]);
         setCopyButtonVisibility();
@@ -105,7 +109,8 @@ public class SelectionDisplay {
          * The tags of the three 'Copy ImageButtons' in activity_main.xml are in order:
          * 0, 1, 2  -- for -- Password, Email, Notes
          * These tags are used as an index in the following code, hence changing these
-         * tags to something different will break the app.*/
+         * tags to something different will break the app.
+         */
         int index = Integer.parseInt((String) v.getTag()) + 1;
 
         String attribute;
@@ -121,6 +126,18 @@ public class SelectionDisplay {
         Toast.makeText(
                 mainActivity,
                 String.format("Copied %s to clipboard", MAIN_ATTRIBUTES[index]),
+                Toast.LENGTH_SHORT
+        ).show();
+    }
+
+    void clearAttributeFromClipboard() {
+        ClipboardManager clipboard = (ClipboardManager) mainActivity.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("", "");
+        clipboard.setPrimaryClip(clip);
+
+        Toast.makeText(
+                mainActivity,
+                "Cleared latest clipboard entry.",
                 Toast.LENGTH_SHORT
         ).show();
     }
@@ -160,9 +177,9 @@ public class SelectionDisplay {
 
     private void setAppIconVisibility() {
         if (displayIsEmpty())
-            appicon.animate().alpha(1).setDuration(800);
+            appIcon.animate().alpha(1).setDuration(800);
         else
-            appicon.animate().alpha(0).setDuration(800);
+            appIcon.animate().alpha(0).setDuration(800);
     }
 
     private boolean displayIsEmpty() {
@@ -170,5 +187,9 @@ public class SelectionDisplay {
             if (txt.getVisibility() == View.VISIBLE)
                 return false;
         return true;
+    }
+
+    public int getSelectionID() {
+        return selectionID;
     }
 }

@@ -34,16 +34,20 @@ public class RequestApplock implements ApplockStrings {
         boolean lockIsNull = LOCK_TYPE == null;
         boolean keyIsNull = KEY == null;
 
-        if (lockIsNull != keyIsNull)
+        if (lockIsNull != keyIsNull) {
             throw new IllegalArgumentException("Either LOCK_TYPE or KEY is null while the other is not.");
-        if (lockIsNull & keyIsNull) {
+        }
+
+        if (lockIsNull && keyIsNull) {
             SharedPreferences preferences = context.getSharedPreferences(APPLOCK, Context.MODE_PRIVATE);
             LOCK_TYPE = preferences.getString(APPLOCK_TYPE, EMPTY);
             KEY = preferences.getString(APPLOCK_KEY, null);
         }
+
         if (LOCK_TYPE.equals(EMPTY)) {
             skipToKeylessAction(context, ACTION); return;
         }
+
 
         Intent applockRequest;
         String REASON = getReason(LOCK_TYPE, GENERIC_REASON);

@@ -3,6 +3,8 @@ package com.easy.argonify.Utility;
 import static com.easy.argonify.Utility.PasswordDB.passwordDB;
 import static net.sqlcipher.database.SQLiteDatabase.openOrCreateDatabase;
 
+import android.widget.Toast;
+
 import java.io.File;
 
 public class PasswordDBHelper {
@@ -50,28 +52,31 @@ public class PasswordDBHelper {
      * Tries to create or open the password database with the given key
      * @param databaseFile The abstract database path
      * @param key The correct key that this database needs to be decrypted
-     * @return True if a fatal error has occurred and the database has been reset, false if successful
+     * @return True if a fatal error has occurred and database couldn't be accessed, false on success
      */
     public static boolean createDatabase(File databaseFile, String key) {
-        boolean dbErasure = false;
         try {
-            //This should work when opening the database normally
+            // This should work when opening the database normally
             passwordDB = openOrCreateDatabase(databaseFile, key, null);
         } catch (RuntimeException firstException) {
             firstException.printStackTrace();
+
             try {
-                //If the user changes the applock key though, this will first have to happen
+                //If the user changes the applock key though, the database needs to be recreated first
                 passwordDB.changePassword(key);
                 passwordDB = openOrCreateDatabase(databaseFile, key, null);
             } catch (RuntimeException secondException) {
-                //And if that doesn't work, only database recreation will...
-                dbErasure = databaseFile.delete();
-                passwordDB = openOrCreateDatabase(databaseFile, key, null);
+                // ~~And if that doesn't work, only database recreation will...~~
+                // Feature removed for being hazardous, displays Toast instead.
+                // dbErasure = databaseFile.delete();
+                // passwordDB = openOrCreateDatabase(databaseFile, key, null);
                 secondException.printStackTrace();
+                return true;
             }
         }
 
+
         passwordDB.execSQL(SQL_CREATE_PASSWORD_TABLE);
-        return dbErasure;
+        return false;
     }
 }

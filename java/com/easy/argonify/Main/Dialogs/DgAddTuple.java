@@ -31,9 +31,7 @@ public class DgAddTuple extends TupleManipulation {
     }
 
     private boolean add(ContentValues cv) {
-        boolean successful = isInputValid(cv);
-        if (!successful)
-            return false;
+        if (!isInputValid(cv)) return false;
 
         insertTuple(cv);
         return true;
