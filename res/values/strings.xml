@@ -7,6 +7,7 @@
     <string name="copy_password">Copy password to clipboard</string>
     <string name="copy_email">Copy email to clipboard</string>
     <string name="copy_username">Copy username to clipboard</string>
+    <string name="clear_clipboard">Clear latest clipboard entry</string>
     <!--Comment end-->
 
     <!--These are partially also used as tags for their corresponding ImageButtons etc.

@@ -525,7 +525,7 @@
         android:background="?android:selectableItemBackgroundBorderless"
         android:contentDescription="@string/clear"
         android:onClick="onClear"
-        android:src="@drawable/ic_round_clear_24"
+        android:src="@drawable/ic_round_delete_forever_24"
         app:layout_constraintEnd_toStartOf="@+id/ibt_reqPatternUndo"
         app:layout_constraintTop_toTopOf="@+id/ibt_reqPatternUndo" />
 
@@ -635,5 +635,18 @@
         app:layout_constraintStart_toEndOf="@+id/load_reqPatternLoading"
         app:layout_constraintTop_toTopOf="@+id/load_reqPatternLoading"
         tools:visibility="visible" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:contentDescription="@string/clear_clipboard"
+        android:onClick="clearAttributeFromClipboard"
+        android:src="@drawable/ic_round_clear_24"
+        app:layout_constraintBottom_toBottomOf="@+id/efab_reqPatternConfirm"
+        app:layout_constraintEnd_toStartOf="@+id/efab_reqPatternConfirm"
+        app:layout_constraintTop_toTopOf="@+id/efab_reqPatternConfirm" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
